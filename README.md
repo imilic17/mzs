@@ -319,7 +319,7 @@ Na ekranskom prikazu `font-size` na `<html>` može biti 20/24/28/32px (A−/A+ k
 
 ---
 
-## Dosad generirano (Claude Code)
+## Dosad generirano
 
 | Datoteka | Status | Bilješka |
 |----------|--------|---------|
