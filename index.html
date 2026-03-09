@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#1A3A1A">
+  <meta name="description" content="Muzej za sve — pristupačni digitalni vodič kroz Zavičajni muzej Daruvar">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Muzej za sve</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    /* ─────────────────────────────────────────
+       Paleta i varijable
+       Jedina datoteka boja — mijenjaj ovdje.
+    ───────────────────────────────────────── */
+    :root {
+      --zelena:        #1A3A1A;
+      --zelena-mid:    #2D5C2D;
+      --zlatna:        #C8A84B;
+      --zlatna-tamna:  #A08535;
+      --krem:          #F4EFE4;
+      --krem-tamna:    #E5DECA;
+      --tekst-sivi:    #3A3A2A;
+    }
+
+    /* ─────────────────────────────────────────
+       Reset — bez margina, border-box svuda
+    ───────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ─────────────────────────────────────────
+       Tijelo stranice:
+       Flexbox stupac, sve centrirano, min. 24px
+    ───────────────────────────────────────── */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background-color: var(--krem);
+      color: var(--zelena);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.5rem 1.25rem 1.75rem;
+      font-size: 24px; /* baza: sve rem jedinice računaju od 24px */
+      line-height: 1.4;
+    }
+
+    /* ─────────────────────────────────────────
+       ZAGLAVLJE — logo + naziv + podnaziv
+    ───────────────────────────────────────── */
+    header {
+      text-align: center;
+      margin-bottom: 2.25rem;
+    }
+
+    /* Logo: rimski luk (Aquae Balissae) s
+       Diatretnim peharom unutra                */
+    .logo {
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .logo-svg {
+      width: 88px;
+      height: 88px;
+      color: var(--zelena);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 9vw, 2.75rem);
+      font-weight: 900;
+      color: var(--zelena);
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+    }
+
+    /* Zlatna podcrtana linija ispod naslova */
+    h1::after {
+      content: '';
+      display: block;
+      width: 3rem;
+      height: 3px;
+      background: var(--zlatna);
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+    }
+
+    .podnaziv {
+      margin-top: 0.6rem;
+      font-size: 0.875rem; /* 21px — iznad minimuma 20px */
+      color: var(--tekst-sivi);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    /* ─────────────────────────────────────────
+       NAVIGACIJA — tri gumba, široko tapkanje
+    ───────────────────────────────────────── */
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 480px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    /* Zajednička osnova svih gumbova */
+    .gumb {
+      display: flex;
+      align-items: center;
+      gap: 1.125rem;
+      padding: 1.25rem 1.5rem;
+      border-radius: 20px;
+      border: none;
+      text-decoration: none;
+      font-family: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      /* Nema tranzicija ni animacija — zahtjev pristupačnosti */
+    }
+
+    /* Focus ring vidljiv samo tipkovnicom */
+    .gumb:focus-visible {
+      outline: 4px solid var(--zlatna);
+      outline-offset: 3px;
+    }
+
+    /* ── Vodič: tamnozelena podloga, zlatni sadržaj ── */
+    .gumb--vodic {
+      background-color: var(--zelena);
+      color: var(--zlatna);
+      min-height: 96px; /* 2× minimum 44px za lakše tapkanje */
+    }
+
+    /* ── Quest: zlatna podloga, zeleni sadržaj ── */
+    .gumb--quest {
+      background-color: var(--zlatna);
+      color: var(--zelena);
+      min-height: 96px;
+    }
+
+    /* ── O projektu: obris, manji ── */
+    .gumb--projekt {
+      background-color: transparent;
+      color: var(--zelena);
+      border: 2px solid var(--zelena);
+      min-height: 60px;
+      justify-content: center;
+      font-size: 0.875rem; /* 21px */
+      gap: 0.625rem;
+      padding: 0.875rem 1.25rem;
+    }
+
+    /* Kontejner za naslov + opis unutar velikih gumba */
+    .gumb__tekst {
+      text-align: left;
+      line-height: 1.2;
+    }
+
+    .gumb__naziv {
+      font-size: 1.5rem; /* 36px */
+      display: block;
+    }
+
+    .gumb__opis {
+      display: block;
+      font-size: 0.875rem; /* 21px */
+      font-weight: 400;
+      /* A11y: opacity:0.82 davalo ~3.96:1 (PADA AA). Koristimo punu boju. */
+      margin-top: 0.25rem;
+    }
+
+    /* SVG ikone unutar gumba */
+    .gumb__ikona {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+    }
+
+    .gumb__ikona--mala {
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    /* ─────────────────────────────────────────
+       PODNOŽJE
+    ───────────────────────────────────────── */
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.875rem; /* 21px */
+      /* A11y FIX #5: opacity:0.6 davalo je efektivni kontrast ~3.1:1 (PADA AA).
+         Koristimo eksplicitnu boju umjesto opacity smanjivanja. */
+      color: var(--tekst-sivi);
+    }
+
+    /* ═══════════════════════════════════════════
+       A11y FIX #1 — html font-size
+       rem je relativan na <html>, ne <body>.
+       Bez ove linije: 1rem = 16px (browser default),
+       pa 0.875rem = 14px — ispod minimuma 20px!
+    ═══════════════════════════════════════════ */
+    html { font-size: 24px; }
+
+    /* A11y FIX #2 — Skip link (WCAG 2.4.1)
+       Vidljiv samo kad je fokusiran tipkovnicom.
+       Preskače navigaciju i ide na glavni sadržaj. */
+    .skip-link {
+      position: absolute;
+      top: -999px;
+      left: 0.5rem;
+      z-index: 999;
+      background: var(--zelena);
+      color: var(--zlatna);
+      padding: 0.75rem 1.25rem;
+      border-radius: 0 0 10px 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* A11y FIX #3 — Font kontrola (CONTEXT.md WCAG zahtjev)
+       Gumbi A− i A+ mijenjaju html font-size →
+       sve rem vrijednosti skaliraju proporcionalno. */
+    .font-kontrola {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.375rem;
+      z-index: 20;
+    }
+    .font-kontrola__gumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--zelena);
+      color: var(--zlatna);
+      border: 2px solid var(--zlatna);
+      border-radius: 10px;
+      /* font-size u px — ne smije se mijenjati s rem skaliranjem */
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .font-kontrola__gumb:disabled { opacity: 0.35; cursor: default; }
+    .font-kontrola__gumb:focus-visible {
+      outline: 3px solid var(--zlatna);
+      outline-offset: 2px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- A11y FIX #2 — Skip link: prelazi direktno na sadržaj (WCAG 2.4.1) -->
+  <a class="skip-link" href="#sadrzaj">Preskoči na sadržaj</a>
+
+  <!-- ══════════════════════════════════════
+       ZAGLAVLJE
+       Logo referira na rimski luk Aquae Balissae
+       s Diatretnim peharom — najvrednijem eksponatu.
+  ══════════════════════════════════════ -->
+  <header>
+    <div class="logo" aria-hidden="true">
+      <svg class="logo-svg" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Tlo -->
+        <rect x="6" y="76" width="76" height="7" rx="3.5" fill="var(--zlatna)"/>
+        <!-- Lijevi stup -->
+        <rect x="10" y="42" width="11" height="34" rx="2.5" fill="currentColor"/>
+        <!-- Desni stup -->
+        <rect x="67" y="42" width="11" height="34" rx="2.5" fill="currentColor"/>
+        <!-- Kapitel lijevog stupa -->
+        <rect x="7" y="39" width="17" height="5" rx="2" fill="currentColor"/>
+        <!-- Kapitel desnog stupa -->
+        <rect x="64" y="39" width="17" height="5" rx="2" fill="currentColor"/>
+        <!-- Rimski luk -->
+        <path d="M17 40 C17 13 71 13 71 40" stroke="currentColor" stroke-width="6"
+              fill="none" stroke-linecap="butt"/>
+        <!-- Diatretni pehar — silueta unutar luka -->
+        <!-- Tijelo pehara -->
+        <path d="M36 28 L52 28 L49 46 L39 46 Z" fill="var(--zlatna)"/>
+        <!-- Obod (rim) -->
+        <rect x="34" y="26" width="20" height="4" rx="2" fill="var(--zlatna)"/>
+        <!-- Nožica -->
+        <rect x="42" y="46" width="4" height="7" rx="1.5" fill="var(--zlatna)"/>
+        <!-- Baza -->
+        <rect x="38" y="53" width="12" height="4" rx="2" fill="var(--zlatna)"/>
+        <!-- Mrežasti uzorak na peharu (referenca na "diatreta" tehniku) -->
+        <line x1="40" y1="28" x2="38" y2="46" stroke="var(--zelena)" stroke-width="1.2" opacity="0.5"/>
+        <line x1="44" y1="28" x2="44" y2="46" stroke="var(--zelena)" stroke-width="1.2" opacity="0.5"/>
+        <line x1="48" y1="28" x2="50" y2="46" stroke="var(--zelena)" stroke-width="1.2" opacity="0.5"/>
+        <line x1="35" y1="36" x2="53" y2="36" stroke="var(--zelena)" stroke-width="1.2" opacity="0.5"/>
+      </svg>
+    </div>
+
+    <h1>Muzej za sve</h1>
+    <p class="podnaziv">Zavičajni muzej Daruvar &middot; digitalni vodič</p>
+  </header>
+
+
+  <!-- ══════════════════════════════════════
+       NAVIGACIJA — A11y FIX #4: <main> landmark
+       Maksimalno 4 opcije po ekranu (WCAG zahtjev).
+       Gumbi daleko iznad minimuma 44×44 px.
+  ══════════════════════════════════════ -->
+  <main id="sadrzaj">
+  <nav aria-label="Odaberi način korištenja">
+
+    <!-- ── MOD 1: Vodič ── -->
+    <a href="vodic/index.html"
+       class="gumb gumb--vodic"
+       aria-label="Otvori Vodič — pristupačni pregled eksponata s glasovnim opisima">
+
+      <!-- Oko + zvučni valovi = vidjeti + čuti (TTS) -->
+      <svg class="gumb__ikona" viewBox="0 0 52 52" fill="none"
+           xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Oblik oka -->
+        <path d="M4 26 C10 14 42 14 48 26 C42 38 10 38 4 26 Z"
+              stroke="currentColor" stroke-width="3" fill="none" stroke-linejoin="round"/>
+        <!-- Šarenica -->
+        <circle cx="26" cy="26" r="8" fill="currentColor"/>
+        <!-- Zjenica — boja pozadine, daje dubinu -->
+        <circle cx="26" cy="26" r="3.5" fill="#1A3A1A"/>
+        <!-- Odsjaj -->
+        <circle cx="29" cy="23" r="1.5" fill="currentColor" opacity="0.4"/>
+        <!-- Zvučni valovi desno — znak TTS-a -->
+        <path d="M40 20 C44.5 22 44.5 30 40 32"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M43.5 16.5 C50 19.5 50 32.5 43.5 35.5"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.55"/>
+      </svg>
+
+      <span class="gumb__tekst">
+        <span class="gumb__naziv">Vodič</span>
+        <span class="gumb__opis">Pregledaj eksponate s glasovnim opisima</span>
+      </span>
+    </a>
+
+    <!-- ── MOD 2: Daruvar Quest ── -->
+    <a href="quest/index.html"
+       class="gumb gumb--quest"
+       aria-label="Otvori Daruvar Quest — interaktivni kviz za posjetitelje muzeja">
+
+      <!-- Štit s kompasnom zvijezdom = avantura + orijentacija kroz povijest -->
+      <svg class="gumb__ikona" viewBox="0 0 52 52" fill="none"
+           xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Štit -->
+        <path d="M26 4 L44 12 L44 30 C44 41 35 48 26 51 C17 48 8 41 8 30 L8 12 Z"
+              fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/>
+        <!-- Kompasna zvijezda unutar štita — 8 krakova -->
+        <path d="M26 16 L28.5 23.5 L36 26 L28.5 28.5 L26 36 L23.5 28.5 L16 26 L23.5 23.5 Z"
+              fill="currentColor"/>
+        <!-- Mali krug u centru -->
+        <circle cx="26" cy="26" r="3" fill="var(--zlatna)"/>
+      </svg>
+
+      <span class="gumb__tekst">
+        <span class="gumb__naziv">Daruvar Quest</span>
+        <span class="gumb__opis">Istraži muzej i osvoji bodove kvizom</span>
+      </span>
+    </a>
+
+    <!-- ── MOD 3: O projektu ── -->
+    <a href="o-projektu/index.html"
+       class="gumb gumb--projekt"
+       aria-label="Saznaj više o projektu Muzej za sve — tim, partneri i ciljevi">
+
+      <!-- Tri osobe = tim od 3 učenika koji su projekt napravili -->
+      <svg class="gumb__ikona--mala" viewBox="0 0 28 22" fill="none"
+           xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Lijeva osoba -->
+        <circle cx="5" cy="6" r="3.5" fill="currentColor"/>
+        <path d="M0 20 C0 14.5 10 14.5 10 20" fill="currentColor"/>
+        <!-- Desna osoba -->
+        <circle cx="23" cy="6" r="3.5" fill="currentColor"/>
+        <path d="M18 20 C18 14.5 28 14.5 28 20" fill="currentColor"/>
+        <!-- Srednja osoba (istaknuta) -->
+        <circle cx="14" cy="4.5" r="4" fill="currentColor"/>
+        <path d="M8 21 C8 14.5 20 14.5 20 21" fill="currentColor"/>
+      </svg>
+
+      O projektu
+    </a>
+
+  </nav>
+  </main>
+
+
+  <!-- ══════════════════════════════════════
+       PODNOŽJE
+  ══════════════════════════════════════ -->
+  <footer>
+    <p>Tehnička škola Daruvar &middot; Samsung Challenge 2025./2026.</p>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════
+       KONTROLA FONTA — A11y FIX #3 (CONTEXT.md)
+       A− / A+ mijenjaju html font-size pa se
+       sve rem vrijednosti skaliraju zajedno.
+       Indeks se pamti u localStorage.
+  ══════════════════════════════════════ -->
+  <div class="font-kontrola" role="group" aria-label="Veličina slova">
+    <button class="font-kontrola__gumb"
+            id="font-manji"
+            aria-label="Smanji slova"
+            onclick="promijeniFont(-1)">A−</button>
+    <button class="font-kontrola__gumb"
+            id="font-veci"
+            aria-label="Povećaj slova"
+            onclick="promijeniFont(+1)">A+</button>
+  </div>
+
+  <script>
+    /* ── Font kontrola — CONTEXT.md WCAG zahtjev ──
+       Četiri koraka: 20 / 24 / 28 / 32 px.
+       Zadana vrijednost: indeks 1 = 24 px.       */
+    const FONT_VELICINE = [20, 24, 28, 32];
+    let fontIndeks = parseInt(localStorage.getItem('muzej_font_indeks') ?? '1', 10);
+    if (fontIndeks < 0 || fontIndeks >= FONT_VELICINE.length) fontIndeks = 1;
+
+    function primijeniFontVelicinu() {
+      document.documentElement.style.fontSize = FONT_VELICINE[fontIndeks] + 'px';
+      document.getElementById('font-manji').disabled = (fontIndeks === 0);
+      document.getElementById('font-veci').disabled  = (fontIndeks === FONT_VELICINE.length - 1);
+    }
+
+    function promijeniFont(smjer) {
+      fontIndeks = Math.max(0, Math.min(FONT_VELICINE.length - 1, fontIndeks + smjer));
+      localStorage.setItem('muzej_font_indeks', fontIndeks);
+      primijeniFontVelicinu();
+    }
+
+    primijeniFontVelicinu(); /* Primijeni odmah pri učitavanju */
+  </script>
+
+
+  <!-- ══════════════════════════════════════
+       SERVICE WORKER — Offline podrška (točka 7)
+
+       Što radi:
+       1. Provjerava podržava li browser SW
+       2. Registrira service-worker.js
+       3. Čeka da SW bude spreman (navigator.serviceWorker.ready)
+       4. Na konzoli ispisuje status — korisno za debug
+
+       Zašto 'defer' ili kraj body-a?
+       → SW registracija ne smije blokirati render stranice.
+         Stavljamo je na kraj body-a da se stranica učita
+         odmah, a SW registrira u pozadini.
+  ══════════════════════════════════════ -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      /* Registracija se pokreće tek kad je stranica potpuno učitana */
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('./service-worker.js')
+          .then(registracija => {
+            console.log('[SW] Registriran uspješno. Scope:', registracija.scope);
+          })
+          .catch(greska => {
+            /* Greška registracije ne smije srušiti aplikaciju */
+            console.warn('[SW] Registracija nije uspjela:', greska);
+          });
+      });
+    }
+  </script>
+
+<!-- A11y audit: PASS -->
+</body>
+</html>

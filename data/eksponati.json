@@ -1,0 +1,47 @@
+[
+  {
+    "id": "diatretni-pehar",
+    "naziv": "Diatretni pehar",
+    "kategorija": "rimsko-doba",
+    "kratki_opis": "Staklena čaša stara oko 1700 godina, pronađena u rimskom Daruvaru — tada zvanom Aquae Balissae. Jedini je primjerak ove vrste u Hrvatskoj. Na cijelom svijetu postoji svega pedesetak takvih čaša.",
+    "dugi_opis": "Diatretni pehar izrađen je u 4. stoljeću nove ere, u vrijeme kada je današnji Daruvar bio rimski grad Aquae Balissae — poznat po ljekovitim termalnim izvorima. Pehar je dobio ime po tehnici izrade: staklena mreža na vanjskoj strani (diatreta) odvojena je od unutarnje stijenke i slobodno 'lebdi' oko nje, a sve je izrađeno iz jednog komada stakla. Ova tehnika zahtijevala je iznimnu vještinu staklara i bila je rezervirana za najimućnije rimske građane. Pronađen je u arheološkim iskapanjima u Daruvaru i danas je jedan od najvrednijedih predmeta Zavičajnog muzeja. Svrstava se među najljepše primjerke kasnoantičkog staklarstva u jugoistočnoj Europi.",
+    "easy_to_read_opis": "Ovo je stara staklena čaša. Ima oko 1700 godina i pronašli su je u Daruvaru. Samo jedna takva čaša postoji u cijeloj Hrvatskoj.",
+    "quest_pitanje": "Koliko je star Diatretni pehar pronađen u Daruvaru?",
+    "quest_odgovori": ["Oko 500 godina", "Oko 1700 godina", "Oko 300 godina"],
+    "quest_tocni_odgovor": 1,
+    "quest_zanimljivost": "Diatretni pehar je toliko rijedak da na cijelom svijetu postoji samo oko 50 takvih čaša — a jedina u Hrvatskoj čuva se upravo u Daruvaru!",
+    "slika_originalna": "assets/slike/diatretni-pehar-original.jpg",
+    "slika_ai_obradena": "assets/slike/diatretni-pehar-ai.jpg",
+    "slika_alt": "Stakleni Diatretni pehar iz rimskog doba s mrežastim uzorkom, pronađen u Daruvaru"
+  },
+  {
+    "id": "dvorac-jankovic",
+    "naziv": "Dvorac Janković",
+    "kategorija": "dvorac-i-barok",
+    "kratki_opis": "Barokni dvorac koji je u 18. stoljeću sagradila plemićka obitelj Janković, gospodari Daruvara. Smješten je u srcu daruvarske parkovne šume i jedan je od najljepše sačuvanih dvoraca u Bjelovarsko-bilogorskoj županiji. Danas je zaštićeno kulturno dobro Republike Hrvatske.",
+    "dugi_opis": "Dvorac Janković sagrađen je u drugoj polovici 18. stoljeća, nakon što je Antun Janković 1760. godine otkupio vlastelinstvo Daruvar. Obitelj Janković, podrijetlom iz Slavonije, uložila je u obnovu i razvoj tada zapuštenog područja — obnovili su termalne izvore, doveli nove stanovnike i izgradili reprezentativni barokni dvorac kao središte svoga posjeda. Dvorac je jednokatna zgrada s karakterističnim baroknim pročeljem, okružena engleskim parkom koji je također zaštićen kao hortikulturni spomenik. U dvorcuje živjela i Ana Janković, jedna od prvih žena u ovom dijelu Europe koja je vodila imanje samostalno. Legenda kaže da je duh Ane Janković i danas prisutan u dvorcu za hladnih zimskih noći. Nakon obitelji Janković, dvorac su naslijedile obitelji Turković i Schaumburg-Lippe. Danas je u vlasništvu privatnih subjekata i dijelom je otvoren za posjetitelje.",
+    "easy_to_read_opis": "Ovo je stari dvorac u Daruvaru. Sagradila ga je bogata obitelj Janković prije više od 250 godina. Dvorac je okružen lijepim parkom s velikim stablima.",
+    "quest_pitanje": "Tko je sagradio Dvorac Janković u Daruvaru?",
+    "quest_odgovori": ["Obitelj Janković", "Rimski vojnici", "Habsburški car"],
+    "quest_tocni_odgovor": 0,
+    "quest_zanimljivost": "Ana Janković bila je jedna od prvih žena u ovom dijelu Europe koja je samostalno upravljala cijelim imanjem — i to u 18. stoljeću kada žene gotovo nisu imale prava!",
+    "slika_originalna": "assets/slike/dvorac-jankovic-original.jpg",
+    "slika_ai_obradena": "assets/slike/dvorac-jankovic-ai.jpg",
+    "slika_alt": "Barokni Dvorac Janković okružen parkovnom šumom u Daruvaru"
+  },
+  {
+    "id": "ginkgo-biloba",
+    "naziv": "Ginkgo biloba",
+    "kategorija": "priroda",
+    "kratki_opis": "Ginkgo biloba stabla u daruvarskomparku jedna su od najstarijih primjeraka ove vrste u Hrvatskoj, stara više od 150 godina. Ginkgo je tzv. 'živi fosil' — vrsta koja je preživjela dinosaure i gotovo se nije promijenila 200 milijuna godina. Prepoznatljiva su po lepezastim listovima koji u jesen postaju zlatnožuti.",
+    "dugi_opis": "Ginkgo biloba (Ginkgo biloba L.) stabla u daruvarskomparku posađena su u drugoj polovici 19. stoljeća, u doba kada su europski vlastelini uređivali parkove uz dvorce po uzoru na engleske pejzažne vrtove. Daruvar je u tome prednjačio — park uz dvorac Janković projektiran je s posebnom pažnjom prema rijetkim i egzotičnim vrstama. Ginkgo biloba dolazi izvorno iz Kine i smatra se živim fosilom jer su gotovo identični listovi pronađeni u fosilnim nalazištima starim 200 milijuna godina. Vrsta je preživjela čak i pad asteroida koji je uništio dinosaure. U Japanu i Kini smatraju ga svetim stablom. Daruvarska stabla posebna su i po tome što je u parku posađen par — muško i žensko stablo — što je rijetko u europskim parkovima. Jesen u Daruvaru postaje čarobna kada ginkgo stabla požute u intenzivnu zlatnu boju.",
+    "easy_to_read_opis": "Ovo su vrlo stara stabla koja rastu u parku u Daruvaru. Ginkgo stabla postoje na Zemlji još od vremena dinosaura — to je više od 200 milijuna godina! Njihovi listovi u jesen postaju lijepo zlatnožuti.",
+    "quest_pitanje": "Zašto se Ginkgo biloba naziva 'živim fosilom'?",
+    "quest_odgovori": ["Jer je napravljeno od kamena", "Jer gotovo identična stabla postoje još od doba dinosaura", "Jer raste samo na grobljima"],
+    "quest_tocni_odgovor": 1,
+    "quest_zanimljivost": "Ginkgo biloba preživio je atomsku bombu u Hiroshimi 1945. godine — nekoliko stabala u blizini epicentra prolistalo je već sljedeće proljeće. Zbog toga ga zovu 'stablo nade'.",
+    "slika_originalna": "assets/slike/ginkgo-biloba-original.jpg",
+    "slika_ai_obradena": "assets/slike/ginkgo-biloba-ai.jpg",
+    "slika_alt": "Zlatnožuti lepezasti listovi Ginkgo biloba stabla u daruvarskomparku u jesen"
+  }
+]

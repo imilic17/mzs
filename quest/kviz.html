@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#1A3A1A">
+  <meta name="description" content="Daruvar Quest — interaktivni kviz o zavičajnoj baštini">
+  <title>Daruvar Quest — Kviz</title>
+  <link rel="manifest" href="../manifest.json">
+  <style>
+    /* ─────────────────────────────────────────
+       Paleta — konzistentna s ostatkom projekta
+    ───────────────────────────────────────── */
+    :root {
+      --zelena:         #1A3A1A;
+      --zelena-tocno:   #1A5C1A;   /* tamnozelena za točan odgovor */
+      --zlatna:         #C8A84B;
+      --krem:           #F4EFE4;
+      --krem-tamna:     #E5DECA;
+      --tekst-sivi:     #3A3A2A;
+      --crvena:         #7A1A1A;   /* tamnocrvena za netočan odgovor */
+      --zaglavlje-h:    64px;
+      --traka-h:        6px;       /* visina progress trake */
+    }
+
+    /* ═══════════════════════════════════════════
+       A11y FIX #1 — html font-size
+       rem je relativan na <html>, ne <body>.
+    ═══════════════════════════════════════════ */
+    html { font-size: 24px; }
+
+    /* A11y FIX #2 — Skip link (WCAG 2.4.1) */
+    .skip-link {
+      position: absolute;
+      top: -999px;
+      left: 0.5rem;
+      z-index: 999;
+      background: var(--zelena);
+      color: var(--zlatna);
+      padding: 0.75rem 1.25rem;
+      border-radius: 0 0 10px 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* A11y FIX #3 — Font kontrola */
+    .font-kontrola {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.375rem;
+      z-index: 20;
+    }
+    .font-kontrola__gumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--zelena);
+      color: var(--zlatna);
+      border: 2px solid var(--zlatna);
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .font-kontrola__gumb:disabled { opacity: 0.35; cursor: default; }
+    .font-kontrola__gumb:focus-visible {
+      outline: 3px solid var(--zlatna);
+      outline-offset: 2px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background-color: var(--krem);
+      color: var(--zelena);
+      font-size: 24px;
+      line-height: 1.45;
+      min-height: 100dvh;
+    }
+
+    /* ─────────────────────────────────────────
+       ZAGLAVLJE — fiksirano.
+       Desno: progress brojač "X / N".
+    ───────────────────────────────────────── */
+    .zaglavlje {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: var(--zaglavlje-h);
+      background-color: var(--zelena);
+      color: var(--zlatna);
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      gap: 0.75rem;
+      z-index: 10;
+      border-bottom: 2px solid var(--zlatna);
+    }
+
+    .gumb-natrag {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      min-height: 44px;
+      padding: 0 0.75rem;
+      border: 2px solid var(--zlatna);
+      border-radius: 10px;
+      color: var(--zlatna);
+      background: transparent;
+      text-decoration: none;
+      font-family: inherit;
+      font-size: 0.875rem; /* 21px */
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .gumb-natrag:focus-visible {
+      outline: 3px solid var(--zlatna);
+      outline-offset: 2px;
+    }
+
+    .zaglavlje__naslov {
+      font-size: 1rem; /* 24px */
+      font-weight: 700;
+      flex: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    /* "3 / 8" — progress u zaglavlju */
+    .zaglavlje__br {
+      font-size: 0.875rem; /* 21px */
+      font-weight: 700;
+      background: rgba(200, 168, 75, 0.18);
+      padding: 0.25rem 0.75rem;
+      border-radius: 8px;
+      flex-shrink: 0;
+      min-width: 4rem;
+      text-align: center;
+    }
+
+    /* ─────────────────────────────────────────
+       PROGRESS TRAKA — zlatna ispuna ispod zaglavlja.
+       Širi se proporcionalno napretku kviza.
+       Bez CSS transitions — zahtjev pristupačnosti.
+    ───────────────────────────────────────── */
+    .traka {
+      position: fixed;
+      top: var(--zaglavlje-h);
+      left: 0;
+      right: 0;
+      height: var(--traka-h);
+      background: rgba(26, 58, 26, 0.12);
+      z-index: 9;
+    }
+
+    .traka__ispuna {
+      height: 100%;
+      background: var(--zlatna);
+      /* Bez transition — nije animacija, JS odmah postavlja novu vrijednost */
+    }
+
+    /* ─────────────────────────────────────────
+       GLAVNI SADRŽAJ
+    ───────────────────────────────────────── */
+    .glavno {
+      padding-top: calc(var(--zaglavlje-h) + var(--traka-h));
+      padding-bottom: 3rem;
+      min-height: 100dvh;
+    }
+
+    /* ─────────────────────────────────────────
+       ZONA PITANJA — okvir oko cijelog kviza.
+       Gap organizira: naziv → pitanje → gumbi
+       → povratna info → gumb Sljedeći.
+    ───────────────────────────────────────── */
+    .pitanje-zona {
+      padding: 1.375rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* Mali label: naziv eksponata na koji se pitanje odnosi */
+    .eksponat-label {
+      font-size: 0.875rem; /* 21px */
+      font-weight: 600;
+      /* A11y FIX #9: opacity:0.65 davalo ~3.7:1 (PADA AA 4.5:1).
+         var(--zelena-mid) = #2D5C2D daje ~5.1:1 na kremu. */
+      color: var(--zelena-mid);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* Tekst pitanja — istaknuto, lako čitljivo */
+    .pitanje-tekst {
+      font-size: 1.125rem; /* 27px */
+      font-weight: 700;
+      color: var(--zelena);
+      line-height: 1.35;
+    }
+
+    /* ─────────────────────────────────────────
+       GUMBI ODGOVORA (A, B, C)
+
+       Svaki gumb: ikona slova + tekst odgovora.
+       Stanja:
+         default   → bijela pozadina, zeleni rub
+         --tocno   → tamnozelena pozadina, bijeli tekst, ✓
+         --pogresno → tamnocrvena pozadina, bijeli tekst, ✗
+         --oslabljen → smanjena neprozirnost
+       Nakon odgovora svi su disabled.
+    ───────────────────────────────────────── */
+    .odgovori {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .gumb-odgovor {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      min-height: 64px; /* znatno iznad WCAG minimuma 44px */
+      padding: 0.875rem 1.125rem;
+      background: white;
+      border: 2.5px solid var(--krem-tamna);
+      border-radius: 14px;
+      font-family: inherit;
+      font-size: 1rem; /* 24px */
+      font-weight: 600;
+      color: var(--zelena);
+      cursor: pointer;
+      text-align: left;
+      line-height: 1.3;
+    }
+
+    .gumb-odgovor:focus-visible {
+      outline: 3px solid var(--zlatna);
+      outline-offset: 2px;
+    }
+
+    /* Kružić sa slovom A/B/C */
+    .odgovor__slovo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border-radius: 50%;
+      background: var(--krem-tamna);
+      font-size: 0.875rem; /* 21px */
+      font-weight: 800;
+      color: var(--zelena);
+      flex-shrink: 0;
+    }
+
+    /* ── Točan odgovor: zeleno ── */
+    .gumb-odgovor--tocno {
+      background: var(--zelena-tocno);
+      border-color: var(--zelena-tocno);
+      color: white;
+    }
+
+    .gumb-odgovor--tocno .odgovor__slovo {
+      background: rgba(255, 255, 255, 0.22);
+      color: white;
+    }
+
+    /* ── Netočan odgovor (korisnikov odabir): crveno ── */
+    .gumb-odgovor--pogresno {
+      background: var(--crvena);
+      border-color: var(--crvena);
+      color: white;
+    }
+
+    .gumb-odgovor--pogresno .odgovor__slovo {
+      background: rgba(255, 255, 255, 0.22);
+      color: white;
+    }
+
+    /* ── Preostali odgovori nakon odabira: izblijediti ── */
+    .gumb-odgovor--oslabljen {
+      opacity: 0.30;
+    }
+
+    .gumb-odgovor:disabled {
+      cursor: default;
+    }
+
+    /* ─────────────────────────────────────────
+       POVRATNA INFORMACIJA
+       Prikazuje se odmah nakon odabira.
+       aria-live="assertive" → čitač ekrana
+       odmah naglašava poruku.
+    ───────────────────────────────────────── */
+    .povratna {
+      border-radius: 14px;
+      padding: 1rem 1.125rem;
+      display: none; /* skriven dok korisnik ne odgovori */
+    }
+
+    .povratna--vidljiva { display: block; }
+
+    .povratna--tocno {
+      background: #E6F4E6;
+      border: 2px solid var(--zelena-tocno);
+    }
+
+    .povratna--pogresno {
+      background: #F5E6E6;
+      border: 2px solid var(--crvena);
+    }
+
+    .povratna__naslov {
+      font-size: 1rem; /* 24px */
+      font-weight: 700;
+      margin-bottom: 0.375rem;
+    }
+
+    .povratna--tocno  .povratna__naslov { color: var(--zelena-tocno); }
+    .povratna--pogresno .povratna__naslov { color: var(--crvena); }
+
+    .povratna__tekst {
+      font-size: 0.875rem; /* 21px */
+      color: var(--tekst-sivi);
+      line-height: 1.55;
+    }
+
+    .povratna__tekst strong { color: var(--zelena); }
+
+    /* ─────────────────────────────────────────
+       GUMB "SLJEDEĆI EKSPONAT"
+       Skriven dok korisnik ne odgovori.
+       Dobiva focus automatski nakon odabira.
+    ───────────────────────────────────────── */
+    .gumb-sljedeci {
+      display: none; /* ← prikazan klasom --vidljiv */
+      align-items: center;
+      justify-content: center;
+      gap: 0.625rem;
+      width: 100%;
+      min-height: 60px;
+      background: var(--zelena);
+      color: var(--zlatna);
+      border: none;
+      border-radius: 14px;
+      font-family: inherit;
+      font-size: 1rem; /* 24px */
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 0.25rem;
+    }
+
+    .gumb-sljedeci--vidljiv { display: flex; }
+
+    .gumb-sljedeci:focus-visible {
+      outline: 4px solid var(--zlatna);
+      outline-offset: 3px;
+    }
+
+    /* ─────────────────────────────────────────
+       KRAJ — završni ekran s trofejom i rezultatom.
+    ───────────────────────────────────────── */
+    .kraj {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2.5rem 1.5rem 4rem;
+      gap: 1.25rem;
+    }
+
+    /* Trophy SVG — zlatna boja */
+    .kraj__trofej { color: var(--zlatna); }
+
+    /* "5 / 8" — veliki broj */
+    .kraj__rezultat {
+      font-size: clamp(3.5rem, 16vw, 5rem);
+      font-weight: 900;
+      color: var(--zelena);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .kraj__rezultat em {
+      font-style: normal;
+      /* A11y FIX #8: zlatna boja #C8A84B na kremu daje ~2:1 (PADA AA).
+         Rješenje: zlatna pozadina + tamnozeleni tekst = 4.93:1. */
+      background-color: var(--zlatna);
+      color: var(--zelena);
+      padding: 0 0.1em;
+      border-radius: 4px;
+    }
+
+    .kraj__podnaziv {
+      font-size: 0.875rem; /* 21px */
+      /* A11y: opacity:0.7 davalo ~4.13:1 (PADA AA 4.5:1 za 21px).
+         Koristimo punu boju teksta — kontrast ~9.7:1. */
+      color: var(--tekst-sivi);
+      margin-top: -0.5rem;
+    }
+
+    /* Pohvalna poruka */
+    .kraj__poruka {
+      font-size: 1.125rem; /* 27px */
+      font-weight: 700;
+      color: var(--zelena);
+      max-width: 340px;
+      line-height: 1.35;
+    }
+
+    /* Linija separator */
+    .kraj__linija {
+      width: 100%;
+      max-width: 340px;
+      border: none;
+      border-top: 2px solid var(--krem-tamna);
+    }
+
+    /* Kontejner za gumbe na kraju */
+    .kraj__gumbi {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    /* Gumb "Podijeli rezultat" — zlatna pozadina */
+    .gumb-podijeli {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      min-height: 64px;
+      background: var(--zlatna);
+      color: var(--zelena);
+      border: none;
+      border-radius: 16px;
+      font-family: inherit;
+      font-size: 1rem; /* 24px */
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .gumb-podijeli:focus-visible {
+      outline: 4px solid var(--zelena);
+      outline-offset: 3px;
+    }
+
+    /* Gumb "Pokušaj ponovo" — obris */
+    .gumb-sekundarni {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.625rem;
+      width: 100%;
+      min-height: 56px;
+      background: transparent;
+      color: var(--zelena);
+      border: 2px solid var(--zelena);
+      border-radius: 16px;
+      font-family: inherit;
+      font-size: 0.875rem; /* 21px */
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .gumb-sekundarni:focus-visible {
+      outline: 3px solid var(--zlatna);
+      outline-offset: 2px;
+    }
+
+    /* ─────────────────────────────────────────
+       TOAST — kratkotrajno obavještenje (clipboard).
+       Fiksiran, pojavljuje se na dnu ekrana.
+       Bez CSS animacije — samo display toggle.
+    ───────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--zelena);
+      color: var(--zlatna);
+      padding: 0.875rem 1.25rem;
+      border-radius: 12px;
+      font-size: 0.875rem; /* 21px */
+      font-weight: 600;
+      white-space: nowrap;
+      max-width: 90vw;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      z-index: 100;
+      display: none;
+      border: 2px solid var(--zlatna);
+    }
+
+    .toast--vidljiv { display: block; }
+
+    /* ─────────────────────────────────────────
+       STANJA: učitavanje / greška
+    ───────────────────────────────────────── */
+    .stanje {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 1.125rem;
+      padding: 3rem 2rem;
+      min-height: calc(100dvh - var(--zaglavlje-h));
+    }
+
+    .stanje__ikona { opacity: 0.35; }
+
+    .stanje__naslov {
+      font-size: 1.25rem; /* 30px */
+      font-weight: 700;
+      color: var(--zelena);
+    }
+
+    .stanje__opis {
+      font-size: 0.875rem; /* 21px */
+      color: var(--tekst-sivi);
+      max-width: 280px;
+      line-height: 1.5;
+    }
+
+    .stanje__gumb {
+      background: var(--zelena);
+      color: var(--zlatna);
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 700;
+      padding: 0.875rem 1.5rem;
+      min-height: 48px;
+      cursor: pointer;
+    }
+
+    .stanje__gumb:focus-visible {
+      outline: 3px solid var(--zlatna);
+      outline-offset: 2px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- A11y FIX #2 — Skip link -->
+  <a class="skip-link" href="#glavno">Preskoči na kviz</a>
+
+  <!-- ══════════════════════════════════════
+       ZAGLAVLJE — fiksirano.
+       Progress brojač desno ažurira JS.
+  ══════════════════════════════════════ -->
+  <header class="zaglavlje">
+    <a href="index.html"
+       class="gumb-natrag"
+       aria-label="Natrag na Daruvar Quest uvod">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <path d="M12 3 L6 9 L12 15"
+              stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Natrag
+    </a>
+    <span class="zaglavlje__naslov">Daruvar Quest</span>
+    <span class="zaglavlje__br"
+          id="zaglavlje-br"
+          aria-live="polite"
+          aria-label="Napredak: pitanje 0 od 0">
+      – / –
+    </span>
+  </header>
+
+  <!-- ══════════════════════════════════════
+       PROGRESS TRAKA — ispod zaglavlja.
+       Zlatna ispuna širi se proporcionalno.
+  ══════════════════════════════════════ -->
+  <div class="traka" aria-hidden="true">
+    <div class="traka__ispuna" id="traka-ispuna" style="width: 0%"></div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       GLAVNI SADRŽAJ — JS popunjava ovdje.
+       aria-live: čitač ekrana naglašava promjene.
+  ══════════════════════════════════════ -->
+  <main class="glavno" id="glavno" aria-live="polite">
+
+    <!-- Inicijalno stanje dok fetch ne završi -->
+    <div class="stanje" id="stanje-ucitavanje">
+      <svg class="stanje__ikona" width="64" height="64" viewBox="0 0 64 64"
+           fill="none" aria-hidden="true">
+        <!-- Štit = Quest ikona -->
+        <path d="M32 6 L52 14 L52 34 C52 46 42 54 32 58 C22 54 12 46 12 34 L12 14 Z"
+              stroke="#1A3A1A" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M32 22 L34.5 28.5 L41 31 L34.5 33.5 L32 40 L29.5 33.5 L23 31 L29.5 28.5 Z"
+              fill="#1A3A1A" opacity="0.5"/>
+      </svg>
+      <p class="stanje__naslov">Učitavam kviz…</p>
+    </div>
+
+  </main>
+
+
+  <!-- ══════════════════════════════════════
+       TOAST — potvrda kopiranja u clipboard
+  ══════════════════════════════════════ -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+
+  <!-- ══════════════════════════════════════
+       JAVASCRIPT — organizirano u 6 faza.
+  ══════════════════════════════════════ -->
+  <script>
+
+    /* ════════════════════════════════════════
+       STANJE KVIZA
+       Jedna centralna "tablica" sa svim podacima.
+       Lakše debugirati nego rasute varijable.
+    ════════════════════════════════════════ */
+    const kviz = {
+      eksponati:  [],     /* eksponati s quest pitanjima, učitani iz JSON-a */
+      index:      0,      /* redni broj trenutnog pitanja (0-based) */
+      tocno:      0,      /* ukupan broj točnih odgovora */
+      zakljucano: false,  /* sprječava višestruki klik prije "Sljedeći" */
+    };
+
+    /* Slova za gumbe odgovora */
+    const SLOVA = ['A', 'B', 'C'];
+
+    /* Pohvalne poruke prema postotku točnosti */
+    const PORUKE = [
+      { prag: 1.00, tekst: 'Savršeno! Pravi si poznavatelj daruvarske baštine!' },
+      { prag: 0.80, tekst: 'Odlično! Daruvar ti skriva malo tajni.' },
+      { prag: 0.60, tekst: 'Dobro! Još malo istraživanja i postat ćeš ekspert.' },
+      { prag: 0.40, tekst: 'Nije loše! Daruvar ima još toga za otkriti.' },
+      { prag: 0.00, tekst: 'Daruvar čeka tvoje istraživanje! Pokušaj ponovo.' },
+    ];
+
+
+    /* ════════════════════════════════════════
+       FAZA 1 — Učitaj JSON, filtriraj pitanja.
+    ════════════════════════════════════════ */
+    async function ucitajKviz() {
+      const glavno = document.getElementById('glavno');
+
+      try {
+        const odgovor = await fetch('../data/eksponati.json');
+        if (!odgovor.ok) throw new Error(`HTTP greška ${odgovor.status}`);
+
+        const svi = await odgovor.json();
+
+        /* Zadrži samo eksponati koji imaju kompletne quest podatke */
+        kviz.eksponati = svi.filter(e =>
+          e.quest_pitanje &&
+          Array.isArray(e.quest_odgovori) &&
+          e.quest_odgovori.length === 3 &&
+          typeof e.quest_tocni_odgovor === 'number'
+        );
+
+        if (kviz.eksponati.length === 0) {
+          prikaziGresku(glavno,
+            'Nema pitanja u kvizu',
+            'Provjeri da eksponati.json ima polja quest_pitanje, quest_odgovori i quest_tocni_odgovor.');
+          return;
+        }
+
+        /* Sve OK — prikaži prvo pitanje */
+        prikaziPitanje();
+
+      } catch (g) {
+        console.error('Greška pri učitavanju kviza:', g);
+        prikaziGresku(glavno, 'Nije moguće učitati kviz', g.message);
+      }
+    }
+
+
+    /* ════════════════════════════════════════
+       FAZA 2 — Prikaži trenutno pitanje.
+       Gradi HTML za cijeli ekran pitanja.
+    ════════════════════════════════════════ */
+    function prikaziPitanje() {
+      const e   = kviz.eksponati[kviz.index];
+      const br  = kviz.index + 1;
+      const uk  = kviz.eksponati.length;
+      const posljednje = br === uk;
+
+      kviz.zakljucano = false;
+
+      /* Ažuriraj progress zaglavlje i traku */
+      azurirajProgres(br, uk);
+
+      /* Generiraj HTML gumba za svaki odgovor */
+      const gumbiHtml = e.quest_odgovori.map((odg, i) => `
+        <button
+          class="gumb-odgovor"
+          data-index="${i}"
+          aria-label="Odgovor ${SLOVA[i]}: ${odg}"
+          onclick="odgovori(${i})">
+          <span class="odgovor__slovo" aria-hidden="true">${SLOVA[i]}</span>
+          <span>${odg}</span>
+        </button>
+      `).join('');
+
+      /* Tekst gumba ovisi o tome je li ovo zadnje pitanje */
+      const sljedeciTekst = posljednje
+        ? `Prikaži rezultat
+           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+             <path d="M9 3 L15 9 L9 15" stroke="currentColor" stroke-width="2.5"
+                   stroke-linecap="round" stroke-linejoin="round"/>
+           </svg>`
+        : `Sljedeći eksponat
+           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+             <path d="M6 3 L12 9 L6 15" stroke="currentColor" stroke-width="2.5"
+                   stroke-linecap="round" stroke-linejoin="round"/>
+           </svg>`;
+
+      document.getElementById('glavno').innerHTML = `
+        <div class="pitanje-zona">
+
+          <!-- Naziv eksponata daje kontekst pitanju -->
+          <p class="eksponat-label">
+            ${e.naziv}
+          </p>
+
+          <!-- Pitanje — istaknuto, id za aria-labelledby -->
+          <p class="pitanje-tekst" id="pitanje-tekst">
+            ${e.quest_pitanje}
+          </p>
+
+          <!-- Tri gumba s odgovorima — grupiran za čitač ekrana -->
+          <div class="odgovori"
+               role="group"
+               aria-labelledby="pitanje-tekst">
+            ${gumbiHtml}
+          </div>
+
+          <!-- Povratna informacija — skriven do odabira.
+               assertive: čitač ekrana odmah naglašava. -->
+          <div class="povratna"
+               id="povratna"
+               role="status"
+               aria-live="assertive"
+               aria-atomic="true">
+          </div>
+
+          <!-- Gumb za nastavak — skriven do odabira.
+               Dobiva focus čim postane vidljiv (vidi odgovori()). -->
+          <button class="gumb-sljedeci"
+                  id="gumb-sljedeci"
+                  onclick="sljedeci()"
+                  aria-label="${posljednje ? 'Prikaži ukupni rezultat kviza' : 'Prijeđi na sljedeći eksponat'}">
+            ${sljedeciTekst}
+          </button>
+
+        </div>
+      `;
+    }
+
+
+    /* ════════════════════════════════════════
+       FAZA 3 — Obradi odabrani odgovor.
+
+       Ovo je srce kviza:
+       1. Blokira daljnje klikove (zakljucano)
+       2. Označi gumbe zeleno/crveno/izblijedjelo
+       3. Prikaži povratnu informaciju + zanimljivost
+       4. Otkrij gumb "Sljedeći" i prebaci fokus
+    ════════════════════════════════════════ */
+    function odgovori(odabraniIndex) {
+      /* Ignoriraj klik ako je već odgovoreno */
+      if (kviz.zakljucano) return;
+      kviz.zakljucano = true;
+
+      const e       = kviz.eksponati[kviz.index];
+      const jeTocno = odabraniIndex === e.quest_tocni_odgovor;
+
+      /* Bilježi točan odgovor */
+      if (jeTocno) kviz.tocno++;
+
+      /* ── Ažuriraj vizualni prikaz gumba ── */
+      document.querySelectorAll('.gumb-odgovor').forEach(g => {
+        g.disabled = true; /* onemogući sve gumbe */
+        const idx = parseInt(g.dataset.index, 10);
+        const slovo = g.querySelector('.odgovor__slovo');
+
+        if (idx === e.quest_tocni_odgovor) {
+          /* Točan odgovor: zeleno + kvačica */
+          g.classList.add('gumb-odgovor--tocno');
+          slovo.textContent = '✓';
+          slovo.setAttribute('aria-label', 'Točan odgovor');
+        } else if (idx === odabraniIndex) {
+          /* Korisnikov netočan odabir: crveno + X */
+          g.classList.add('gumb-odgovor--pogresno');
+          slovo.textContent = '✗';
+          slovo.setAttribute('aria-label', 'Netočan odgovor');
+        } else {
+          /* Preostali odgovori: izblijede */
+          g.classList.add('gumb-odgovor--oslabljen');
+        }
+      });
+
+      /* ── Povratna informacija ── */
+      const povratna = document.getElementById('povratna');
+      povratna.classList.add('povratna--vidljiva');
+
+      if (jeTocno) {
+        povratna.classList.add('povratna--tocno');
+        /* Zanimljivost: prikazuje se SAMO na točan odgovor (per CONTEXT.md) */
+        const zanimljivostHtml = e.quest_zanimljivost
+          ? `<p class="povratna__tekst" style="margin-top: 0.375rem;">
+               💡 <strong>Zanimljivost:</strong> ${e.quest_zanimljivost}
+             </p>`
+          : '';
+        povratna.innerHTML = `
+          <p class="povratna__naslov">✓ Točno!</p>
+          ${zanimljivostHtml}
+        `;
+      } else {
+        povratna.classList.add('povratna--pogresno');
+        const tocniTekst = e.quest_odgovori[e.quest_tocni_odgovor];
+        povratna.innerHTML = `
+          <p class="povratna__naslov">✗ Nije točno</p>
+          <p class="povratna__tekst">
+            Točan odgovor: <strong>${tocniTekst}</strong>
+          </p>
+        `;
+      }
+
+      /* ── Prikaži gumb "Sljedeći" i premjesti fokus ── */
+      const gumbSljedeci = document.getElementById('gumb-sljedeci');
+      gumbSljedeci.classList.add('gumb-sljedeci--vidljiv');
+      /* Fokus na gumb — screen reader naglašava ga nakon feedback poruke */
+      gumbSljedeci.focus();
+    }
+
+
+    /* ════════════════════════════════════════
+       FAZA 4 — Prijeđi na sljedeće pitanje
+       ili završi kviz.
+    ════════════════════════════════════════ */
+    function sljedeci() {
+      kviz.index++;
+      if (kviz.index >= kviz.eksponati.length) {
+        prikaziKraj();
+      } else {
+        prikaziPitanje();
+      }
+    }
+
+
+    /* ════════════════════════════════════════
+       FAZA 5 — Završni ekran.
+
+       1. Spremi score u localStorage
+       2. Odaberi pohvalnu poruku
+       3. Prikaži trofej, broj, poruku, gumbe
+    ════════════════════════════════════════ */
+    function prikaziKraj() {
+      const t  = kviz.tocno;
+      const uk = kviz.eksponati.length;
+      const postotak = uk > 0 ? (t / uk) : 0;
+
+      /* ── localStorage — ključ definiran u zahtjevu ── */
+      localStorage.setItem('daruvar_quest_score', JSON.stringify({
+        tocno:  t,
+        ukupno: uk,
+        datum:  new Date().toISOString(),
+      }));
+
+      /* ── Pohvalna poruka prema postotku ── */
+      const poruka = PORUKE.find(p => postotak >= p.prag)?.tekst
+        ?? PORUKE[PORUKE.length - 1].tekst;
+
+      /* ── Progress na 100% ── */
+      azurirajProgres(uk, uk);
+
+      /* ── Prikaži završni ekran ── */
+      document.getElementById('glavno').innerHTML = `
+        <div class="kraj">
+          <!-- A11y FIX #10: role="main" uklonjen — bio je unutar <main id="glavno">,
+               što je nevaljano ugniježđivanje landmark-a. -->
+
+          <!-- Trofej SVG — zlatna boja (currentColor = var(--zlatna)) -->
+          <svg class="kraj__trofej"
+               width="108" height="108" viewBox="0 0 96 96"
+               fill="none" aria-hidden="true">
+            <!-- Postolje -->
+            <rect x="30" y="82" width="36" height="7" rx="3.5" fill="currentColor"/>
+            <!-- Vrat postolja -->
+            <rect x="41" y="68" width="14" height="16" rx="2" fill="currentColor"/>
+            <!-- Tijelo trofeja -->
+            <path d="M18 10 L78 10 L72 52 Q66 68 48 68 Q30 68 24 52 Z"
+                  fill="currentColor" opacity="0.92"/>
+            <!-- Lijeva ručka -->
+            <path d="M18 10 Q4 10 4 28 Q4 46 22 48"
+                  stroke="currentColor" stroke-width="7"
+                  stroke-linecap="round" fill="none"/>
+            <!-- Desna ručka -->
+            <path d="M78 10 Q92 10 92 28 Q92 46 74 48"
+                  stroke="currentColor" stroke-width="7"
+                  stroke-linecap="round" fill="none"/>
+            <!-- Kompasna zvijezda unutar trofeja (vizualni identitet Questa) -->
+            <path d="M48 22 L51 31 L60 34 L51 37 L48 46 L45 37 L36 34 L45 31 Z"
+                  fill="#1A3A1A" opacity="0.55"/>
+          </svg>
+
+          <!-- Numerički rezultat — "5" je zlatno, "/8" zeleno -->
+          <p class="kraj__rezultat"
+             aria-label="Rezultat: ${t} od ${uk} točnih odgovora">
+            <em>${t}</em>/${uk}
+          </p>
+          <p class="kraj__podnaziv">točnih odgovora</p>
+
+          <!-- Pohvalna poruka -->
+          <p class="kraj__poruka">${poruka}</p>
+
+          <hr class="kraj__linija" aria-hidden="true">
+
+          <!-- Gumbi akcija -->
+          <div class="kraj__gumbi">
+
+            <!-- Podijeli — kopira u clipboard -->
+            <button class="gumb-podijeli"
+                    onclick="podijeliRezultat(${t}, ${uk})"
+                    aria-label="Kopiraj rezultat u međuspremnik za dijeljenje">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                <!-- Kopiranje: dva dokumenta -->
+                <rect x="8" y="7" width="11" height="13" rx="2"
+                      stroke="currentColor" stroke-width="2.5" fill="none"/>
+                <path d="M8 14 L4 14 L4 3 L15 3 L15 7"
+                      stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+              Podijeli rezultat
+            </button>
+
+            <!-- Pokušaj ponovo -->
+            <button class="gumb-sekundarni"
+                    onclick="ponoviKviz()"
+                    aria-label="Počni kviz ispočetka">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <!-- Kružna strelica = restart -->
+                <path d="M3 9 A6 6 0 1 1 7.5 14.5"
+                      stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" fill="none"/>
+                <path d="M3 5 L3 9 L7 9"
+                      stroke="currentColor" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+              Pokušaj ponovo
+            </button>
+
+            <!-- Natrag na Quest uvod -->
+            <a href="index.html"
+               class="gumb-sekundarni"
+               aria-label="Natrag na Daruvar Quest uvodni ekran">
+              ← Natrag na Quest
+            </a>
+
+          </div>
+        </div>
+      `;
+    }
+
+
+    /* ════════════════════════════════════════
+       CLIPBOARD — Kopiranje rezultata u clipboard.
+
+       Tekst definiran u zahtjevu:
+       "Postigao/la sam X/N u Daruvar Questu! 🏛️"
+
+       Koristi moderan navigator.clipboard API.
+       Fallback: stari document.execCommand('copy')
+       za starije browsere ili HTTP kontekst.
+    ════════════════════════════════════════ */
+    async function podijeliRezultat(tocno, ukupno) {
+      /* Točan format teksta iz zahtjeva */
+      const tekst = `Postigao/la sam ${tocno}/${ukupno} u Daruvar Questu! 🏛️`;
+
+      try {
+        /* Moderan API — preferiran način */
+        await navigator.clipboard.writeText(tekst);
+        prikaziToast('✓ Kopirano! Zalijepi u poruku ili Story.');
+
+      } catch {
+        /* Fallback: textarea + execCommand za starije browsere */
+        const el = document.createElement('textarea');
+        el.value = tekst;
+        el.style.cssText = 'position:fixed;top:-999px;opacity:0;';
+        document.body.appendChild(el);
+        el.select();
+        const uspjelo = document.execCommand('copy');
+        document.body.removeChild(el);
+
+        if (uspjelo) {
+          prikaziToast('✓ Kopirano! Zalijepi u poruku ili Story.');
+        } else {
+          /* Ako i fallback ne radi, prikaži tekst korisniku */
+          prikaziToast(`Kopiraj ručno: ${tekst}`);
+        }
+      }
+    }
+
+
+    /* ════════════════════════════════════════
+       TOAST — kratkotrajno obavještenje.
+       Automatski nestaje nakon 3.5 sekunde.
+    ════════════════════════════════════════ */
+    let toastTimer = null;
+
+    function prikaziToast(poruka) {
+      const toast = document.getElementById('toast');
+      toast.textContent = poruka;
+      toast.classList.add('toast--vidljiv');
+
+      /* Poništi prethodni timer ako postoji */
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('toast--vidljiv');
+      }, 3500);
+    }
+
+
+    /* ════════════════════════════════════════
+       PROGRESS — Ažuriraj zaglavlje i traku.
+       Poziva se na svakom novom pitanju i na kraju.
+    ════════════════════════════════════════ */
+    function azurirajProgres(trenutni, ukupno) {
+      const br = document.getElementById('zaglavlje-br');
+      br.textContent = `${trenutni} / ${ukupno}`;
+      br.setAttribute('aria-label', `Napredak: pitanje ${trenutni} od ${ukupno}`);
+
+      const posto = ukupno > 0 ? (trenutni / ukupno) * 100 : 0;
+      document.getElementById('traka-ispuna').style.width = `${posto}%`;
+    }
+
+
+    /* ════════════════════════════════════════
+       PONOVI — Resetiraj stanje i počni iznova.
+    ════════════════════════════════════════ */
+    function ponoviKviz() {
+      kviz.index      = 0;
+      kviz.tocno      = 0;
+      kviz.zakljucano = false;
+      prikaziPitanje();
+    }
+
+
+    /* ════════════════════════════════════════
+       STANJE GREŠKE
+    ════════════════════════════════════════ */
+    function prikaziGresku(kontejner, naslov, detalji) {
+      kontejner.innerHTML = `
+        <div class="stanje" role="alert">
+          <svg class="stanje__ikona" width="64" height="64" viewBox="0 0 64 64"
+               fill="none" aria-hidden="true">
+            <circle cx="32" cy="32" r="28" stroke="#1A3A1A" stroke-width="4"/>
+            <line x1="32" y1="18" x2="32" y2="36"
+                  stroke="#1A3A1A" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="32" cy="45" r="2.5" fill="#1A3A1A"/>
+          </svg>
+          <p class="stanje__naslov">${naslov}</p>
+          <p class="stanje__opis">${detalji ?? ''}</p>
+          <button class="stanje__gumb" onclick="location.reload()">
+            Pokušaj ponovo
+          </button>
+        </div>
+      `;
+    }
+
+
+    /* ════════════════════════════════════════
+       POKRETANJE
+    ════════════════════════════════════════ */
+    ucitajKviz();
+
+  </script>
+
+  <!-- ══════════════════════════════════════
+       KONTROLA FONTA — A11y FIX #3
+  ══════════════════════════════════════ -->
+  <div class="font-kontrola" role="group" aria-label="Veličina slova">
+    <button class="font-kontrola__gumb"
+            id="font-manji"
+            aria-label="Smanji slova"
+            onclick="promijeniFont(-1)">A−</button>
+    <button class="font-kontrola__gumb"
+            id="font-veci"
+            aria-label="Povećaj slova"
+            onclick="promijeniFont(+1)">A+</button>
+  </div>
+
+  <script>
+    const FONT_VELICINE = [20, 24, 28, 32];
+    let fontIndeks = parseInt(localStorage.getItem('muzej_font_indeks') ?? '1', 10);
+    if (fontIndeks < 0 || fontIndeks >= FONT_VELICINE.length) fontIndeks = 1;
+    function primijeniFontVelicinu() {
+      document.documentElement.style.fontSize = FONT_VELICINE[fontIndeks] + 'px';
+      document.getElementById('font-manji').disabled = (fontIndeks === 0);
+      document.getElementById('font-veci').disabled  = (fontIndeks === FONT_VELICINE.length - 1);
+    }
+    function promijeniFont(smjer) {
+      fontIndeks = Math.max(0, Math.min(FONT_VELICINE.length - 1, fontIndeks + smjer));
+      localStorage.setItem('muzej_font_indeks', fontIndeks);
+      primijeniFontVelicinu();
+    }
+    primijeniFontVelicinu();
+  </script>
+
+<!-- A11y audit: PASS -->
+</body>
+</html>

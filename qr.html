@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR kod — Muzej za sve</title>
+  <style>
+
+    /* ─────────────────────────────────────────
+       Stranica za ispis: bijela pozadina,
+       sve centrirano, bez navigacije.
+       @media print osigurava da boje i
+       raspored ostanu isti i na papiru.
+    ───────────────────────────────────────── */
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: #ffffff;
+      color: #1A3A1A;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100%;
+      padding: 2.5rem 1.5rem;
+      gap: 0;
+    }
+
+    /* ─────────────────────────────────────────
+       KARTICA — okvir oko sveg sadržaja.
+       Na ekranu ima laganu sjenu radi pregleda;
+       @media print je uklanja.
+    ───────────────────────────────────────── */
+    .kartica {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2.5rem 2rem;
+      border: 2px solid #1A3A1A;
+      border-radius: 20px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(26, 58, 26, 0.10);
+    }
+
+    /* ─────────────────────────────────────────
+       LOGO — isti SVG kao u index.html,
+       smanjen na 64px za ispis.
+    ───────────────────────────────────────── */
+    .logo-svg {
+      width: 64px;
+      height: 64px;
+      color: #1A3A1A;
+      flex-shrink: 0;
+    }
+
+    /* ─────────────────────────────────────────
+       NAZIV projekta — iznad QR koda.
+    ───────────────────────────────────────── */
+    .naziv {
+      font-size: 22px;
+      font-weight: 900;
+      color: #1A3A1A;
+      letter-spacing: -0.02em;
+      text-align: center;
+      line-height: 1.15;
+    }
+
+    .naziv__podnaziv {
+      display: block;
+      font-size: 13px;
+      font-weight: 400;
+      color: #3A3A2A;
+      margin-top: 0.3rem;
+      letter-spacing: 0.01em;
+    }
+
+    /* Zlatna linija ispod naziva — vizualni identitet */
+    .naziv::after {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 3px;
+      background: #C8A84B;
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+    }
+
+    /* ─────────────────────────────────────────
+       QR KOD — slika s API-ja.
+
+       api.qrserver.com/v1/create-qr-code/ prima:
+         data=  → URL koji kodira
+         size=  → dimenzije u pikselima
+         color= → boja točkica (hex bez #)
+         bgcolor= → boja pozadine
+         margin= → margina oko koda (u modulu)
+         format= → png/svg
+
+       Zašto 300×300?
+       → Dovoljno za pouzdan ispis na A4,
+         ali ne preveliko za sporije veze.
+
+       Zašto tamnozelena boja?
+       → Vizualni identitet projekta; čitači
+         QR-a nemaju problema s bojama.
+    ───────────────────────────────────────── */
+    .qr-kontejner {
+      position: relative;
+      width: 260px;
+      height: 260px;
+      flex-shrink: 0;
+    }
+
+    .qr-slika {
+      width: 260px;
+      height: 260px;
+      display: block;
+      border-radius: 8px;
+    }
+
+    /* Poruka greške ako API nije dostupan */
+    .qr-greska {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 260px;
+      height: 260px;
+      border: 2px dashed #C8A84B;
+      border-radius: 8px;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 13px;
+      color: #3A3A2A;
+      line-height: 1.5;
+    }
+
+    /* ─────────────────────────────────────────
+       TEKST "Skeniraj za otvaranje" — 20px.
+       Eksplicitni zahtjev iz upute.
+    ───────────────────────────────────────── */
+    .skeniraj {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1A3A1A;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+
+    /* ─────────────────────────────────────────
+       URL prikaz — korisnik može i ručno upisati
+    ───────────────────────────────────────── */
+    .url-prikaz {
+      font-size: 12px;
+      color: #3A3A2A;
+      text-align: center;
+      word-break: break-all;
+      background: #F4EFE4;
+      border: 1px solid #E5DECA;
+      border-radius: 8px;
+      padding: 0.6rem 0.875rem;
+      width: 100%;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    /* ─────────────────────────────────────────
+       PODNOŽJE — škola i godina
+    ───────────────────────────────────────── */
+    .podnozje {
+      font-size: 12px;
+      color: #3A3A2A;
+      text-align: center;
+      border-top: 1px solid #E5DECA;
+      padding-top: 1rem;
+      width: 100%;
+      line-height: 1.6;
+    }
+
+    /* ─────────────────────────────────────────
+       GUMB ZA ISPIS — vidljiv samo na ekranu.
+       @media print: display:none automatski.
+    ───────────────────────────────────────── */
+    .gumb-ispis {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #1A3A1A;
+      color: #C8A84B;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 0.875rem 1.75rem;
+      cursor: pointer;
+      min-height: 48px;
+    }
+
+    .gumb-ispis:focus-visible {
+      outline: 3px solid #C8A84B;
+      outline-offset: 3px;
+    }
+
+    /* ─────────────────────────────────────────
+       PRINT STILOVI — aktiviraju se pri Ctrl+P
+       ili kliku na "Ispiši".
+    ───────────────────────────────────────── */
+    @media print {
+
+      /* Osiguraj da se boje ispisuju (Chrome/Edge ignorira background bez ovoga) */
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        padding: 0;
+        justify-content: center;
+      }
+
+      /* Ukloni sjenu kartice — na papiru izgleda loše */
+      .kartica {
+        box-shadow: none;
+        border-color: #1A3A1A;
+        max-width: 360px;
+      }
+
+      /* Sakrij gumb za ispis — na papiru nije potreban */
+      .gumb-ispis {
+        display: none;
+      }
+
+      /* Sprječava lom stranice unutar kartice */
+      .kartica {
+        break-inside: avoid;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       KARTICA — cijeli sadržaj za ispis
+  ══════════════════════════════════════ -->
+  <div class="kartica">
+
+    <!-- Logo — SVG iz index.html, smanjen na 64px -->
+    <svg class="logo-svg" viewBox="0 0 88 88" fill="none"
+         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="6" y="76" width="76" height="7" rx="3.5" fill="#C8A84B"/>
+      <rect x="10" y="42" width="11" height="34" rx="2.5" fill="currentColor"/>
+      <rect x="67" y="42" width="11" height="34" rx="2.5" fill="currentColor"/>
+      <rect x="7" y="39" width="17" height="5" rx="2" fill="currentColor"/>
+      <rect x="64" y="39" width="17" height="5" rx="2" fill="currentColor"/>
+      <path d="M17 40 C17 13 71 13 71 40"
+            stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="butt"/>
+      <path d="M36 28 L52 28 L49 46 L39 46 Z" fill="#C8A84B"/>
+      <rect x="34" y="26" width="20" height="4" rx="2" fill="#C8A84B"/>
+      <rect x="42" y="46" width="4" height="7" rx="1.5" fill="#C8A84B"/>
+      <rect x="38" y="53" width="12" height="4" rx="2" fill="#C8A84B"/>
+      <line x1="40" y1="28" x2="38" y2="46" stroke="#1A3A1A" stroke-width="1.2" opacity="0.5"/>
+      <line x1="44" y1="28" x2="44" y2="46" stroke="#1A3A1A" stroke-width="1.2" opacity="0.5"/>
+      <line x1="48" y1="28" x2="50" y2="46" stroke="#1A3A1A" stroke-width="1.2" opacity="0.5"/>
+      <line x1="35" y1="36" x2="53" y2="36" stroke="#1A3A1A" stroke-width="1.2" opacity="0.5"/>
+    </svg>
+
+    <!-- Naziv projekta -->
+    <h1 class="naziv">
+      Muzej za sve
+      <span class="naziv__podnaziv">Zavičajni muzej Daruvar &middot; digitalni vodič</span>
+    </h1>
+
+    <!-- QR kod — generiran API-jem -->
+    <div class="qr-kontejner">
+      <img
+        class="qr-slika"
+        id="qr-slika"
+        alt="QR kod za otvaranje aplikacije Muzej za sve"
+        width="260"
+        height="260"
+      >
+      <!-- Prikazuje se ako slika ne može učitati (offline) -->
+      <div class="qr-greska" id="qr-greska" role="alert">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <circle cx="20" cy="20" r="17" stroke="#C8A84B" stroke-width="2.5"/>
+          <line x1="20" y1="11" x2="20" y2="23"
+                stroke="#C8A84B" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="20" cy="28" r="1.5" fill="#C8A84B"/>
+        </svg>
+        <p>QR kod nije dostupan bez interneta.<br>
+           Unesi URL ručno ili ispiši kad budeš online.</p>
+      </div>
+    </div>
+
+    <!-- Tekst ispod QR koda — 20px, eksplicitni zahtjev -->
+    <p class="skeniraj">Skeniraj za otvaranje</p>
+
+    <!-- URL za ručni unos -->
+    <p class="url-prikaz" id="url-prikaz" aria-label="Adresa aplikacije"></p>
+
+    <!-- Podnožje -->
+    <div class="podnozje">
+      Tehnička škola Daruvar &middot; Samsung Challenge 2025./2026.<br>
+      SDG 10 &middot; SDG 11
+    </div>
+
+  </div>
+
+  <!-- Gumb za ispis — sakriven u @media print -->
+  <button class="gumb-ispis" onclick="window.print()" aria-label="Ispiši QR kod">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+      <!-- Pisač ikona -->
+      <rect x="3" y="6" width="12" height="8" rx="1.5"
+            stroke="currentColor" stroke-width="1.8" fill="none"/>
+      <path d="M5 6 L5 2 L13 2 L13 6" stroke="currentColor"
+            stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+      <rect x="5" y="11" width="8" height="5" rx="1"
+            stroke="currentColor" stroke-width="1.8" fill="none"/>
+      <circle cx="13.5" cy="9" r="1" fill="currentColor"/>
+    </svg>
+    Ispiši QR kod
+  </button>
+
+
+  <script>
+    /* ────────────────────────────────────────
+       KONFIGURACIJA — jedino mjesto koje
+       učenik 2 mijenja kad aplikacija dobije
+       pravi hosting URL.
+
+       Kako dobiti URL:
+       - Lokalno testiranje: http://localhost:8080/muzej-za-sve/
+       - GitHub Pages:       https://korisnik.github.io/muzej-za-sve/
+       - Vlastiti hosting:   https://muzej-daruvar.hr/
+    ──────────────────────────────────────── */
+    const APP_URL = (function() {
+      /* Automatski detektira trenutni URL stranice
+         i gradi root aplikacije.
+         Primjer: ako je qr.html na
+           http://localhost:8080/muzej-za-sve/qr.html
+         URL aplikacije postaje:
+           http://localhost:8080/muzej-za-sve/           */
+      const loc = window.location;
+      return loc.origin + loc.pathname.replace('qr.html', '');
+    })();
+
+    /* ────────────────────────────────────────
+       QR KOD — generiranje putem API-ja.
+
+       api.qrserver.com parametri:
+         data    → URL koji QR kodira
+         size    → 300×300px (dovoljan za ispis)
+         color   → 1A3A1A (tamnozelena, hex bez #)
+         bgcolor → ffffff (bijela pozadina)
+         margin  → 1 (minimalna bijela zona oko koda)
+         format  → png
+         ecc     → Q (25% korekcija greške — QR čitljiv
+                       i s lakim oštećenjem na papiru)
+    ──────────────────────────────────────── */
+    const qrSlika = document.getElementById('qr-slika');
+    const qrGreska = document.getElementById('qr-greska');
+
+    const qrApiUrl = [
+      'https://api.qrserver.com/v1/create-qr-code/',
+      '?data=', encodeURIComponent(APP_URL),
+      '&size=300x300',
+      '&color=1A3A1A',
+      '&bgcolor=ffffff',
+      '&margin=1',
+      '&format=png',
+      '&ecc=Q'
+    ].join('');
+
+    /* Postavi src na sliku — browser preuzima s API-ja */
+    qrSlika.src = qrApiUrl;
+
+    /* Ako API nije dostupan (offline), prikaži fallback poruku */
+    qrSlika.onerror = function() {
+      qrSlika.style.display = 'none';
+      qrGreska.style.display = 'flex';
+    };
+
+    /* Prikaži URL ispod QR koda */
+    document.getElementById('url-prikaz').textContent = APP_URL;
+
+  </script>
+
+</body>
+</html>
