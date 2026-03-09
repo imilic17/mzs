@@ -12,7 +12,7 @@ Web aplikacija bez instalacije. Otvara se skeniranjem QR koda u mobilnom browser
 
 **Partneri:** Zavičajni muzej Daruvar · Udruga "Korak dalje" Daruvar · TZ Daruvar-Papuk
 
-**SDG ciljevi:** SDG 10 (smanjenje nejednakosti) · SDG 11 (digitalna preservacija baštine)
+**SDG ciljevi:** SDG 10 (smanjenje nejednakosti) · SDG 11 (održivi gradovi i zajednice)
 
 ---
 
