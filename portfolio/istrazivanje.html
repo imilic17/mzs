@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A3A1A">
+  <meta name="description" content="Istraživanje u muzeju — Portfolio Muzej za sve">
+  <title>Istraživanje — Portfolio · Muzej za sve</title>
+  <link rel="stylesheet" href="css/portfolio.css">
+  <style>
+    .ai-kartica__slika {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 0.75rem;
+    }
+    .ba-slider {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      margin-top: 0.75rem;
+      cursor: col-resize;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .ba-slider img {
+      display: block;
+      width: 100%;
+      pointer-events: none;
+    }
+    .ba-slider__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 50%;
+      overflow: hidden;
+    }
+    .ba-slider__overlay img {
+      width: 0;
+      min-width: 0;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .ba-slider__handle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 4px;
+      height: 100%;
+      background: white;
+      transform: translateX(-50%);
+      box-shadow: 0 0 6px rgba(0,0,0,0.4);
+      z-index: 2;
+    }
+    .ba-slider__handle::after {
+      content: '⟨ ⟩';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      color: var(--boja-naglasak, #1A3A1A);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      letter-spacing: 2px;
+    }
+    .ba-slider__label {
+      position: absolute;
+      top: 8px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .ba-slider__label--prije {
+      left: 8px;
+      background: rgba(122,26,26,0.85);
+      color: white;
+    }
+    .ba-slider__label--poslije {
+      right: 8px;
+      background: rgba(26,58,26,0.85);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGACIJA -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__natrag">&larr; Natrag na aplikaciju</a>
+      <span class="nav__brand">Portfolio</span>
+      <button class="nav__hamburger" aria-label="Otvori izbornik" aria-expanded="false" onclick="this.nextElementSibling.classList.toggle('otvorena'); this.setAttribute('aria-expanded', this.nextElementSibling.classList.contains('otvorena'))">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <ul class="nav__lista">
+        <li><a href="tema.html">Tema</a></li>
+        <li><a href="istrazivanje.html" class="aktivna">Istraživanje</a></li>
+        <li><a href="ko-kreacija.html">Korak dalje</a></li>
+        <li><a href="rezultat.html">Rezultat</a></li>
+        <li><a href="tim.html">Tim</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero__sadrzaj">
+      <h1 class="hero__naslov">Istraživanje u muzeju</h1>
+      <p class="hero__podnaslov">Posjet Zavičajnom muzeju Daruvar, Samsung AI u akciji i dokumentacija procesa.</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- UVOD -->
+    <section class="sekcija">
+      <div class="sekcija__sadrzaj">
+        <p class="sekcija__uvod">Posjet Zavičajnom muzeju Daruvar održan je 17. travnja 2026. Tim od tri učenika Tehničke škole Daruvar, opremljen Samsung Galaxy uređajima, proveo je istraživanje u suradnji s kustosom Leom Žukinom.</p>
+      </div>
+    </section>
+
+    <!-- SAMSUNG AI TIMELINE -->
+    <section class="sekcija sekcija--krem">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Samsung AI u istraživanju</h2>
+        <div class="timeline">
+          <div class="timeline__korak">
+            <div class="timeline__broj">1</div>
+            <h3 class="timeline__naziv">Snimanje razgovora</h3>
+            <p class="timeline__alati">Note Assist<br>Transcript Assist</p>
+            <p class="timeline__uredaj">S26 Ultra</p>
+          </div>
+          <div class="timeline__korak">
+            <div class="timeline__broj">2</div>
+            <h3 class="timeline__naziv">Fotografiranje</h3>
+            <p class="timeline__alati">Generative Edit<br>AI Remaster</p>
+            <p class="timeline__uredaj">S26 Ultra</p>
+          </div>
+          <div class="timeline__korak">
+            <div class="timeline__broj">3</div>
+            <h3 class="timeline__naziv">Identifikacija</h3>
+            <p class="timeline__alati">Circle to Search<br>ProVisual Engine</p>
+            <p class="timeline__uredaj">S26 Ultra</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAMSUNG AI ALATI -->
+    <section class="sekcija">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Samsung AI alati</h2>
+        <p class="sekcija__uvod">Svaka funkcija je korištena s konkretnim ciljem. Ovo nisu demonstracije — ovo su alati koji su omogućili rezultat.</p>
+
+        <div class="ai-kartice-grid">
+
+          <!-- 1. Note Assist -->
+          <div class="ai-kartica">
+            <span class="ai-kartica__uredaj">S26 Ultra</span>
+            <h3 class="ai-kartica__naziv">1. Note Assist — Summarise</h3>
+            <p class="ai-kartica__sto">AI sažima bilješke i dokumente u ključne točke.</p>
+            <p class="ai-kartica__zasto">Od kustosa smo dobili opsežne dokumente koje smatramo jedinim pouzdanim i provjerenim izvorom informacija o eksponatima. Teksta je bilo previše za obraditi ručno, pa smo koristili opciju Summarise — AI ne piše vlastiti tekst, nego iz provjerenog izvora izdvaja samo najvažnije. Na slici se vidi Standard i Detailed varijanta sažetka istog dokumenta.</p>
+            <img class="ai-kartica__slika" src="../assets/slike/summerize.jpg" alt="Samsung Note Assist — prikaz Summarise izbornika i usporedba Standard i Detailed sažetka kustosovog teksta o ginku" loading="lazy">
+          </div>
+
+          <!-- 2. Transcript Assist -->
+          <div class="ai-kartica">
+            <span class="ai-kartica__uredaj">S26 Ultra</span>
+            <h3 class="ai-kartica__naziv">2. Live Transcribe</h3>
+            <p class="ai-kartica__sto">Transkribira govor u stvarnom vremenu s prepoznavanjem hrvatskog jezika.</p>
+            <p class="ai-kartica__zasto">Koristili smo Googleov Live Transcribe jer standardni Voice Recorder ne nudi hrvatski jezik. Live Transcribe prepoznaje hrvatski i automatski ostavlja razmake koji označavaju promjenu govornika — tako se u transkriptu vidi tko je što rekao.</p>
+            <img class="ai-kartica__slika" src="../assets/slike/transkript.jpg" alt="Google Live Transcribe — transkripcija razgovora na hrvatskom jeziku o dvorcu Janković i ginko stablu" loading="lazy">
+          </div>
+
+          <!-- 3. Circle to Search -->
+          <div class="ai-kartica">
+            <span class="ai-kartica__uredaj">S26 Ultra</span>
+            <h3 class="ai-kartica__naziv">3. Circle to Search</h3>
+            <p class="ai-kartica__sto">Zaokruži bilo koji predmet na ekranu za instant pretragu.</p>
+            <p class="ai-kartica__zasto">U muzeju smo identificirali predmete čije porijeklo nismo znali, bez prekidanja razgovora s kustosom. Na primjeru sa slike, zaokružili smo odlikovanje u vitrini — AI je odmah prepoznao da se radi o Ordenu narodnog heroja, visokom vojnom odlikovanju iz bivše Jugoslavije.</p>
+            <img class="ai-kartica__slika" src="../assets/slike/circle_to_search.jpg" alt="Circle to Search — zaokruženo odlikovanje u muzejskoj vitrini, AI prepoznaje Order of the People's Hero" loading="lazy">
+          </div>
+
+          <!-- 4. Generative Edit — Erase Reflections -->
+          <div class="ai-kartica">
+            <span class="ai-kartica__uredaj">S26 Ultra</span>
+            <h3 class="ai-kartica__naziv">4. Generative Edit — Erase Reflections</h3>
+            <p class="ai-kartica__sto">AI uklanja refleksije stakla s fotografija eksponata.</p>
+            <p class="ai-kartica__zasto">Eksponati su iza stakla — svaka fotografija ima odsjaj rasvjete. Koristeći opciju Erase Reflections unutar Generative Edit, uklonili smo refleksije sa svih fotografija vitrina. Na slici se vidi usporedba prije i poslije na primjeru oružja iz dvorane 2. svjetskog rata.</p>
+            <img class="ai-kartica__slika" src="../assets/slike/odsjaj.jpg" alt="Generative Edit Erase Reflections — usporedba prije i poslije uklanjanja odsjaja stakla na vitrini s oružjem" loading="lazy">
+          </div>
+
+          <!-- 5. AI Remaster -->
+          <div class="ai-kartica">
+            <span class="ai-kartica__uredaj">S26 Ultra</span>
+            <h3 class="ai-kartica__naziv">5. AI Remaster</h3>
+            <p class="ai-kartica__sto">Restaurira stare, oštećene ili mutne fotografije.</p>
+            <p class="ai-kartica__zasto">Na vanjskom plakatu muzeja jedna od fotografija bila je vidljivo mutna i degradirana. AI Remaster je izoštriti detalje i vratio čitljivost bez gubitka autentičnosti. Povucite klizač za usporedbu.</p>
+            <div class="ba-slider" id="remaster-slider">
+              <span class="ba-slider__label ba-slider__label--prije">Prije</span>
+              <span class="ba-slider__label ba-slider__label--poslije">Poslije</span>
+              <img src="../assets/slike/remaster-poslije.jpg" alt="AI Remaster — restaurirana fotografija s plakata muzeja" loading="lazy">
+              <div class="ba-slider__overlay">
+                <img src="../assets/slike/remaster-prije.jpg" alt="Originalna mutna fotografija s plakata muzeja">
+              </div>
+              <div class="ba-slider__handle"></div>
+            </div>
+            <div class="placeholder" style="margin-top: 0.5rem;">
+              <p>&#128241; Slike za slider: <code>remaster-prije.jpg</code> i <code>remaster-poslije.jpg</code></p>
+              <small>Staviti u assets/slike/ — slider će automatski raditi</small>
+            </div>
+          </div>
+
+          <!-- 6. ProVisual Engine / AI Zoom -->
+          <div class="ai-kartica">
+            <span class="ai-kartica__uredaj">S26 Ultra</span>
+            <h3 class="ai-kartica__naziv">6. ProVisual Engine / AI Zoom</h3>
+            <p class="ai-kartica__sto">AI zoom do 100x koji zadržava oštrinu detalja.</p>
+            <p class="ai-kartica__zasto">Sitni detalji eksponata iza stakla nisu vidljivi golim okom ni standardnom kamerom. 100x zoom otkrio je gravure.</p>
+            <img class="ai-kartica__slika" src="../assets/slike/ai-zoom.jpg" alt="ProVisual Engine — usporedba zumiranja eksponata na različitim razinama" loading="lazy" style="display:none;" onload="this.style.display='block'">
+            <div class="placeholder" id="zoom-placeholder">
+              <p>&#128241; Samsung ProVisual Engine / AI Zoom</p>
+              <p>Slika dolazi sutra</p>
+              <small>Usporedba 1x / 30x / 100x istog eksponata</small>
+            </div>
+          </div>
+
+          <!-- 7. Sketch to Image -->
+          <div class="ai-kartica">
+            <span class="ai-kartica__uredaj">Z Fold7</span>
+            <h3 class="ai-kartica__naziv">7. Sketch to Image</h3>
+            <p class="ai-kartica__sto">Pretvara ručni crtež u realističnu sliku.</p>
+            <p class="ai-kartica__zasto">Korisnik udruge Korak dalje crta eksponat prema sjećanju ili fotografiji — AI pretvara skicu u realističnu vizualizaciju koja se može koristiti u aplikaciji.</p>
+            <img class="ai-kartica__slika" src="../assets/slike/sketch-to-image.jpg" alt="Sketch to Image — korisnik Korak dalje crta, AI generira realističnu sliku" loading="lazy" style="display:none;" onload="this.style.display='block'">
+            <div class="placeholder" id="sketch-placeholder">
+              <p>&#128241; Samsung Sketch to Image</p>
+              <p>Fotografija korisnika Korak dalje kako crta</p>
+              <small>Slika će biti dodana nakon radionice u udruzi</small>
+            </div>
+          </div>
+
+          <!-- 8. Writing Assist -->
+          <div class="ai-kartica">
+            <span class="ai-kartica__uredaj">S26 Ultra</span>
+            <h3 class="ai-kartica__naziv">8. Writing Assist — Casual</h3>
+            <p class="ai-kartica__sto">AI prilagođava ton i složenost teksta.</p>
+            <p class="ai-kartica__zasto">Proces u dva koraka: najprije smo kustosov stručni tekst proveli kroz Summarise da dobijemo sažetak, a zatim taj sažetak proveli kroz Writing Assist s opcijom Casual — tako smo dobili jednostavan, razumljiv tekst prilagođen osobama s intelektualnim teškoćama. Na slici se vidi usporedba Standard sažetka (lijevo) i Casual verzije (desno).</p>
+            <img class="ai-kartica__slika" src="../assets/slike/sumerize-i_writing-assist.jpg" alt="Usporedba Summarise Standard sažetka i Writing Assist Casual verzije teksta o ginko stablu" loading="lazy">
+          </div>
+
+          <!-- 9. Audio Eraser -->
+          <div class="ai-kartica">
+            <span class="ai-kartica__uredaj">S26 Ultra</span>
+            <h3 class="ai-kartica__naziv">9. Audio Eraser</h3>
+            <p class="ai-kartica__sto">AI uklanja pozadinsku buku iz video snimki.</p>
+            <p class="ai-kartica__zasto">Muzejska dvorana odjekuje. Audio Eraser uklonio je eho i šum iz svih intervju snimki.</p>
+            <img class="ai-kartica__slika" src="../assets/slike/audio-eraser.jpg" alt="Audio Eraser — vizualizacija uklanjanja pozadinske buke iz intervju snimke" loading="lazy" style="display:none;" onload="this.style.display='block'">
+            <div class="placeholder">
+              <p>&#128241; Samsung Audio Eraser</p>
+              <p>Screenshot će biti dodan nakon snimanja</p>
+              <small>Vizualizacija zvučnog vala prije/poslije</small>
+            </div>
+          </div>
+
+          <!-- 10. Flex Mode kiosk -->
+          <div class="ai-kartica">
+            <span class="ai-kartica__uredaj">Z Fold7</span>
+            <h3 class="ai-kartica__naziv">10. Flex Mode kiosk</h3>
+            <p class="ai-kartica__sto">Presavijeni Z Fold7 stoji kao kiosk terminal.</p>
+            <p class="ai-kartica__zasto">Korisnici Korak dalje testirali su aplikaciju na presavijenom Z Fold7 postavljenom na stolu — bez držanja.</p>
+            <img class="ai-kartica__slika" src="../assets/slike/flex-mode-kiosk.jpg" alt="Z Fold7 u Flex Mode kiosk postavu na stolu — korisnik koristi aplikaciju bez držanja" loading="lazy" style="display:none;" onload="this.style.display='block'">
+            <div class="placeholder">
+              <p>&#128241; Samsung Flex Mode kiosk</p>
+              <p>Screenshot će biti dodan nakon snimanja</p>
+              <small>Fotografija postava Flex Mode kiosk</small>
+            </div>
+          </div>
+
+          <!-- 11. Flex Mode Interpreter -->
+          <div class="ai-kartica">
+            <span class="ai-kartica__uredaj">Z Fold7</span>
+            <h3 class="ai-kartica__naziv">11. Flex Mode Interpreter</h3>
+            <p class="ai-kartica__sto">Gornja polovica ekrana jedan jezik, donja drugi.</p>
+            <p class="ai-kartica__zasto">Daruvar ima 20,92% češke manjine. Muzej nema opis na češkom. Interpreter omogućio je HR↔CZ komunikaciju.</p>
+            <img class="ai-kartica__slika" src="../assets/slike/interpreter.jpg" alt="Flex Mode Interpreter — gornji ekran hrvatski, donji ekran češki prijevod" loading="lazy" style="display:none;" onload="this.style.display='block'">
+            <div class="placeholder">
+              <p>&#128241; Samsung Interpreter</p>
+              <p>Screenshot će biti dodan nakon snimanja</p>
+              <small>Screenshot Flex Mode Interpreter HR/CZ</small>
+            </div>
+          </div>
+
+          <!-- 12. Dual Recording / Director's View -->
+          <div class="ai-kartica">
+            <span class="ai-kartica__uredaj">Z Flip7</span>
+            <h3 class="ai-kartica__naziv">12. Dual Recording / Director's View</h3>
+            <p class="ai-kartica__sto">Prednja i stražnja kamera snimaju istovremeno.</p>
+            <p class="ai-kartica__zasto">Intervju s korisnicima Korak dalje sniman je profesionalnim split-screen formatom bez montaže.</p>
+            <img class="ai-kartica__slika" src="../assets/slike/dual-recording.jpg" alt="Dual Recording — split-screen snimanje s prednjom i stražnjom kamerom istovremeno" loading="lazy" style="display:none;" onload="this.style.display='block'">
+            <div class="placeholder">
+              <p>&#128241; Samsung Dual Recording</p>
+              <p>Screenshot će biti dodan nakon snimanja</p>
+              <small>Split-screen screenshot</small>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIJA FOTOGRAFIJA -->
+    <section class="sekcija sekcija--krem">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Galerija — posjet muzeju</h2>
+        <div class="galerija">
+
+          <figure>
+            <img src="../assets/slike/20260417_113755.jpg" alt="Svečana dvorana dvorca Janković s redovima stolica, koncertnim klavirom i kristalnim lusterom" loading="lazy">
+            <figcaption>Svečana dvorana dvorca</figcaption>
+          </figure>
+
+          <figure>
+            <img src="../assets/slike/20260417_113810.jpg" alt="Svečana dvorana s mramornim bistama, kristalnim lusterom i ornamentiranim stropom" loading="lazy">
+            <figcaption>Svečana dvorana dvorca</figcaption>
+          </figure>
+
+          <figure>
+            <img src="../assets/slike/20260417_113827.jpg" alt="Svečana dvorana iz drugog kuta — koncertni klavir, bista i lučni prozori" loading="lazy">
+            <figcaption>Svečana dvorana dvorca</figcaption>
+          </figure>
+
+          <figure>
+            <img src="../assets/slike/20260417_114544.jpg" alt="Soba obitelji Janković s portretima na zidu, starinskim namještajem i crvenim zavjesama" loading="lazy">
+            <figcaption>Soba obitelji Janković</figcaption>
+          </figure>
+
+          <figure>
+            <img src="../assets/slike/20260417_115926.jpg" alt="Dvorana Drugog svjetskog rata — puške na drvenom stalku, fotografije i dokumenti na zidovima" loading="lazy">
+            <figcaption>Dvorana 2. svjetskog rata</figcaption>
+          </figure>
+
+          <figure>
+            <img src="../assets/slike/20260417_120204.jpg" alt="Puške, kaciga i oružje na zidu uz fotografije branitelja" loading="lazy">
+            <figcaption>Dvorana 2. svjetskog rata</figcaption>
+          </figure>
+
+          <figure>
+            <img src="../assets/slike/20260417_120757.jpg" alt="Vojna karta daruvarskog područja pod staklom u izložbenoj vitrini" loading="lazy">
+            <figcaption>Domovinski rat — vojna karta</figcaption>
+          </figure>
+
+          <figure>
+            <img src="../assets/slike/20260417_121421.jpg" alt="Fasada dvorca Janković — barokna zgrada sa zelenim travnjakom i stazom" loading="lazy">
+            <figcaption>Dvorac Janković — fasada</figcaption>
+          </figure>
+
+          <figure>
+            <img src="../assets/slike/20260417_121548.jpg" alt="Pročelje dvorca Janković kroz grane drveća u proljetnom zelenilu" loading="lazy">
+            <figcaption>Dvorac Janković kroz drveće</figcaption>
+          </figure>
+
+          <figure>
+            <img src="../assets/slike/20260417_121801.jpg" alt="Dvorac Janković s parkom, klupom i velikim stablima u proljeće" loading="lazy">
+            <figcaption>Dvorac i park</figcaption>
+          </figure>
+
+          <figure>
+            <img src="../assets/slike/20260417_121338.jpg" alt="Velika stabla ispred dvorca Janković — ginko i hrast u proljetnom lišću" loading="lazy">
+            <figcaption>Park dvorca — stabla</figcaption>
+          </figure>
+
+          <figure>
+            <img src="../assets/slike/20260417_121352.jpg" alt="Veliko stablo na travnjaku pored dvorca Janković" loading="lazy">
+            <figcaption>Park dvorca</figcaption>
+          </figure>
+
+          <figure>
+            <img src="../assets/slike/20260417_121645.jpg" alt="Drvored i velika stabla u parku dvorca Janković" loading="lazy">
+            <figcaption>Park dvorca — drvored</figcaption>
+          </figure>
+
+          <figure>
+            <img src="../assets/slike/20260417_122030.jpg" alt="Unutarnje dvorište dvorca Janković u obliku slova U s posjetiteljima" loading="lazy">
+            <figcaption>Dvorište dvorca</figcaption>
+          </figure>
+
+          <figure>
+            <img src="../assets/slike/20260417_122130.jpg" alt="Gospodarska zgrada uz dvorac Janković sa skelom za obnovu" loading="lazy">
+            <figcaption>Gospodarska zgrada dvorca</figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p><strong>Samsung Challenge 2025./2026.</strong></p>
+    <p>Tehnička škola Daruvar</p>
+    <p>Tim: Dominik Dušek &middot; Lena Sakar &middot; Darijan Vašatko</p>
+    <p>Mentorica: Ivana Milić, mag.inf.</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.ba-slider').forEach(function(slider) {
+      var overlay = slider.querySelector('.ba-slider__overlay');
+      var handle = slider.querySelector('.ba-slider__handle');
+      var baseImg = slider.querySelector(':scope > img');
+      var overlayImg = overlay.querySelector('img');
+      var dragging = false;
+
+      function setWidth() {
+        overlayImg.style.width = baseImg.offsetWidth + 'px';
+        overlayImg.style.minWidth = baseImg.offsetWidth + 'px';
+      }
+
+      baseImg.addEventListener('load', setWidth);
+      window.addEventListener('resize', setWidth);
+      setWidth();
+
+      function updatePosition(x) {
+        var rect = slider.getBoundingClientRect();
+        var pos = Math.max(0, Math.min(1, (x - rect.left) / rect.width));
+        overlay.style.width = (pos * 100) + '%';
+        handle.style.left = (pos * 100) + '%';
+      }
+
+      slider.addEventListener('mousedown', function(e) { dragging = true; updatePosition(e.clientX); });
+      slider.addEventListener('touchstart', function(e) { dragging = true; updatePosition(e.touches[0].clientX); }, {passive: true});
+      window.addEventListener('mousemove', function(e) { if (dragging) updatePosition(e.clientX); });
+      window.addEventListener('touchmove', function(e) { if (dragging) updatePosition(e.touches[0].clientX); }, {passive: true});
+      window.addEventListener('mouseup', function() { dragging = false; });
+      window.addEventListener('touchend', function() { dragging = false; });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A3A1A">
+  <meta name="description" content="Rezultat — što smo napravili — Portfolio Muzej za sve">
+  <title>Rezultat — Portfolio · Muzej za sve</title>
+  <link rel="stylesheet" href="css/portfolio.css">
+</head>
+<body>
+
+  <!-- NAVIGACIJA -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__natrag">&larr; Natrag na aplikaciju</a>
+      <span class="nav__brand">Portfolio</span>
+      <button class="nav__hamburger" aria-label="Otvori izbornik" aria-expanded="false" onclick="this.nextElementSibling.classList.toggle('otvorena'); this.setAttribute('aria-expanded', this.nextElementSibling.classList.contains('otvorena'))">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <ul class="nav__lista">
+        <li><a href="tema.html">Tema</a></li>
+        <li><a href="istrazivanje.html">Istraživanje</a></li>
+        <li><a href="ko-kreacija.html">Korak dalje</a></li>
+        <li><a href="rezultat.html" class="aktivna">Rezultat</a></li>
+        <li><a href="tim.html">Tim</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero__sadrzaj">
+      <h1 class="hero__naslov">Što smo napravili</h1>
+      <p class="hero__podnaslov">Besplatna, open-source web aplikacija koja radi bez instalacije i bez interneta. Dostupna skeniranjem QR koda u muzeju.</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- APLIKACIJA — 3 MODA -->
+    <section class="sekcija">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Aplikacija — tri moda</h2>
+        <div class="kartice-grid kartice-grid--3">
+
+          <div class="kartica">
+            <h3 class="kartica__naslov">&#128506;&#65039; Vodič mod</h3>
+            <p class="kartica__tekst">Pasivan pregled eksponata s fotografijama i easy-to-read opisima. Gumb "Slušaj" čita opis glasom. Optimizirano za Samsung Z Fold7 Flex Mode kiosk postav.</p>
+          </div>
+
+          <div class="kartica">
+            <h3 class="kartica__naslov">&#127919; Daruvar Quest</h3>
+            <p class="kartica__tekst">Interaktivni kviz vezan uz fizički posjet muzeju. Score u lokalnoj memoriji, dijeljenje na Instagram Stories. Za mlade posjetitelje koji žele gamificirano iskustvo.</p>
+          </div>
+
+          <div class="kartica">
+            <h3 class="kartica__naslov">&#8505;&#65039; O projektu</h3>
+            <p class="kartica__tekst">Tim, partneri, SDG ciljevi. Korisnici Korak dalje navedeni imenom kao ko-autori.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PRISTUPAČNOST -->
+    <section class="sekcija sekcija--krem">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Pristupačnost</h2>
+        <div style="overflow-x: auto;">
+          <table class="tablica-pristupacnost">
+            <thead>
+              <tr>
+                <th>Zahtjev WCAG AA</th>
+                <th>Naša implementacija</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Font min. 20px</td>
+                <td>Baza 24px, A&minus;/A+ kontrola (4 koraka)</td>
+              </tr>
+              <tr>
+                <td>Kontrast 4.5:1</td>
+                <td>Zelena/krem = 11.2:1 &#10003;</td>
+              </tr>
+              <tr>
+                <td>Gumbi min. 44&times;44px</td>
+                <td>Svi elementi &ge; 44px &#10003;</td>
+              </tr>
+              <tr>
+                <td>Max 4 opcije/ekran</td>
+                <td>Vodič: uvijek 3 gumba &#10003;</td>
+              </tr>
+              <tr>
+                <td>TTS glas</td>
+                <td>Web Speech API, hr-HR &#10003;</td>
+              </tr>
+              <tr>
+                <td>Offline podrška</td>
+                <td>Service Worker + PWA &#10003;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEHNIČKE INFORMACIJE -->
+    <section class="sekcija">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Tehničke informacije</h2>
+        <ul class="tech-lista">
+          <li><strong>Stack</strong> Vanilla HTML/CSS/JavaScript</li>
+          <li><strong>Hosting</strong> GitHub Pages (besplatno, bez troškova za muzej)</li>
+          <li><strong>Offline</strong> Service Worker — radi bez interneta</li>
+          <li><strong>PWA</strong> Instalacija na Home Screen</li>
+          <li><strong>QR kod</strong> Na ulazu u muzej, skenira se kamerom mobitela</li>
+          <li><strong>Kod</strong> github.com/imilic17/mzs (open source)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="sekcija sekcija--zelena" style="text-align: center;">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Isprobaj aplikaciju</h2>
+        <a href="../index.html" class="cta cta--zlatna">Otvori aplikaciju &rarr;</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p><strong>Samsung Challenge 2025./2026.</strong></p>
+    <p>Tehnička škola Daruvar</p>
+    <p>Tim: Dominik Dušek &middot; Lena Sakar &middot; Darijan Vašatko</p>
+    <p>Mentorica: Ivana Milić, mag.inf.</p>
+  </footer>
+
+</body>
+</html>

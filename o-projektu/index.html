@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#1A3A1A">
+  <meta name="description" content="O projektu Muzej za sve — tim, partneri i ciljevi pristupačnog digitalnog vodiča">
+  <title>O projektu — Muzej za sve</title>
+  <link rel="manifest" href="../manifest.json">
+  <style>
+    :root {
+      --zelena:        #1A3A1A;
+      --zlatna:        #C8A84B;
+      --krem:          #F4EFE4;
+      --krem-tamna:    #E5DECA;
+      --tekst-sivi:    #3A3A2A;
+      --zaglavlje-h:   64px;
+    }
+
+    html { font-size: 24px; }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background-color: var(--krem);
+      color: var(--zelena);
+      font-size: 24px;
+      line-height: 1.5;
+      min-height: 100dvh;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -999px;
+      left: 0.5rem;
+      z-index: 999;
+      background: var(--zelena);
+      color: var(--zlatna);
+      padding: 0.75rem 1.25rem;
+      border-radius: 0 0 10px 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .skip-link:focus { top: 0; }
+
+    .zaglavlje {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: var(--zaglavlje-h);
+      background-color: var(--zelena);
+      color: var(--zlatna);
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      gap: 0.75rem;
+      z-index: 10;
+      border-bottom: 2px solid var(--zlatna);
+    }
+
+    .gumb-natrag {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      min-height: 44px;
+      padding: 0 0.75rem;
+      border: 2px solid var(--zlatna);
+      border-radius: 10px;
+      color: var(--zlatna);
+      background: transparent;
+      text-decoration: none;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .gumb-natrag:focus-visible {
+      outline: 3px solid var(--zlatna);
+      outline-offset: 2px;
+    }
+
+    .zaglavlje__naslov {
+      font-size: 1rem;
+      font-weight: 700;
+      flex: 1;
+    }
+
+    .glavno {
+      padding: calc(var(--zaglavlje-h) + 1.5rem) 1.25rem 4rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .sekcija {
+      margin-bottom: 2rem;
+    }
+
+    .sekcija__naslov {
+      font-size: 1.125rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+
+    .sekcija__naslov::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: var(--krem-tamna);
+      border-radius: 1px;
+    }
+
+    .sekcija p {
+      font-size: 0.875rem;
+      color: var(--tekst-sivi);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    .sekcija p:last-child {
+      margin-bottom: 0;
+    }
+
+    .citat {
+      border-left: 4px solid var(--zlatna);
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      background: white;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 0.875rem;
+      color: var(--tekst-sivi);
+      line-height: 1.55;
+    }
+
+    .kartica-lista {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .kartica {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: white;
+      border: 2px solid var(--krem-tamna);
+      border-radius: 16px;
+      padding: 1rem 1.25rem;
+    }
+
+    .kartica__ikona {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 50%;
+      background: var(--zelena);
+      color: var(--zlatna);
+      flex-shrink: 0;
+    }
+
+    .kartica__sadrzaj {
+      flex: 1;
+    }
+
+    .kartica__naziv {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--zelena);
+      margin-bottom: 0.25rem;
+    }
+
+    .kartica__opis {
+      font-size: 0.875rem;
+      color: var(--tekst-sivi);
+      line-height: 1.45;
+    }
+
+    .sdg-lista {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .sdg {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: white;
+      border: 2px solid var(--krem-tamna);
+      border-radius: 12px;
+      padding: 0.625rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--zelena);
+    }
+
+    .sdg__broj {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .sdg__broj--10 { background: #DD1367; }
+    .sdg__broj--11 { background: #FD9D24; }
+
+    .gumb-portfolio {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      min-height: 56px;
+      background: transparent;
+      color: var(--zelena);
+      border: 2px solid var(--zelena);
+      border-radius: 16px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 1rem;
+    }
+
+    .gumb-portfolio:focus-visible {
+      outline: 3px solid var(--zlatna);
+      outline-offset: 2px;
+    }
+
+    .font-kontrola {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.375rem;
+      z-index: 20;
+    }
+    .font-kontrola__gumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--zelena);
+      color: var(--zlatna);
+      border: 2px solid var(--zlatna);
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .font-kontrola__gumb:disabled { opacity: 0.35; cursor: default; }
+    .font-kontrola__gumb:focus-visible {
+      outline: 3px solid var(--zlatna);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#glavno">Preskoči na sadržaj</a>
+
+  <header class="zaglavlje">
+    <a href="../index.html"
+       class="gumb-natrag"
+       aria-label="Natrag na početnu stranicu">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <path d="M12 3 L6 9 L12 15"
+              stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Početna
+    </a>
+    <span class="zaglavlje__naslov">O projektu</span>
+  </header>
+
+  <main class="glavno" id="glavno">
+
+    <section class="sekcija">
+      <h1 class="sekcija__naslov">Muzej za sve</h1>
+      <p>
+        Pristupačni digitalni vodič kroz Zavičajni muzej Daruvar.
+        Web aplikacija bez instalacije — otvara se skeniranjem QR koda
+        u mobilnom browseru i radi offline nakon prvog učitavanja.
+      </p>
+      <div class="citat">
+        „Uz Samsung Galaxy AI pretvorili smo Zavičajni muzej Daruvar
+        u pristupačno digitalno iskustvo za osobe s intelektualnim
+        teškoćama — i za mlade koji tamo nikad ne dolaze.
+        Jer kulturna baština pripada svima."
+      </div>
+      <p>
+        Aplikacija je razvijena za Samsung Solve for Tomorrow Challenge
+        2025./2026. s ciljem da kulturna baština postane dostupna svima,
+        bez obzira na sposobnosti, dob ili jezičnu barijeru.
+      </p>
+    </section>
+
+    <section class="sekcija">
+      <h2 class="sekcija__naslov">Što nudi aplikacija</h2>
+      <div class="kartica-lista">
+        <div class="kartica">
+          <div class="kartica__ikona" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M2 11 C5 5 17 5 20 11 C17 17 5 17 2 11 Z"
+                    stroke="currentColor" stroke-width="2" fill="none"/>
+              <circle cx="11" cy="11" r="3.5" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="kartica__sadrzaj">
+            <p class="kartica__naziv">Vodič</p>
+            <p class="kartica__opis">
+              Pristupačni pregled svih eksponata s fotografijama,
+              Easy-to-Read opisima, glasovnim čitačem i prijevodima
+              na engleski i češki jezik.
+            </p>
+          </div>
+        </div>
+        <div class="kartica">
+          <div class="kartica__ikona" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M11 2 L19 6 L19 14 C19 19 15 21 11 22 C7 21 3 19 3 14 L3 6 Z"
+                    stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M11 8 L12 10.5 L15 11.5 L12 12.5 L11 15 L10 12.5 L7 11.5 L10 10.5 Z"
+                    fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="kartica__sadrzaj">
+            <p class="kartica__naziv">Daruvar Quest</p>
+            <p class="kartica__opis">
+              Interaktivni kviz za mlade posjetitelje. Svaki eksponat
+              donosi jedno pitanje, zanimljivost i bodove za dijeljenje
+              na društvenim mrežama.
+            </p>
+          </div>
+        </div>
+        <div class="kartica">
+          <div class="kartica__ikona" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <circle cx="7" cy="7" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
+              <circle cx="15" cy="7" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
+              <circle cx="11" cy="15" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
+              <line x1="9" y1="9" x2="10" y2="13" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="13" y1="9" x2="12" y2="13" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="kartica__sadrzaj">
+            <p class="kartica__naziv">Pristupačnost (WCAG AA)</p>
+            <p class="kartica__opis">
+              Minimalna veličina fonta 20px, kontrola veličine slova,
+              kontrast 4.5:1, touch targeti 44px, glasovno čitanje
+              i Easy-to-Read sadržaj za Korak dalje korisnike.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sekcija">
+      <h2 class="sekcija__naslov">Partneri</h2>
+      <div class="kartica-lista">
+        <div class="kartica">
+          <div class="kartica__ikona" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M3 18 L3 8 L11 3 L19 8 L19 18 Z"
+                    stroke="currentColor" stroke-width="2" fill="none"/>
+              <rect x="8" y="12" width="6" height="6" rx="1"
+                    stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <div class="kartica__sadrzaj">
+            <p class="kartica__naziv">Zavičajni muzej Daruvar</p>
+            <p class="kartica__opis">
+              Stručni opisi eksponata, pristup zbirci i fotografiranje
+              za potrebe digitalnog vodiča.
+            </p>
+          </div>
+        </div>
+        <div class="kartica">
+          <div class="kartica__ikona" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <circle cx="8" cy="8" r="3.5" stroke="currentColor" stroke-width="2" fill="none"/>
+              <circle cx="14" cy="8" r="3.5" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M3 19 C3 14 19 14 19 19" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" fill="none"/>
+            </svg>
+          </div>
+          <div class="kartica__sadrzaj">
+            <p class="kartica__naziv">Udruga „Korak dalje" Daruvar</p>
+            <p class="kartica__opis">
+              Ko-kreacija i testiranje pristupačnosti s korisnicima
+              s intelektualnim teškoćama.
+            </p>
+          </div>
+        </div>
+        <div class="kartica">
+          <div class="kartica__ikona" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M11 3 L11 11 L17 11" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="kartica__sadrzaj">
+            <p class="kartica__naziv">TZ Daruvar-Papuk</p>
+            <p class="kartica__opis">
+              Podrška u promociji i povezivanje s turističkom ponudom grada.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sekcija">
+      <h2 class="sekcija__naslov">SDG ciljevi</h2>
+      <div class="sdg-lista">
+        <div class="sdg">
+          <span class="sdg__broj sdg__broj--10" aria-hidden="true">10</span>
+          Smanjenje nejednakosti
+        </div>
+        <div class="sdg">
+          <span class="sdg__broj sdg__broj--11" aria-hidden="true">11</span>
+          Održivi gradovi i zajednice
+        </div>
+      </div>
+    </section>
+
+    <section class="sekcija">
+      <h2 class="sekcija__naslov">Tim</h2>
+      <p>
+        Projekt su razvili učenici smjera Tehničar za računalstvo
+        na Tehničkoj školi Daruvar, uz mentorstvo profesorice.
+      </p>
+      <p>
+        Samsung Solve for Tomorrow Challenge 2025./2026.
+      </p>
+
+      <a href="../portfolio/index.html"
+         class="gumb-portfolio"
+         aria-label="Otvori projektni portfolio">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <rect x="2" y="1" width="16" height="17" rx="2"
+                stroke="currentColor" stroke-width="2" fill="none"/>
+          <line x1="6" y1="6" x2="14" y2="6" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round"/>
+          <line x1="6" y1="10" x2="12" y2="10" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round"/>
+          <line x1="6" y1="14" x2="10" y2="14" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round"/>
+        </svg>
+        Pogledaj portfolio
+      </a>
+    </section>
+
+  </main>
+
+  <div class="font-kontrola" role="group" aria-label="Veličina slova">
+    <button class="font-kontrola__gumb"
+            id="font-manji"
+            aria-label="Smanji slova"
+            onclick="promijeniFont(-1)">A−</button>
+    <button class="font-kontrola__gumb"
+            id="font-veci"
+            aria-label="Povećaj slova"
+            onclick="promijeniFont(+1)">A+</button>
+  </div>
+
+  <script>
+    const FONT_VELICINE = [20, 24, 28, 32];
+    let fontIndeks = parseInt(localStorage.getItem('muzej_font_indeks') ?? '1', 10);
+    if (fontIndeks < 0 || fontIndeks >= FONT_VELICINE.length) fontIndeks = 1;
+    function primijeniFontVelicinu() {
+      document.documentElement.style.fontSize = FONT_VELICINE[fontIndeks] + 'px';
+      document.getElementById('font-manji').disabled = (fontIndeks === 0);
+      document.getElementById('font-veci').disabled  = (fontIndeks === FONT_VELICINE.length - 1);
+    }
+    function promijeniFont(smjer) {
+      fontIndeks = Math.max(0, Math.min(FONT_VELICINE.length - 1, fontIndeks + smjer));
+      localStorage.setItem('muzej_font_indeks', fontIndeks);
+      primijeniFontVelicinu();
+    }
+    primijeniFontVelicinu();
+  </script>
+
+</body>
+</html>

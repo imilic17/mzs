@@ -15,7 +15,7 @@
 /* ── Verzija keša ──────────────────────────────────────────────
    Promijeni broj kad se dodaju nove datoteke ili mijenja sadržaj.
    Stara verzija se automatski briše u activate fazi.             */
-const VERZIJA = 'muzej-v1';
+const VERZIJA = 'muzej-v3';
 
 /* ── Popis svih datoteka koje se kešuju pri instalaciji ────────
    Sve putanje su relativne od korijena aplikacije (gdje leži
@@ -38,16 +38,14 @@ const STATICKI_RESURSI = [
   /* ── O projektu ── */
   './o-projektu/index.html',
 
-  /* ── QR stranica ── */
-  './qr.html',
-
-  /* ── CSS (ako postoji kao zasebna datoteka) ── */
-  './css/style.css',
-
-  /* ── JavaScript datoteke ── */
-  './js/app.js',
-  './js/tts.js',
-  './js/quest.js',
+  /* ── Portfolio ── */
+  './portfolio/index.html',
+  './portfolio/tema.html',
+  './portfolio/istrazivanje.html',
+  './portfolio/ko-kreacija.html',
+  './portfolio/rezultat.html',
+  './portfolio/tim.html',
+  './portfolio/css/portfolio.css',
 
   /* ── PWA manifest ── */
   './manifest.json',

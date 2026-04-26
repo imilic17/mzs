@@ -1,47 +1,316 @@
 [
   {
-    "id": "diatretni-pehar",
-    "naziv": "Diatretni pehar",
-    "kategorija": "rimsko-doba",
-    "kratki_opis": "Staklena čaša stara oko 1700 godina, pronađena u rimskom Daruvaru — tada zvanom Aquae Balissae. Jedini je primjerak ove vrste u Hrvatskoj. Na cijelom svijetu postoji svega pedesetak takvih čaša.",
-    "dugi_opis": "Diatretni pehar izrađen je u 4. stoljeću nove ere, u vrijeme kada je današnji Daruvar bio rimski grad Aquae Balissae — poznat po ljekovitim termalnim izvorima. Pehar je dobio ime po tehnici izrade: staklena mreža na vanjskoj strani (diatreta) odvojena je od unutarnje stijenke i slobodno 'lebdi' oko nje, a sve je izrađeno iz jednog komada stakla. Ova tehnika zahtijevala je iznimnu vještinu staklara i bila je rezervirana za najimućnije rimske građane. Pronađen je u arheološkim iskapanjima u Daruvaru i danas je jedan od najvrednijedih predmeta Zavičajnog muzeja. Svrstava se među najljepše primjerke kasnoantičkog staklarstva u jugoistočnoj Europi.",
-    "easy_to_read_opis": "Ovo je stara staklena čaša. Ima oko 1700 godina i pronašli su je u Daruvaru. Samo jedna takva čaša postoji u cijeloj Hrvatskoj.",
-    "quest_pitanje": "Koliko je star Diatretni pehar pronađen u Daruvaru?",
-    "quest_odgovori": ["Oko 500 godina", "Oko 1700 godina", "Oko 300 godina"],
-    "quest_tocni_odgovor": 1,
-    "quest_zanimljivost": "Diatretni pehar je toliko rijedak da na cijelom svijetu postoji samo oko 50 takvih čaša — a jedina u Hrvatskoj čuva se upravo u Daruvaru!",
-    "slika_originalna": "assets/slike/diatretni-pehar-original.jpg",
-    "slika_ai_obradena": "assets/slike/diatretni-pehar-ai.jpg",
-    "slika_alt": "Stakleni Diatretni pehar iz rimskog doba s mrežastim uzorkom, pronađen u Daruvaru"
-  },
-  {
     "id": "dvorac-jankovic",
     "naziv": "Dvorac Janković",
     "kategorija": "dvorac-i-barok",
-    "kratki_opis": "Barokni dvorac koji je u 18. stoljeću sagradila plemićka obitelj Janković, gospodari Daruvara. Smješten je u srcu daruvarske parkovne šume i jedan je od najljepše sačuvanih dvoraca u Bjelovarsko-bilogorskoj županiji. Danas je zaštićeno kulturno dobro Republike Hrvatske.",
-    "dugi_opis": "Dvorac Janković sagrađen je u drugoj polovici 18. stoljeća, nakon što je Antun Janković 1760. godine otkupio vlastelinstvo Daruvar. Obitelj Janković, podrijetlom iz Slavonije, uložila je u obnovu i razvoj tada zapuštenog područja — obnovili su termalne izvore, doveli nove stanovnike i izgradili reprezentativni barokni dvorac kao središte svoga posjeda. Dvorac je jednokatna zgrada s karakterističnim baroknim pročeljem, okružena engleskim parkom koji je također zaštićen kao hortikulturni spomenik. U dvorcuje živjela i Ana Janković, jedna od prvih žena u ovom dijelu Europe koja je vodila imanje samostalno. Legenda kaže da je duh Ane Janković i danas prisutan u dvorcu za hladnih zimskih noći. Nakon obitelji Janković, dvorac su naslijedile obitelji Turković i Schaumburg-Lippe. Danas je u vlasništvu privatnih subjekata i dijelom je otvoren za posjetitelje.",
-    "easy_to_read_opis": "Ovo je stari dvorac u Daruvaru. Sagradila ga je bogata obitelj Janković prije više od 250 godina. Dvorac je okružen lijepim parkom s velikim stablima.",
-    "quest_pitanje": "Tko je sagradio Dvorac Janković u Daruvaru?",
-    "quest_odgovori": ["Obitelj Janković", "Rimski vojnici", "Habsburški car"],
-    "quest_tocni_odgovor": 0,
-    "quest_zanimljivost": "Ana Janković bila je jedna od prvih žena u ovom dijelu Europe koja je samostalno upravljala cijelim imanjem — i to u 18. stoljeću kada žene gotovo nisu imale prava!",
-    "slika_originalna": "assets/slike/dvorac-jankovic-original.jpg",
-    "slika_ai_obradena": "assets/slike/dvorac-jankovic-ai.jpg",
-    "slika_alt": "Barokni Dvorac Janković okružen parkovnom šumom u Daruvaru"
+    "kratki_opis": "Barokni dvorac sagrađen 1777. godine u obliku slova „U”. Sagradio ga je grof Antun Janković kao središte svog vlastelinstva. Dvorac je služio kao plemićko sjedište, bolnica u Prvom svjetskom ratu, škola od 1920. do 2004., a od 2022. u njemu je smješten Zavičajni muzej Daruvar.",
+    "dugi_opis": "Dvorac Janković sagrađen je 1777. godine. Sagradio ga je grof Antun Janković koji je 1760-ih kupio vlastelinstva Pakrac, Sirač i Podborje te odlučio svoje središte napraviti pokraj naselja Podborje koje je preimenovao u Daruvar (na mađarskom „Ždralov grad” po ptici iz obiteljskog grba). Dvorac je izgrađen u stilu baroka što se vidi iz tlocrta u obliku slova „U”. Unutrašnjost, osobito glavni salon, preuređena je u neoklasicističkom stilu kada je posljednji Janković, Julije, renovirao dvorac u drugoj polovici 19. stoljeća. Jankovići žive u dvorcu do 1879. kada ga prodaju obitelji Tüköry. Tüköryji se 1905. sele iz Daruvara, a dvorac prodaju 1920. općini Daruvar. Zanimljivo je da se tijekom Prvog svjetskog rata u dvorcu nalazila bolnica za oporavak austrougarskih ranjenika. Od 1920. do 2004. dvorac služi kao škola — najpre gimnazija, potom trgovačka škola, pa osnovna škola. Zadnja generacija učenika pohađala je školu ovdje 1996./97. Od 2022. u dvorcu je smješten Zavičajni muzej Daruvar. Površina prizemlja i prvog kata iznosi oko 2300 m². Gradnja u 18. stoljeću, bez električne energije ili motora, s materijalom dovezenim kolima koje su vukli volovi po lošim putevima, bila je izniman građevinski pothvat.",
+    "easy_to_read_opis": "Ovo je stari dvorac u Daruvaru. Sagradio ga je grof Antun Janković 1777. godine. Dvorac ima oblik slova U. Dugo je služio kao škola. Danas je u njemu muzej.",
+    "prijevodi": {
+      "en": {
+        "naziv": "Janković Castle",
+        "kratki_opis": "A Baroque castle built in 1777 in a U-shaped floor plan. It was built by Count Antun Janković as the centre of his estate. The castle served as a noble residence, a World War I hospital, a school from 1920 to 2004, and since 2022 it has housed the Daruvar Heritage Museum.",
+        "dugi_opis": "Janković Castle was built in 1777 by Count Antun Janković, who in the 1760s purchased the estates of Pakrac, Sirač, and Podborje. He chose to establish his seat near the settlement of Podborje, which he renamed Daruvar (meaning 'Crane City' in Hungarian, after the crane in his family coat of arms). The castle was built in the Baroque style, visible in its U-shaped floor plan. The interior was renovated in the Neoclassical style by the last Janković, Julije, in the second half of the 19th century. The Janković family lived here until 1879, when they sold the castle to the Tüköry family. During World War I, the castle housed a hospital for Austro-Hungarian wounded. From 1920 to 2004, it served as a school. Since 2022, it has been home to the Daruvar Heritage Museum.",
+        "easy_to_read_opis": "This is an old castle in Daruvar. Count Antun Janković built it in 1777. The castle is shaped like the letter U. It was a school for many years. Today it is a museum."
+      },
+      "cz": {
+        "naziv": "Zámek Janković",
+        "kratki_opis": "Barokní zámek postavený roku 1777 v půdorysu tvaru písmene „U”. Postavil ho hrabě Antun Janković jako centrum svého panství. Zámek sloužil jako šlechtické sídlo, nemocnice za první světové války, škola od roku 1920 do 2004 a od roku 2022 v něm sídlí Vlastivědné muzeum Daruvar.",
+        "dugi_opis": "Zámek Janković byl postaven roku 1777. Postavil ho hrabě Antun Janković, který v 60. letech 18. století koupil panství Pakrac, Sirač a Podborje a své centrum umístil u osady Podborje, kterou přejmenoval na Daruvar (maďarsky „Jeřábí město” podle ptáka v rodovém erbu). Zámek byl postaven v barokním stylu, což je patrné z půdorysu ve tvaru písmene U. Interiér byl přestavěn v neoklasicistním stylu posledním Jankovićem, Juliem, v druhé polovině 19. století. Rodina Jankovićů zde žila do roku 1879. Za první světové války sloužil zámek jako lazaret. Od roku 1920 do 2004 byl školou. Od roku 2022 v něm sídlí Vlastivědné muzeum Daruvar.",
+        "easy_to_read_opis": "Toto je starý zámek v Daruvaru. Postavil ho hrabě Antun Janković roku 1777. Zámek má tvar písmene U. Dlouho sloužil jako škola. Dnes je v něm muzeum."
+      }
+    },
+    "quest_pitanje": "Koje godine je sagrađen Dvorac Janković?",
+    "quest_odgovori": ["1650.", "1777.", "1920."],
+    "quest_tocni_odgovor": 1,
+    "quest_zanimljivost": "Dvorac je koštao toliko da si danas ne možemo ni zamisliti cijenu — sav materijal dovezen je kolima koje su vukli volovi po lošim putevima, a sve je izgrađeno bez struje ili motora!",
+    "slika_originalna": "assets/slike/20260417_121421.jpg",
+    "slike": [
+      "assets/slike/20260417_121421.jpg",
+      "assets/slike/20260417_121502.jpg",
+      "assets/slike/20260417_121548.jpg",
+      "assets/slike/20260417_122030.jpg"
+    ],
+    "slika_alt": "Pročelje baroknog Dvorca Janković s parkom u Daruvaru"
   },
+
   {
     "id": "ginkgo-biloba",
-    "naziv": "Ginkgo biloba",
+    "naziv": "Daruvarski ginko",
     "kategorija": "priroda",
-    "kratki_opis": "Ginkgo biloba stabla u daruvarskomparku jedna su od najstarijih primjeraka ove vrste u Hrvatskoj, stara više od 150 godina. Ginkgo je tzv. 'živi fosil' — vrsta koja je preživjela dinosaure i gotovo se nije promijenila 200 milijuna godina. Prepoznatljiva su po lepezastim listovima koji u jesen postaju zlatnožuti.",
-    "dugi_opis": "Ginkgo biloba (Ginkgo biloba L.) stabla u daruvarskomparku posađena su u drugoj polovici 19. stoljeća, u doba kada su europski vlastelini uređivali parkove uz dvorce po uzoru na engleske pejzažne vrtove. Daruvar je u tome prednjačio — park uz dvorac Janković projektiran je s posebnom pažnjom prema rijetkim i egzotičnim vrstama. Ginkgo biloba dolazi izvorno iz Kine i smatra se živim fosilom jer su gotovo identični listovi pronađeni u fosilnim nalazištima starim 200 milijuna godina. Vrsta je preživjela čak i pad asteroida koji je uništio dinosaure. U Japanu i Kini smatraju ga svetim stablom. Daruvarska stabla posebna su i po tome što je u parku posađen par — muško i žensko stablo — što je rijetko u europskim parkovima. Jesen u Daruvaru postaje čarobna kada ginkgo stabla požute u intenzivnu zlatnu boju.",
-    "easy_to_read_opis": "Ovo su vrlo stara stabla koja rastu u parku u Daruvaru. Ginkgo stabla postoje na Zemlji još od vremena dinosaura — to je više od 200 milijuna godina! Njihovi listovi u jesen postaju lijepo zlatnožuti.",
-    "quest_pitanje": "Zašto se Ginkgo biloba naziva 'živim fosilom'?",
-    "quest_odgovori": ["Jer je napravljeno od kamena", "Jer gotovo identična stabla postoje još od doba dinosaura", "Jer raste samo na grobljima"],
+    "kratki_opis": "Ispred dvorca stoje dva stabla Ginkgo biloba — muški „Adam” i ženski „Eva”. Adam je posađen oko 1777. i najstariji je primjerak svoje vrste u Hrvatskoj. Ginko je „živi fosil” koji postoji na Zemlji preko 150 milijuna godina, još od doba dinosaura.",
+    "dugi_opis": "Ispred dvorca grofa Jankovića nalaze se dva primjerka Ginkgo bilobe — jedan muški i jedan ženski — jedni od malobrojnih ostataka nekadašnjeg perivoja. Muški primjerak, kojeg Daruvarčani nazivaju „Adam”, posađen je oko 1777. te je najstariji pripadnik svoje vrste u Hrvatskoj i sigurno najstariji južno od Beča. Star je oko 248 godina. Ginko je „živi fosil” čiji evolucijski razvoj možemo pratiti oko 300 milijuna godina — postojao je još dok su na Zemlji kročili dinosauri. Ginko je najotpornija biljna vrsta na svijetu: jedan primjerak preživio je direktni pogodak atomske bombe u Hirošimi. Ginko je dvodomna biljka — ima mušku i žensku jedinku. Adam i Eva razlikuju se po tome što ženski primjerak ima plod koji jako zaudara, zbog čega se ženske jedinke ne sade u naseljena mjesta. Perivoj oko dvorca započet je istodobno s gradnjom dvorca krajem 18. stoljeća. Na katastarskoj karti iz 1861. već se vide dva stabla ginka. Grof Janković želio je u perivoju imati nešto što nitko do tada nije imao — nabavio je sjeme tada Europi gotovo nepoznatog stabla iz Kine.",
+    "easy_to_read_opis": "Ispred dvorca rastu dva velika stabla. Zovu se Adam i Eva. To su stabla ginko biloba. Adam je najstarije takvo stablo u Hrvatskoj. Ginko postoji na Zemlji još od vremena dinosaura. To je više od 150 milijuna godina!",
+    "prijevodi": {
+      "en": {
+        "naziv": "Daruvar Ginkgo Trees",
+        "kratki_opis": "In front of the castle stand two Ginkgo biloba trees — male 'Adam' and female 'Eve'. Adam was planted around 1777 and is the oldest specimen of its kind in Croatia. The ginkgo is a 'living fossil' that has existed on Earth for over 150 million years, since the age of dinosaurs.",
+        "dugi_opis": "In front of the Janković Castle stand two Ginkgo biloba specimens — one male and one female — among the last remnants of the former castle park. The male tree, called 'Adam' by locals, was planted around 1777, making it the oldest ginkgo in Croatia and likely the oldest south of Vienna. The ginkgo is a living fossil whose evolutionary development spans 300 million years. It is considered the most resilient plant species on Earth — one specimen survived the atomic bomb in Hiroshima. Count Janković wanted something unique in his park, so he obtained seeds of this tree then virtually unknown in Europe.",
+        "easy_to_read_opis": "Two big trees grow in front of the castle. They are called Adam and Eve. They are ginkgo biloba trees. Adam is the oldest such tree in Croatia. The ginkgo has existed on Earth since the time of dinosaurs. That is more than 150 million years!"
+      },
+      "cz": {
+        "naziv": "Daruvarské jinany",
+        "kratki_opis": "Před zámkem stojí dva stromy jinanu dvoulaločného — samčí „Adam” a samičí „Eva”. Adam byl zasazen kolem roku 1777 a je nejstarším exemplářem svého druhu v Chorvatsku. Jinan je „živoucí fosilie” existující na Zemi přes 150 milionů let, ještě z doby dinosaurů.",
+        "dugi_opis": "Před zámkem hraběte Jankoviće stojí dva exempláře jinanu dvoulaločného — samčí a samičí — jedny z mála pozůstatků bývalého zámeckého parku. Samčí exemplář, nazývaný místními „Adam”, byl zasazen kolem roku 1777 a je nejstarší jinan v Chorvatsku a pravděpodobně i jižně od Vídně. Jinan je živoucí fosilie, jejíž evoluční vývoj lze sledovat přes 300 milionů let. Jeden exemplář přežil přímý zásah atomové bomby v Hirošimě. Hrabě Janković chtěl v parku mít něco, co dosud nikdo neměl — opatřil si semena tehdy v Evropě prakticky neznámého stromu z Číny.",
+        "easy_to_read_opis": "Před zámkem rostou dva velké stromy. Jmenují se Adam a Eva. Jsou to jinany dvoulaločné. Adam je nejstarší takový strom v Chorvatsku. Jinan existuje na Zemi od dob dinosaurů. To je víc než 150 milionů let!"
+      }
+    },
+    "quest_pitanje": "Kako Daruvarčani nazivaju muški ginko ispred dvorca?",
+    "quest_odgovori": ["Julije", "Adam", "Antun"],
     "quest_tocni_odgovor": 1,
-    "quest_zanimljivost": "Ginkgo biloba preživio je atomsku bombu u Hiroshimi 1945. godine — nekoliko stabala u blizini epicentra prolistalo je već sljedeće proljeće. Zbog toga ga zovu 'stablo nade'.",
-    "slika_originalna": "assets/slike/ginkgo-biloba-original.jpg",
-    "slika_ai_obradena": "assets/slike/ginkgo-biloba-ai.jpg",
-    "slika_alt": "Zlatnožuti lepezasti listovi Ginkgo biloba stabla u daruvarskomparku u jesen"
+    "quest_zanimljivost": "Jedan ginko preživio je atomsku bombu u Hirošimi 1945. — prolistao je već sljedeće proljeće! Zbog toga ga zovu 'stablo nade'.",
+    "slika_originalna": "assets/slike/20260417_121338.jpg",
+    "slike": [
+      "assets/slike/20260417_121338.jpg",
+      "assets/slike/20260417_121342.jpg",
+      "assets/slike/20260417_121645.jpg",
+      "assets/slike/20260417_121712.jpg"
+    ],
+    "slika_alt": "Stara stabla Ginkgo biloba u parku ispred Dvorca Janković u Daruvaru"
+  },
+
+  {
+    "id": "glavni-salon",
+    "naziv": "Glavni salon",
+    "kategorija": "dvorac-i-barok",
+    "kratki_opis": "Najveća i najreprezentativnija prostorija u dvorcu (1180 × 800 cm). Preuređena u klasicističkom stilu 1868.–1870. Dekorirana sivim mramorom s bistama glazbenika u ovalnim nišama. Nekada plesna dvorana, danas konferencijsko-glazbena dvorana poznata po izvrsnoj akustici.",
+    "dugi_opis": "Glavni salon (1180 × 800 cm) je najveća, najviša i najreprezentativnija prostorija u dvorcu Janković. Originalno je uređena u baroknom stilu s pet prozorskih otvora, no nažalost iz tog perioda nemamo niti jedan povijesni izvor kako je točno izgledala. Prilikom dogradnje i adaptacije dvorca od 1868. do 1870. preuređena je u klasicističkom stilu, a iznad glavnog ulaza dograđena je altana zbog čega je srednji prozor pretvoren u vrata. Prostorija je dekorirana sivim mramorom — postamenti između prozora i glavnih vrata, kamini u odsječenim uglovima, parapetna zona zidova te lezene koje nalikuju gređu. Iznad svake lezene nalaze se dvije, a iznad kamina tri konzole koje nose zaključni vijenac. Između konzola nalaze se ovalne niše u kojima su bile smještene biste glazbenika i vaze. U središtu stropa nalazi se lisnata rozeta s metalnim držačem s kojega visi rasvjetno tijelo. Iz dokumenata o obnovi dvorca saznajemo da ju je grof Julije Janković platio preko 50.000 forinti. U salonu se nalazilo osam fotelja, dva taburea, tri kanapea, klavir, ogledala iznad kamina i četiri gipsane skulpture poznatih glazbenika. Tijekom vlastelinskih dana salon je bio namijenjen za balove i koncerte. Tijekom školske namjene bio je dvorana za tjelesni. Danas je ponovo konferencijsko-glazbena dvorana.",
+    "easy_to_read_opis": "Ovo je najveća soba u dvorcu. Zove se Glavni salon. Nekada su se ovdje održavali balovi i koncerti. Ukrašena je mramorom i kipovima glazbenika. Danas se ovdje opet sviraju koncerti.",
+    "prijevodi": {
+      "en": {
+        "naziv": "Main Hall",
+        "kratki_opis": "The largest and most representative room in the castle (1180 × 800 cm). Renovated in the Classicist style in 1868–1870. Decorated with grey marble and busts of musicians in oval niches. Once a ballroom, today a concert and conference hall known for excellent acoustics.",
+        "dugi_opis": "The Main Hall (1180 × 800 cm) is the largest, tallest, and most representative room in the Janković Castle. Originally designed in the Baroque style with five windows, it was renovated in the Classicist style between 1868 and 1870 by Count Julije Janković, who spent over 50,000 forints on the renovation. The room is decorated with grey marble — pedestals between windows, fireplaces in cut corners, and pilasters. Oval niches between consoles once held busts of musicians and vases. During noble times, the hall hosted balls and concerts. During the school era, it served as a gym. Today it has returned to its original role as a concert and conference hall with remarkable acoustics.",
+        "easy_to_read_opis": "This is the largest room in the castle. It is called the Main Hall. Balls and concerts were held here long ago. It is decorated with marble and statues of musicians. Today concerts are played here again."
+      },
+      "cz": {
+        "naziv": "Hlavní sál",
+        "kratki_opis": "Největší a nejreprezentativnější místnost zámku (1180 × 800 cm). Přestavěna v klasicistním stylu v letech 1868–1870. Zdobena šedým mramorem s bustami hudebníků v oválných nikách. Kdysi taneční sál, dnes koncertní a konferenční síň známá vynikající akustikou.",
+        "dugi_opis": "Hlavní sál (1180 × 800 cm) je největší, nejvyšší a nejreprezentativnější místností zámku Janković. Původně byl zařízen v barokním stylu, ale mezi lety 1868 a 1870 byl přestavěn v klasicistním stylu hrabětem Juliem Jankovićem, který za přestavbu zaplatil přes 50 000 zlatých. Místnost je zdobena šedým mramorem, v oválných nikách stály busty hudebníků a vázy. Za doby šlechty se zde konaly plesy a koncerty. V době školní funkce sloužil jako tělocvična. Dnes se opět vrátil ke své původní roli koncertního a konferenčního sálu s výjimečnou akustikou.",
+        "easy_to_read_opis": "Toto je největší místnost v zámku. Jmenuje se Hlavní sál. Kdysi se tu konaly plesy a koncerty. Je zdoben mramorem a sochami hudebníků. Dnes se tu opět hrají koncerty."
+      }
+    },
+    "quest_pitanje": "Koliko je grof Julije platio renovaciju Glavnog salona?",
+    "quest_odgovori": ["5.000 forinti", "50.000 forinti", "500.000 forinti"],
+    "quest_tocni_odgovor": 1,
+    "quest_zanimljivost": "Za vrijeme škole ovaj prekrasni salon bio je... dvorana za tjelesni odgoj! Danas je ponovo glazbena dvorana s izvrsnom akustikom.",
+    "slika_originalna": "assets/slike/20260417_113755.jpg",
+    "slike": [
+      "assets/slike/20260417_113755.jpg",
+      "assets/slike/20260417_113810.jpg",
+      "assets/slike/20260417_113827.jpg",
+      "assets/slike/20260417_114253.jpg"
+    ],
+    "slika_alt": "Glavni salon dvorca Janković s mramornom dekoracijom, klavirom i lusterom"
+  },
+
+  {
+    "id": "diatretni-pehar",
+    "naziv": "Rimsko doba — Aquae Balissae",
+    "kategorija": "rimsko-doba",
+    "kratki_opis": "Daruvar je u rimsko doba bio grad Aquae Balissae — „vrlo jaka sveta vrela”. Bio je političko središte ilirskog plemena Jasa i odredište rimskih vojnika koji su dolazili na rehabilitaciju u termalne izvore. Najvrjedniji eksponat je Diatretni pehar iz 4. stoljeća, jedini te vrste u Hrvatskoj.",
+    "dugi_opis": "Zbog izuzetno povoljnog geografskog položaja u kojemu gora Papuk štiti Daruvarsku kotlinu od nepovoljnih vremenskih uvjeta i geotermalnih izvora smatra se da ljudi na prostoru Daruvara žive oduvijek. Prvu civilizaciju koju možemo pratiti je ilirsko pleme Jasi koji su imali kult štovanja geotermalnih izvora i šuma. Prilikom dolaska Rimljana Jasi sudjeluju na njihovoj strani u Ilirskim ratovima i dobivaju veliku autonomiju — vlastitu „Autonomnu Republiku” čije je središte bilo upravo ovdje, u naselju Aquae Balissae (što doslovno znači „vrlo jaka sveta vrela”). U tom političko-vjerskom središtu živjeli su Jasi i rimski doseljenici, većinom umirovljeni vojnici. U terme na oporavak dolaze rimski ranjenici i bolesnici — zanimljivo je da je Veteranski centar koji se otvorio 2024. nastavak 2000 godina duge „tradicije” rehabilitacije vojnih veterana na ovom području. Rimsko-ilirsko naselje nestaje negdje u 5. stoljeću uslijed seobe naroda. Najvrjedniji eksponat iz tog doba je Diatretni pehar iz 4. stoljeća — staklena čaša s mrežastim uzorkom (diatreta tehnika) izrađena iz jednog komada stakla. Na cijelom svijetu postoji svega pedesetak takvih čaša, a ova je jedina u Hrvatskoj.",
+    "easy_to_read_opis": "Daruvar je prije 2000 godina bio rimski grad. Zvao se Aquae Balissae. To znači „jaka sveta vrela” jer ovdje izvire topla voda. U muzeju možete vidjeti stare rimske predmete. Najvažniji je Diatretni pehar — stara staklena čaša s posebnim mrežastim uzorkom.",
+    "prijevodi": {
+      "en": {
+        "naziv": "Roman Era — Aquae Balissae",
+        "kratki_opis": "In the Roman era, Daruvar was a city called Aquae Balissae — 'very strong sacred springs'. It was the political centre of the Illyrian tribe Iasi and a destination for Roman soldiers who came for rehabilitation at the thermal springs. The most valuable exhibit is the Diatretni Cup from the 4th century, the only one of its kind in Croatia.",
+        "dugi_opis": "Due to its favourable geographic position, people have lived in the Daruvar area since ancient times. The first known civilization was the Illyrian tribe Iasi, who worshipped the geothermal springs and forests. During the Roman conquest, the Iasi sided with the Romans and received an autonomous republic centred here, in a settlement called Aquae Balissae (meaning 'very strong sacred springs'). Roman veterans settled here and wounded soldiers came for rehabilitation — a tradition continuing even today with the Veterans' Centre opened in 2024. The settlement disappeared in the 5th century during the Migration Period. The most valuable exhibit from this era is the Diatretni Cup from the 4th century — a glass vessel with a cage-like openwork (diatretum technique) carved from a single piece of glass. Only about fifty such cups exist worldwide, and this is the only one in Croatia.",
+        "easy_to_read_opis": "Daruvar was a Roman city 2000 years ago. It was called Aquae Balissae. That means 'strong sacred springs' because hot water flows here. In the museum you can see old Roman objects. The most important is the Diatretni Cup — an old glass cup with a special net-like pattern."
+      },
+      "cz": {
+        "naziv": "Římská doba — Aquae Balissae",
+        "kratki_opis": "V římské době byl Daruvar městem Aquae Balissae — „velmi silné posvátné prameny”. Bylo to politické centrum ilyrského kmene Jasů a cíl římských vojáků, kteří přijížděli na rehabilitaci k termálním pramenům. Nejcennějším exponátem je Diatretní pohár ze 4. století, jediný svého druhu v Chorvatsku.",
+        "dugi_opis": "Díky výhodné zeměpisné poloze, kde hora Papuk chrání daruvarskou kotlinu, žili lidé v oblasti Daruvaru odjakživa. Prvním známým kmenem byli ilyrští Jasové, kteří uctívali termální prameny. Při příchodu Římanů se Jasové postavili na jejich stranu a získali autonomii — vlastní republiku se sídlem v osadě Aquae Balissae (doslova „velmi silné posvátné prameny”). Žili zde Jasové a římští osadníci, většinou vysloužilí vojáci. Do lázní přijížděli ranění vojáci — tradice rehabilitace vojenských veteránů zde trvá 2000 let. Římsko-ilyrské osídlení zaniklo v 5. století během stěhování národů. Nejcennějším exponátem je Diatretní pohár ze 4. století — skleněná nádoba se síťovým vzorem vyřezaná z jednoho kusu skla. Na celém světě existuje pouze padesát takových pohárů a tento je jediný v Chorvatsku.",
+        "easy_to_read_opis": "Daruvar byl před 2000 lety římské město. Jmenovalo se Aquae Balissae. To znamená „silné posvátné prameny”, protože tady vyvěrá teplá voda. V muzeu můžete vidět staré římské předměty. Nejdůležitější je Diatretní pohár — stará skleněná číše se zvláštním síťovým vzorem."
+      }
+    },
+    "quest_pitanje": "Kako se zvao rimski grad na mjestu današnjeg Daruvara?",
+    "quest_odgovori": ["Roma Nova", "Aquae Balissae", "Spalatum"],
+    "quest_tocni_odgovor": 1,
+    "quest_zanimljivost": "Diatretni pehar je toliko rijedak da na cijelom svijetu postoji samo oko 50 takvih čaša — a jedina u Hrvatskoj čuva se upravo u Daruvaru!",
+    "slika_originalna": "assets/slike/20260417_114654.jpg",
+    "slike": [
+      "assets/slike/20260417_114654.jpg",
+      "assets/slike/20260417_114747.jpg"
+    ],
+    "slika_alt": "Vitrina s rimskim artefaktima iz doba Aquae Balissae u Zavičajnom muzeju Daruvar"
+  },
+
+  {
+    "id": "gradjanska-soba",
+    "naziv": "Građanska soba — Jankovići",
+    "kategorija": "dvorac-i-barok",
+    "kratki_opis": "U Građanskoj sobi nalaze se portreti četvorice Jankovića Daruvarskih — Antuna, Ivana, Izidora i Julija. Uz portrete se nalazi stari namještaj iz Daruvara i lutke u dobnim haljinama. Ova obitelj kroz četiri generacije oblikovala je grad Daruvar kakav poznajemo danas.",
+    "dugi_opis": "Nalazimo se u Građanskoj sobi u kojoj se nalazi stari namještaj iz Daruvara. Nažalost nemamo podatke o originalnom namještaju iz dvorca — vlastela koja ga je prodala odnijela je najvrjednije, a kroz cijelo stoljeće i ono manje vrijednosti je dotrajalo ili nestalo. Na zidu se nalaze portreti Jankovića Daruvarskih: Antun (1729.–1789.) koji je kupio vlastelinstvo i sagradio dvorac; Ivan (1730.–1798.) koji je kao najveći zemljoposjednik u Slavoniji nastavio razvijati imanja; Izidor (1789.–1857.) koji je bio okrutan vladar i izazvao seljačku bunu 1815., ali je i osnovao Daruvarsku pivovaru 1840., najstariju pivovaru u Hrvatskoj s kontinuiranim radom; te Julije (1820.–1904.) koji je bio izuzetno sposoban političar, dobitnik grofovske titule, a odbio je čak i mjesto hrvatskog bana — na njegovom mjestu ban je postao Ivan Mažuranić. Julije je zbog očevih dugova morao prodati sva imanja 1879. Umro je 1904. kao posljednji muški član loze. Loza Jankovića Daruvarskih izumrla je 1937. smrću njegove mlađe kćeri Ane Elizabete.",
+    "easy_to_read_opis": "U ovoj sobi vidimo slike obitelji Janković. Oni su sagradili dvorac i osnovali grad Daruvar. Bila su četiri gospodarа: Antun, Ivan, Izidor i Julije. Julije je bio toliko cijenjen da su mu ponudili da bude hrvatski ban, ali je odbio.",
+    "prijevodi": {
+      "en": {
+        "naziv": "Civic Room — The Janković Family",
+        "kratki_opis": "The Civic Room displays portraits of the four Janković lords of Daruvar — Antun, Ivan, Izidor, and Julije. Period furniture and mannequins in historical dresses complete the exhibit. This family shaped the city of Daruvar as we know it over four generations.",
+        "dugi_opis": "The Civic Room contains period furniture from Daruvar and portraits of the four Janković lords: Antun (1729–1789), who purchased the estate and built the castle; Ivan (1730–1798), the largest landowner in Slavonia; Izidor (1789–1857), a controversial figure who caused a peasant revolt in 1815 but also founded the Daruvar Brewery in 1840, the oldest continuously operating brewery in Croatia; and Julije (1820–1904), an exceptionally capable politician who was offered the position of Croatian Ban (viceroy) but declined — Ivan Mažuranić took the position instead. Julije had to sell all estates by 1879 due to his father's debts. He died in 1904 as the last male member of the line. The Janković line of Daruvar went extinct in 1937.",
+        "easy_to_read_opis": "In this room we see paintings of the Janković family. They built the castle and founded the city of Daruvar. There were four lords: Antun, Ivan, Izidor, and Julije. Julije was so respected that he was offered the position of Croatian ruler, but he declined."
+      },
+      "cz": {
+        "naziv": "Měšťanský pokoj — Jankovićové",
+        "kratki_opis": "V Měšťanském pokoji se nacházejí portréty čtyř Jankovićů daruvarských — Antuna, Ivana, Izidora a Julia. Dobový nábytek a figuríny v historických šatech doplňují expozici. Tato rodina po čtyři generace utvářela město Daruvar.",
+        "dugi_opis": "V Měšťanském pokoji se nachází starý nábytek z Daruvaru a portréty čtyř pánů z rodu Jankovićů: Antun (1729–1789), který koupil panství a postavil zámek; Ivan (1730–1798), největší statkář ve Slavonii; Izidor (1789–1857), kontroverzní postava, která vyvolala selské povstání roku 1815, ale také založila Daruvarský pivovar roku 1840, nejstarší nepřetržitě fungující pivovar v Chorvatsku; a Julije (1820–1904), vynikající politik, kterému bylo nabídnuto místo chorvatského bána, ale odmítl. Julije musel kvůli otcovým dluhům prodat všechna panství do roku 1879. Rod Jankovićů daruvarských vymřel roku 1937.",
+        "easy_to_read_opis": "V tomto pokoji vidíme obrazy rodiny Jankovićů. Postavili zámek a založili město Daruvar. Byli čtyři páni: Antun, Ivan, Izidor a Julije. Julije byl tak vážený, že mu nabídli, aby se stal chorvatským vládcem, ale odmítl."
+      }
+    },
+    "quest_pitanje": "Koji Janković je odbio postati hrvatski ban?",
+    "quest_odgovori": ["Antun", "Izidor", "Julije"],
+    "quest_tocni_odgovor": 2,
+    "quest_zanimljivost": "Izidor Janković osnovao je Daruvarsku pivovaru 1840. godine — to je najstarija pivovara u Hrvatskoj koja neprekidno radi na istom mjestu!",
+    "slika_originalna": "assets/slike/20260417_114544.jpg",
+    "slike": [
+      "assets/slike/20260417_114544.jpg",
+      "assets/slike/20260417_114618.jpg",
+      "assets/slike/20260417_114606.jpg",
+      "assets/slike/20260417_114717.jpg"
+    ],
+    "slika_alt": "Građanska soba s portretima obitelji Janković i lutkama u dobnim haljinama"
+  },
+
+  {
+    "id": "zidovska-bastina",
+    "naziv": "Spomen soba židovske ostavštine",
+    "kategorija": "zidovska-bastina",
+    "kratki_opis": "Prije Drugog svjetskog rata 10% stanovništva Daruvara činili su Židovi. U spomen sobi možete vidjeti Aron HaKodeš (ormar za Toru), stare parohete (zastor za Toru), stol za blagdan Pashe i knjige uključujući Talmud. Židovska zajednica nestala je u holokaustu — od oko 300 Židova preživjelo je stotinjak, ali se nitko nije vratio.",
+    "dugi_opis": "Nalazimo se u Spomen sobi židovske ostavštine. Iza nas vidimo kako izgleda sinagoga — Aron HaKodeš i Tora otvorena za čitanje, te stare daruvarske parohete (zastori za Toru). Ispred se nalazi stol za blagdan Pashe — jede se beskvasni kruh i pije vino. Daruvarska sinagoga prestala je postojati zbog nestanka židovske zajednice koja je nastradala u holokaustu tijekom Drugog svjetskog rata. Građevina postoji i danas — u njoj se nalazi Pentakostalna crkva. Od mogućih 300-tinjak daruvarskih Židova preživjelo je njih stotinjak, ali se nisu nikada više vratili u Daruvar jer im imovina nikada nije vraćena. Danas Židovi čine 0,03% stanovništva Daruvara — 3 osobe. Dvoje ljudi židovske vjere i narodnosti rođeno je u Daruvaru, a ispisali su svjetsku povijest. David Frankfurter, sin daruvarskog rabina, 1936. ubio je šefa švicarskog ogranka nacističke stranke Wilhelma Gustloffa — u Izraelu je poznat kao čovjek koji je prvi ispalio metak na nacizam. Eva Fischer (1920.–2015.) bila je svjetski poznata umjetnica čija se galerija nalazi u susjednim prostorijama.",
+    "easy_to_read_opis": "U ovoj sobi možemo vidjeti predmete iz židovske zajednice Daruvara. Prije rata u Daruvaru je živjelo oko 300 Židova. Možemo vidjeti ormar za svete knjige, stol za blagdan Pashu i stare knjige. Nažalost, većina Židova stradala je u Drugom svjetskom ratu.",
+    "prijevodi": {
+      "en": {
+        "naziv": "Jewish Heritage Memorial Room",
+        "kratki_opis": "Before World War II, 10% of Daruvar's population was Jewish. The memorial room displays an Aron HaKodesh (Torah ark), old parochet curtains, a Passover table setting, and books including the Talmud. The Jewish community was lost in the Holocaust — of about 300 Jews, around 100 survived, but none returned.",
+        "dugi_opis": "This is the Jewish Heritage Memorial Room. It contains a Torah ark (Aron HaKodesh), old Daruvar parochet curtains, a table set for the Passover holiday, and sacred texts. The Daruvar synagogue ceased to exist after the Jewish community perished in the Holocaust during World War II. The building still stands — it now houses a Pentecostal church. Of approximately 300 Daruvar Jews, about 100 survived but never returned because their property was never restored. Today only 3 Jewish people live in Daruvar. Two Jewish people born in Daruvar made world history: David Frankfurter, son of Daruvar's rabbi, who in 1936 killed the head of the Swiss Nazi branch — in Israel he is known as the man who fired the first shot against Nazism. Eva Fischer (1920–2015) was a world-renowned artist whose gallery is in the adjacent rooms.",
+        "easy_to_read_opis": "In this room we can see objects from Daruvar's Jewish community. Before the war, about 300 Jewish people lived in Daruvar. We can see an ark for holy books, a Passover holiday table, and old books. Sadly, most Jewish people were killed during World War II."
+      },
+      "cz": {
+        "naziv": "Pamětní síň židovského dědictví",
+        "kratki_opis": "Před druhou světovou válkou tvořili Židé 10 % obyvatel Daruvaru. V pamětní síni můžete vidět Aron HaKodeš (schránu na Tóru), staré parochety, prostřený pesachový stůl a knihy včetně Talmudu. Židovská komunita zanikla za holokaustu — z asi 300 Židů přežilo asi sto, ale nikdo se nevrátil.",
+        "dugi_opis": "Nacházíme se v Pamětní síni židovského dědictví. Vidíme zde Aron HaKodeš a Tóru, staré daruvarské parochety, pesachový stůl s nekvašeným chlebem a vínem. Daruvarská synagoga přestala existovat po zániku židovské komunity za holokaustu. Budova stojí dodnes — slouží jako kostel. Z asi 300 daruvarských Židů přežilo asi 100, ale nikdo se již nevrátil, protože jim nikdy nebyl navrácen majetek. Dnes žijí v Daruvaru 3 židovské osoby. Dvě osoby židovského vyznání narozené v Daruvaru zapsaly světové dějiny: David Frankfurter, syn daruvarského rabína, v roce 1936 zastřelil šéfa švýcarské pobočky nacistické strany. Eva Fischer (1920–2015) byla světově proslulá umělkyně, jejíž galerie se nachází v sousedních místnostech.",
+        "easy_to_read_opis": "V této místnosti můžeme vidět předměty z židovské komunity Daruvaru. Před válkou v Daruvaru žilo asi 300 Židů. Můžeme vidět schránu na svaté knihy, pesachový stůl a staré knihy. Bohužel většina Židů zahynula za druhé světové války."
+      }
+    },
+    "quest_pitanje": "Tko je bio David Frankfurter, rođen u Daruvaru?",
+    "quest_odgovori": ["Daruvarskih pivar", "Sin daruvarskog rabina koji se borio protiv nacizma", "Gradonačelnik Daruvara"],
+    "quest_tocni_odgovor": 1,
+    "quest_zanimljivost": "U Izraelu se po Davidu Frankfurteru iz Daruvara zovu ulice, trgovi i škole — smatraju ga čovjekom koji je prvi ispalio metak na nacizam!",
+    "slika_originalna": "assets/slike/20260417_114810.jpg",
+    "slike": [
+      "assets/slike/20260417_114810.jpg",
+      "assets/slike/20260417_114848.jpg",
+      "assets/slike/20260417_114900.jpg",
+      "assets/slike/20260417_114822.jpg",
+      "assets/slike/20260417_114753.jpg"
+    ],
+    "slika_alt": "Spomen soba židovske ostavštine s Aron HaKodešom, stolom za Pashu i menorah"
+  },
+
+  {
+    "id": "eva-fischer",
+    "naziv": "Galerija Eva Fischer",
+    "kategorija": "galerija",
+    "kratki_opis": "Eva Fischer (1920.–2015.) svjetski je poznata umjetnica rođena u Daruvaru. Preživjela je holokaust, sudjelovala u antifašističkom pokretu u Italiji i živjela u Rimu do smrti. Njene litografije i gravure — djela sam vrh moderne umjetnosti — za širu javnost dostupna su samo ovdje, u Zavičajnom muzeju Daruvar.",
+    "dugi_opis": "Eva Fischer rođena je u Daruvaru 1920. godine. Kao dijete seli se u Beograd. Neposredno pred početak Drugog svjetskog rata završava umjetničku akademiju u Lyonu. Kada je rat došao na prostor Jugoslavije njen otac je ubijen, a ona se s majkom i bratom našla u koncentracijskom logoru na otoku Korčuli. Tamo je nacrtala portret jednog talijanskog časnika koji je njoj, majci i bratu nabavio dokumente za bijeg u Italiju. Eva se u Italiji ne skriva nego sudjeluje u pokretu otpora dijeleći antifašističke letke vozeći se biciklom. Poslije rata odlučuje ostati s obitelji u Rimu gdje je uz kratke prekide živjela do smrti 2015. U svoj rodni grad nije se nikada vratila, no 2022. godine „vratila se” svojim djelima. U galerijskom prostoru muzeja nalaze se litografije i gravure Eve Fischer iz njenog privatnog ateljea u Rimu. Ova djela — sam vrh moderne umjetnosti, djela umjetnice koja je izlagala i bila kolegica i prijateljica Picassa i Salvadora Dalíja — za širu javnost dostupna su samo ovdje, u Zavičajnom muzeju Daruvar.",
+    "easy_to_read_opis": "Eva Fischer bila je poznata umjetnica. Rođena je u Daruvaru 1920. godine. Preživjela je rat i živjela u Rimu. Bila je prijateljica poznatih umjetnika Picassa i Dalíja. Njene slike možete vidjeti samo ovdje u muzeju.",
+    "prijevodi": {
+      "en": {
+        "naziv": "Eva Fischer Gallery",
+        "kratki_opis": "Eva Fischer (1920–2015) was a world-renowned artist born in Daruvar. She survived the Holocaust, participated in the anti-fascist resistance in Italy, and lived in Rome until her death. Her lithographs and engravings — the pinnacle of modern art — are publicly available only here, at the Daruvar Heritage Museum.",
+        "dugi_opis": "Eva Fischer was born in Daruvar in 1920. She moved to Belgrade as a child and completed art academy in Lyon just before World War II. When war came, her father was killed, and she ended up in a concentration camp on the island of Korčula with her mother and brother. There she drew a portrait of an Italian officer who obtained documents for their escape to Italy. In Italy, Eva joined the resistance, distributing anti-fascist leaflets while riding a bicycle. After the war, she chose to stay in Rome, where she lived until her death in 2015. She never returned to Daruvar, but in 2022 her works 'returned' — the museum now houses her lithographs and engravings from her private studio in Rome. These are works of an artist who exhibited alongside and was friends with Picasso and Salvador Dalí, and they are publicly available only here.",
+        "easy_to_read_opis": "Eva Fischer was a famous artist. She was born in Daruvar in 1920. She survived the war and lived in Rome. She was friends with famous artists Picasso and Dalí. You can see her paintings only here in the museum."
+      },
+      "cz": {
+        "naziv": "Galerie Evy Fischer",
+        "kratki_opis": "Eva Fischer (1920–2015) byla světově proslulá umělkyně narozená v Daruvaru. Přežila holokaust, účastnila se antifašistického odboje v Itálii a žila v Římě až do své smrti. Její litografie a grafiky — vrchol moderního umění — jsou veřejnosti dostupné pouze zde, ve Vlastivědném muzeu Daruvar.",
+        "dugi_opis": "Eva Fischer se narodila v Daruvaru roku 1920. Jako dítě se přestěhovala do Bělehradu a těsně před druhou světovou válkou dokončila uměleckou akademii v Lyonu. Když přišla válka, její otec byl zabit a ona s matkou a bratrem skončila v koncentračním táboře na ostrově Korčula. Tam nakreslila portrét italského důstojníka, který jim opatřil dokumenty k útěku do Itálie. V Itálii se Eva zapojila do odboje a na kole roznášela antifašistické letáky. Po válce zůstala v Římě, kde žila až do smrti v roce 2015. Do rodného města se nikdy nevrátila, ale v roce 2022 se její díla „vrátila”. Litografie a grafiky z jejího římského ateliéru — díla umělkyně, která vystavovala po boku Picassa a Salvadora Dalího — jsou veřejnosti dostupná pouze zde v muzeu.",
+        "easy_to_read_opis": "Eva Fischer byla slavná umělkyně. Narodila se v Daruvaru roku 1920. Přežila válku a žila v Římě. Byla přítelkyní slavných umělců Picassa a Dalího. Její obrazy můžete vidět pouze zde v muzeu."
+      }
+    },
+    "quest_pitanje": "Gdje je Eva Fischer živjela veći dio života?",
+    "quest_odgovori": ["U Daruvaru", "U Rimu", "U Parizu"],
+    "quest_tocni_odgovor": 1,
+    "quest_zanimljivost": "Eva Fischer iz koncentracijskog logora na Korčuli pobjegla je zahvaljujući portretu koji je nacrtala jednom talijanskom časniku — on joj je zauzvrat nabavio lažne dokumente!",
+    "slika_originalna": "assets/slike/20260417_115057.jpg",
+    "slike": [
+      "assets/slike/20260417_115057.jpg",
+      "assets/slike/20260417_115108.jpg",
+      "assets/slike/20260417_115219.jpg",
+      "assets/slike/20260417_115234.jpg"
+    ],
+    "slika_alt": "Galerija Eve Fischer s litografijama i gravurama u lučnim hodnicima dvorca"
+  },
+
+  {
+    "id": "drugi-svjetski-rat",
+    "naziv": "Drugi svjetski rat",
+    "kategorija": "ratovi",
+    "kratki_opis": "Drugi svjetski rat u Daruvaru počinje 10. travnja 1941. ulaskom njemačkih snaga. Uslijedile su deportacije Židova, Srba i Roma. Partizanski pokret, kojemu se priključio i velik broj Čeha, formira 1943. prvu čehoslovačku brigadu „Jan Žižka z Trocnova” — prvu antifašističku jedinicu češkog naroda u Drugom svjetskom ratu.",
+    "dugi_opis": "Drugi svjetski rat u Daruvaru počinje 10. travnja 1941. kada u njega ulaze njemačke snage. Daruvar se od tada nalazi u sastavu NDH, a vlast preuzimaju lokalni ustaše. Ubrzo se izvršavaju uhićenja i deportacije Židova, Srba, Roma i svih protivnika režima. Sinagoga i pravoslavna crkva nisu srušene zalaganjem daruvarskog župnika Mije Ettingera. U srpnju 1941. započinju prva partizanska djelovanja, a tijekom 1943. i 1944. oko Daruvara se vode svakodnevne borbe. Sve više Hrvata i Čeha odlazi u partizane. Zbog velikog broja pripadnika češke nacionalnosti 1943. je osnovana 1. čehoslovačka brigada „Jan Žižka z Trocnova” — prva antifašistička jedinica sastavljena od pripadnika nacionalne manjine i prva antifašistička jedinica češkog naroda u Drugom svjetskom ratu, oformljena 20 km istočno od Daruvara. Daruvar je oslobođen 16. rujna 1944. S područja bivše općine Daruvar poginulo je oko 1000 vojnika na svim zaraćenim stranama i 1600 civila. Svo oružje izloženo u postavu korišteno je u Drugom svjetskom ratu.",
+    "easy_to_read_opis": "Za vrijeme Drugog svjetskog rata Daruvar je bio okupiran. Mnogi ljudi su stradali — posebno Židovi, Srbi i Romi. Ljudi su se borili protiv okupatora u partizanima. Česi iz Daruvara osnovali su svoju brigadu nazvanu po Janu Žižki. Rat je trajao od 1941. do 1945. i donio mnogo tuge.",
+    "prijevodi": {
+      "en": {
+        "naziv": "World War II",
+        "kratki_opis": "World War II in Daruvar began on April 10, 1941 with the entry of German forces. Deportations of Jews, Serbs, and Roma followed. The partisan movement, joined by many Czechs, formed the 1st Czechoslovak Brigade 'Jan Žižka z Trocnova' in 1943 — the first anti-fascist unit of the Czech nation in WWII.",
+        "dugi_opis": "WWII in Daruvar began on April 10, 1941 when German forces entered the city. Daruvar became part of the Independent State of Croatia (NDH), and local Ustasha took power. Arrests and deportations of Jews, Serbs, Roma, and opponents of the regime soon followed. The synagogue and Orthodox church were saved thanks to the efforts of local priest Mijo Ettinger. Partisan activity began in July 1941, and by 1943–1944 daily battles raged around Daruvar. Increasing numbers of Croats and Czechs joined the partisans. Due to the large number of Czech participants, the 1st Czechoslovak Brigade 'Jan Žižka z Trocnova' was formed in 1943 — the first anti-fascist unit composed of a national minority and the first Czech anti-fascist unit in WWII, established 20 km east of Daruvar. Daruvar was liberated on September 16, 1944. About 1,000 soldiers on all sides and 1,600 civilians from the Daruvar municipality were killed.",
+        "easy_to_read_opis": "During World War II Daruvar was occupied. Many people suffered — especially Jews, Serbs, and Roma. People fought against the occupiers as partisans. Czechs from Daruvar formed their own brigade named after Jan Žižka. The war lasted from 1941 to 1945 and brought great sorrow."
+      },
+      "cz": {
+        "naziv": "Druhá světová válka",
+        "kratki_opis": "Druhá světová válka v Daruvaru začala 10. dubna 1941 vstupem německých vojsk. Následovaly deportace Židů, Srbů a Romů. Partyzánské hnutí, k němuž se přidal velký počet Čechů, založilo roku 1943 1. čs. brigádu „Jana Žižky z Trocnova” — první protifašistickou jednotku českého národa ve 2. světové válce.",
+        "dugi_opis": "Druhá světová válka v Daruvaru začíná 10. dubna 1941, kdy do města vstupují německé síly. Daruvar se stává součástí NDH a moc přebírají místní ustašovci. Brzy následují zatýkání a deportace Židů, Srbů, Romů a odpůrců režimu. Synagogu a pravoslavný kostel zachránil místní farář Mijo Ettinger. Partyzánská činnost začíná v červenci 1941. Stále více Chorvatů a Čechů odchází k partyzánům. Díky velkému počtu příslušníků české národnosti je roku 1943 založena 1. čs. brigáda „Jana Žižky z Trocnova” — první protifašistická jednotka složená z příslušníků národnostní menšiny a první protifašistická jednotka českého národa ve 2. světové válce, vytvořená 20 km východně od Daruvaru. Daruvar byl osvobozen 16. září 1944. Z území obce Daruvar zahynulo asi 1000 vojáků na všech stranách a 1600 civilistů.",
+        "easy_to_read_opis": "Za druhé světové války byl Daruvar okupován. Mnoho lidí trpělo — zejména Židé, Srbové a Romové. Lidé bojovali proti okupantům jako partyzáni. Češi z Daruvaru založili svou brigádu pojmenovanou po Janu Žižkovi. Válka trvala od roku 1941 do 1945 a přinesla mnoho smutku."
+      }
+    },
+    "quest_pitanje": "Kako se zvala čehoslovačka brigada osnovana kod Daruvara 1943.?",
+    "quest_odgovori": ["Brigada Masaryk", "Jan Žižka z Trocnova", "Brigada Praha"],
+    "quest_tocni_odgovor": 1,
+    "quest_zanimljivost": "1. čehoslovačka brigada „Jan Žižka z Trocnova” osnovana je 20 km od Daruvara — bila je prva antifašistička jedinica češkog naroda u cijelom Drugom svjetskom ratu!",
+    "slika_originalna": "assets/slike/20260417_115926.jpg",
+    "slike": [
+      "assets/slike/20260417_115926.jpg",
+      "assets/slike/20260417_115942.jpg",
+      "assets/slike/20260417_120247.jpg",
+      "assets/slike/20260417_120301.jpg"
+    ],
+    "slika_alt": "Postav Drugog svjetskog rata s oružjem, dokumentima i zastavom čehoslovačke brigade"
+  },
+
+  {
+    "id": "domovinski-rat",
+    "naziv": "Domovinski rat u Daruvaru",
+    "kategorija": "ratovi",
+    "kratki_opis": "Spomen soba Domovinskog rata rađena od strane daruvarskih branitelja. Daruvar je u prvim tjednima rata obranilo 200–300 slabo naoružanih branitelja — neki su nosili traperice i oružje iz muzeja. Grad je među prvima u potpunosti oslobođen u prosincu 1991. Na području grada stradalo je 153 ljudi.",
+    "dugi_opis": "Spomen soba „Domovinski rat u Daruvaru” rađena je od strane pripadnika daruvarskih braniteljskih udruga — ljudi koji su obranili ovaj grad. Prvi sukob sa srpskim pobunjenicima dogodio se 19. 7. 1991. na lokaciji Purnica kada pogibaju dva hrvatska policajca. Iste noći pobunjenik ubija tri policajca u Svačićevoj ulici, 100 metara od dvorca. U noći 18./19. 8. 1991. policajci srpske nacionalnosti izvršavaju puč i odlaze s naoružanjem na područje pod kontrolom pobunjenika, ispalivši prve granate na grad. U prvih nekoliko tjedana grad je obranilo 200–300 slabo naoružanih policajaca i branitelja naprema 1600 dobro naoružanih pobunjenika. U obrani grada korišteno je čak oružje iz muzeja — Beretta, Stojnica Bren i MP40 uzeti su iz muzeja, osposobljeni i korišteni u obrani, a danas se ponovno nalaze u muzeju. Nakon oslobođenja vojarne „Polom” 17. 9. branitelji dolaze do naoružanja. Sva naselja općine Daruvar oslobođena su 15. 12. 1991. — jedna od prvih u potpunosti oslobođenih općina u Domovinskom ratu. U operaciji Bljesak 1995. 52. domobranskoj pukovniji predalo se oko 1500 neprijateljskih vojnika — 2. najveća predaja srpskih snaga. Stradalo je 153 ljudi, među njima Mirela Ljutak, prvo dijete poginulo u Domovinskom ratu u Hrvatskoj. Daruvar je danas multikulturalan grad u kojem nacionalne manjine žive zajedno.",
+    "easy_to_read_opis": "Ova soba govori o Domovinskom ratu u Daruvaru. Rat je počeo 1991. godine. Branitelji Daruvara nisu imali dovoljno oružja. Neki su nosili traperice umjesto uniformi. Ipak su uspjeli obraniti grad. Daruvar je bio među prvim oslobođenim gradovima. U ratu je poginulo 153 ljudi. Danas je Daruvar miroljubiv grad u kojem žive različite nacionalnosti.",
+    "prijevodi": {
+      "en": {
+        "naziv": "Croatian War of Independence in Daruvar",
+        "kratki_opis": "The Homeland War memorial room was created by Daruvar veterans. In the first weeks of war, 200–300 poorly armed defenders protected Daruvar — some wore jeans and used weapons from the museum. The city was among the first fully liberated in December 1991. 153 people were killed in the Daruvar area.",
+        "dugi_opis": "The memorial room was created by members of Daruvar veterans' associations — the people who defended this city. The first clash with Serbian rebels occurred on July 19, 1991. On August 18/19, rebel Serbian police officers defected with equipment and fired the first grenades at the city. In the first weeks, 200–300 poorly armed defenders held the city against 1,600 well-armed rebels. Museum weapons — a Beretta, Bren gun, and MP40 — were taken from the old museum, made operational, used in the city's defense, and are now back in the museum. After liberating the 'Polom' barracks on September 17, defenders gained proper armament. All settlements in Daruvar municipality were liberated by December 15, 1991 — making it one of the first fully liberated municipalities in the war. During Operation Flash in 1995, about 1,500 enemy soldiers surrendered to the 52nd Regiment. 153 people were killed, including Mirela Ljutak, the first child killed in the Croatian War of Independence. Today Daruvar is a multicultural city where national minorities live together in peace.",
+        "easy_to_read_opis": "This room is about the Homeland War in Daruvar. The war started in 1991. Daruvar's defenders did not have enough weapons. Some wore jeans instead of uniforms. But they managed to defend the city. Daruvar was among the first cities to be freed. 153 people died in the war. Today Daruvar is a peaceful city where different nationalities live together."
+      },
+      "cz": {
+        "naziv": "Válka za nezávislost Chorvatska v Daruvaru",
+        "kratki_opis": "Pamětní síň Vlastenecké války byla vytvořena daruvarskými obránci. V prvních týdnech války bránilo Daruvar 200–300 špatně vyzbrojených obránců — někteří nosili džíny a zbraně z muzea. Město bylo mezi prvními zcela osvobozenými v prosinci 1991. V oblasti Daruvaru zahynulo 153 lidí.",
+        "dugi_opis": "Pamětní síň „Vlastenecká válka v Daruvaru” vytvořili příslušníci daruvarských veteránských sdružení. První střet se srbskými povstalci se odehrál 19. 7. 1991. V noci z 18. na 19. 8. 1991 srbští policisté přeběhli se zbraněmi k povstalcům a vypálili první granáty na město. V prvních týdnech město bránilo 200–300 špatně vyzbrojených obránců proti 1600 dobře vyzbrojeným povstalcům. Při obraně města byly použity i zbraně z muzea — Beretta, Bren a MP40. Po osvobození kasáren „Polom” 17. září získali obránci výzbroj. Všechna sídla obce Daruvar byla osvobozena 15. 12. 1991. V operaci Blesk v roce 1995 se 52. pluku vzdalo asi 1500 nepřátelských vojáků. Zahynulo 153 lidí, mezi nimi Mirela Ljutak, první dítě padlé v chorvatské válce za nezávislost. Daruvar je dnes multikulturní město, kde národnostní menšiny žijí pospolu v míru.",
+        "easy_to_read_opis": "Tato místnost je o Vlastenecké válce v Daruvaru. Válka začala roku 1991. Obránci Daruvaru neměli dost zbraní. Někteří nosili džíny místo uniforem. Přesto se jim podařilo město ubránit. Daruvar byl mezi prvními osvobozenými městy. Ve válce zahynulo 153 lidí. Dnes je Daruvar mírové město, kde žijí společně různé národnosti."
+      }
+    },
+    "quest_pitanje": "Koliko je branitelja u početku branilo Daruvar?",
+    "quest_odgovori": ["2000-3000", "200-300", "5000"],
+    "quest_tocni_odgovor": 1,
+    "quest_zanimljivost": "U obrani Daruvara 1991. korišteno je oružje iz muzeja — Beretta, Bren i MP40 uzeti su iz starog postava, osposobljeni i korišteni u borbi, a danas se ponovo nalaze u muzeju!",
+    "slika_originalna": "assets/slike/20260417_120350.jpg",
+    "slike": [
+      "assets/slike/20260417_120350.jpg",
+      "assets/slike/20260417_120410.jpg",
+      "assets/slike/20260417_120454.jpg",
+      "assets/slike/20260417_120646.jpg",
+      "assets/slike/20260417_120618.jpg"
+    ],
+    "slika_alt": "Spomen soba Domovinskog rata s vojnim uniformama, oružjem i spomen zidom palih branitelja"
   }
 ]

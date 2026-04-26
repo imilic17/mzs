@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A3A1A">
+  <meta name="description" content="Portfolio projekta Muzej za sve — Samsung Challenge 2025./2026.">
+  <title>Portfolio — Muzej za sve</title>
+  <link rel="stylesheet" href="css/portfolio.css">
+</head>
+<body>
+
+  <!-- NAVIGACIJA -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__natrag">&larr; Natrag na aplikaciju</a>
+      <span class="nav__brand">Portfolio</span>
+      <button class="nav__hamburger" aria-label="Otvori izbornik" aria-expanded="false" onclick="this.nextElementSibling.classList.toggle('otvorena'); this.setAttribute('aria-expanded', this.nextElementSibling.classList.contains('otvorena'))">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <ul class="nav__lista">
+        <li><a href="tema.html">Tema</a></li>
+        <li><a href="istrazivanje.html">Istraživanje</a></li>
+        <li><a href="ko-kreacija.html">Korak dalje</a></li>
+        <li><a href="rezultat.html">Rezultat</a></li>
+        <li><a href="tim.html">Tim</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero hero--slika" style="background-image: url('../assets/slike/dvorac-izvana.jpg')">
+    <div class="hero__sadrzaj">
+      <h1 class="hero__naslov">Muzej za sve — Glasovi koji ostaju</h1>
+      <p class="hero__podnaslov">Digitalni vodič za Zavičajni muzej Daruvar koji je napravljen za SVE — uključujući osobe s intelektualnim teškoćama.</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- STATISTIKE -->
+    <section class="sekcija">
+      <div class="sekcija__sadrzaj">
+        <div class="statistike">
+          <div class="statistika">
+            <span class="statistika__broj">1 muzej</span>
+            <p class="statistika__tekst">Zavičajni muzej Daruvar — partner projekta</p>
+          </div>
+          <div class="statistika">
+            <span class="statistika__broj">1 udruga</span>
+            <p class="statistika__tekst">Korak dalje Daruvar — ko-autori sadržaja</p>
+          </div>
+          <div class="statistika">
+            <span class="statistika__broj">12 AI funkcija</span>
+            <p class="statistika__tekst">Samsung Galaxy alati kroz cijeli proces</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UN SDG CILJEVI -->
+    <section class="sekcija sekcija--krem">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">UN ciljevi održivog razvoja</h2>
+        <div class="sdg-lista">
+          <div class="sdg">
+            <div class="sdg__ikona sdg__ikona--4" aria-hidden="true">&#127891;</div>
+            <div>
+              <p class="sdg__naziv">SDG 4 — Kvalitetno obrazovanje</p>
+              <p class="sdg__opis">Prilagođeni opisi eksponata omogućuju učenje kulturne baštine svima.</p>
+            </div>
+          </div>
+          <div class="sdg">
+            <div class="sdg__ikona sdg__ikona--10" aria-hidden="true">&#9878;&#65039;</div>
+            <div>
+              <p class="sdg__naziv">SDG 10 — Smanjenje nejednakosti</p>
+              <p class="sdg__opis">Osobe s intelektualnim teškoćama postaju ko-autori javnog digitalnog sadržaja.</p>
+            </div>
+          </div>
+          <div class="sdg">
+            <div class="sdg__ikona sdg__ikona--11" aria-hidden="true">&#127963;&#65039;</div>
+            <div>
+              <p class="sdg__naziv">SDG 11 — Održivi gradovi i zajednice</p>
+              <p class="sdg__opis">Kulturna infrastruktura postaje dostupna bez dodatnih troškova.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NAVIGACIJSKE KARTICE -->
+    <section class="sekcija">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Sadržaj portfolia</h2>
+        <div class="nav-kartice">
+          <a href="tema.html" class="nav-kartica">
+            <span class="nav-kartica__naziv">Tema projekta</span>
+            <span class="nav-kartica__strelica">&rarr;</span>
+          </a>
+          <a href="istrazivanje.html" class="nav-kartica">
+            <span class="nav-kartica__naziv">Istraživanje</span>
+            <span class="nav-kartica__strelica">&rarr;</span>
+          </a>
+          <a href="ko-kreacija.html" class="nav-kartica">
+            <span class="nav-kartica__naziv">Korak dalje</span>
+            <span class="nav-kartica__strelica">&rarr;</span>
+          </a>
+          <a href="rezultat.html" class="nav-kartica">
+            <span class="nav-kartica__naziv">Rezultat</span>
+            <span class="nav-kartica__strelica">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p><strong>Samsung Challenge 2025./2026.</strong></p>
+    <p>Tehnička škola Daruvar</p>
+    <p>Tim: Dominik Dušek &middot; Lena Sakar &middot; Darijan Vašatko</p>
+    <p>Mentorica: Ivana Milić, mag.inf.</p>
+  </footer>
+
+</body>
+</html>

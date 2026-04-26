@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"C:\\\\Users\\\\Korisnik\\\\Downloads\\\\Samsung Challenge-20260331T225043Z-3-001\\\\Samsung Challenge\\\\mzs\\\\portfolio\\\\css\")",
+      "Bash(mkdir -p \"C:\\\\Users\\\\Korisnik\\\\Downloads\\\\Samsung Challenge-20260331T225043Z-3-001\\\\Samsung Challenge\\\\mzs\\\\portfolio\\\\assets\\\\slike\")",
+      "Bash(pip install *)",
+      "Bash(python3 *)",
+      "Bash(python *)",
+      "Bash(echo \"---EXIT:$?\")"
+    ]
+  }
+}

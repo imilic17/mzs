@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A3A1A">
+  <meta name="description" content="Ko-kreacija s udrugom Korak dalje — Portfolio Muzej za sve">
+  <title>Korak dalje — Portfolio · Muzej za sve</title>
+  <link rel="stylesheet" href="css/portfolio.css">
+  <style>
+    .primjer {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .primjer__slika {
+      width: 100%;
+      max-height: 360px;
+      object-fit: cover;
+    }
+    .primjer__sadrzaj {
+      padding: 1.5rem;
+    }
+    .primjer__naslov {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--boja-naglasak);
+      margin-bottom: 1.25rem;
+    }
+    .tekst-faza {
+      margin-bottom: 1.25rem;
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+    }
+    .tekst-faza__label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.35rem;
+    }
+    .tekst-faza__sadrzaj {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--boja-siva);
+    }
+    .faza--kustos {
+      background: #FDF0F0;
+      border-left: 4px solid #7A1A1A;
+    }
+    .faza--kustos .tekst-faza__label { color: #7A1A1A; }
+    .faza--ai {
+      background: #F0F5F0;
+      border-left: 4px solid var(--boja-naglasak);
+    }
+    .faza--ai .tekst-faza__label { color: var(--boja-naglasak); }
+    .faza--korisnik {
+      background: #FFF9EC;
+      border-left: 4px solid var(--boja-zlatna);
+    }
+    .faza--korisnik .tekst-faza__label { color: #8A7030; }
+    .strelica-dolje {
+      text-align: center;
+      font-size: 1.5rem;
+      color: var(--boja-siva);
+      margin: 0.5rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGACIJA -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__natrag">&larr; Natrag na aplikaciju</a>
+      <span class="nav__brand">Portfolio</span>
+      <button class="nav__hamburger" aria-label="Otvori izbornik" aria-expanded="false" onclick="this.nextElementSibling.classList.toggle('otvorena'); this.setAttribute('aria-expanded', this.nextElementSibling.classList.contains('otvorena'))">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <ul class="nav__lista">
+        <li><a href="tema.html">Tema</a></li>
+        <li><a href="istrazivanje.html">Istraživanje</a></li>
+        <li><a href="ko-kreacija.html" class="aktivna">Korak dalje</a></li>
+        <li><a href="rezultat.html">Rezultat</a></li>
+        <li><a href="tim.html">Tim</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero__sadrzaj">
+      <h1 class="hero__naslov">Korak dalje — ko-kreacija</h1>
+      <p class="hero__podnaslov">Najvažnija odluka u projektu nije bila tehnička — bila je etička. Osobe s intelektualnim teškoćama nisu bile naša "ciljna skupina". Bile su ko-autori.</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- TKO JE KORAK DALJE -->
+    <section class="sekcija">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Tko je Korak dalje</h2>
+        <p class="sekcija__uvod">Udruga "Korak dalje" Daruvar aktivna je organizacija za osobe s intelektualnim teškoćama. Surađivali smo s korisnicima koji su sposobni čitati uz podršku i koji su željeli sudjelovati u opisivanju onoga što vide.</p>
+      </div>
+    </section>
+
+    <!-- METODA -->
+    <section class="sekcija sekcija--krem">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Kako smo surađivali</h2>
+        <p class="sekcija__uvod">Korisnici Korak dalje ne mogu ići u muzej s nama — ali muzej može doći k njima. Donijeli smo fotografije, pojednostavljene tekstove i Samsung Galaxy uređaje u prostor udruge. Testirali smo tri funkcionalnosti mobitela zajedno s korisnicima.</p>
+        <div class="koraci">
+
+          <div class="korak">
+            <div class="korak__broj">&#9312;</div>
+            <div>
+              <h3 class="korak__naslov">Kustosov tekst → Summarise → Writing Assist</h3>
+              <p class="korak__tekst">Stručni tekst od kustosa prvo smo proveli kroz Summarise (sažetak), a zatim kroz Writing Assist s opcijom Casual. Rezultat su kratke, jasne rečenice s crticom na kraju — prilagođene za čitanje naglas.</p>
+            </div>
+          </div>
+
+          <div class="korak">
+            <div class="korak__broj">&#9313;</div>
+            <div>
+              <h3 class="korak__naslov">Isprintani tekstovi za korisnike</h3>
+              <p class="korak__tekst">Printali smo dva gotova teksta — jedan o dvorcu Janković, drugi o ginko stablu. Korisnici su ih čitali naglas vlastitim tempom dok smo snimali.</p>
+            </div>
+          </div>
+
+          <div class="korak">
+            <div class="korak__broj">&#9314;</div>
+            <div>
+              <h3 class="korak__naslov">Circle to Search — prepoznavanje eksponata</h3>
+              <p class="korak__tekst">Dali smo korisnicima fotografiju muzejske vitrine s više detalja. Olovkom za ekran (S Pen) zaokružili su predmet koji ih zanima — AI je odmah vratio tekstualni opis bez potrebe za tipkanjem.</p>
+            </div>
+          </div>
+
+          <div class="korak">
+            <div class="korak__broj">&#9315;</div>
+            <div>
+              <h3 class="korak__naslov">Sketch to Image — crtanje eksponata</h3>
+              <p class="korak__tekst">Korisnik koji voli crtati pokušao je nacrtati kako zamišlja predmet iz muzeja — npr. šalicu iz koje je pio grof Janković. AI je pretvorio skicu u realističnu sliku.</p>
+            </div>
+          </div>
+
+          <div class="korak">
+            <div class="korak__broj">&#9316;</div>
+            <div>
+              <h3 class="korak__naslov">Njihov glas u aplikaciji</h3>
+              <p class="korak__tekst">Snimke čitanja transkribirane su pomoću Live Transcribe. Konačni opisi u aplikaciji su tekst koji su korisnici čitali naglas — kad posjetitelj klikne "Slušaj", čuje te iste riječi.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIRANJE 1: WRITING ASSIST — DVORAC JANKOVIĆ -->
+    <section class="sekcija">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Testiranje 1 — Writing Assist</h2>
+        <p class="sekcija__uvod">Korisnici su dobili dva isprintana teksta koja smo pripremili iz kustosovih izvora pomoću Summarise i Writing Assist (Casual). Čitali su ih naglas, a mi smo snimali.</p>
+
+        <div class="primjer">
+          <img class="primjer__slika" src="../assets/slike/20260417_121421.jpg" alt="Fasada dvorca Janković — barokna zgrada sa zelenim travnjakom i stazom" loading="lazy">
+          <div class="primjer__sadrzaj">
+            <h3 class="primjer__naslov">Tekst 1 — Dvorac Janković</h3>
+
+            <div class="tekst-faza faza--kustos">
+              <p class="tekst-faza__label">Kustosov stručni opis (izvor)</p>
+              <p class="tekst-faza__sadrzaj">Dvorac Janković sagrađen je u drugoj polovici 18. stoljeća, nakon što je Antun Janković 1760. godine otkupio vlastelinstvo Daruvar. Obitelj Janković uložila je u obnovu i razvoj tada zapuštenog područja — obnovili su termalne izvore, doveli nove stanovnike i izgradili reprezentativni barokni dvorac.</p>
+            </div>
+
+            <div class="strelica-dolje" aria-hidden="true">&darr; Summarise + Writing Assist (Casual)</div>
+
+            <div class="tekst-faza faza--ai">
+              <p class="tekst-faza__label">Konačni easy-to-read tekst (isprintan korisnicima)</p>
+              <p class="tekst-faza__sadrzaj">
+                Ovo je dvorac. —<br>
+                Zove se dvorac Janković. —<br>
+                Sagradio ga je grof Antun. —<br>
+                Bilo je to prije više od 200 godina. —<br>
+                Dugo je bio škola. —<br>
+                Sada je muzej. —<br>
+                Dobrodošli!
+              </p>
+            </div>
+
+            <div class="strelica-dolje" aria-hidden="true">&darr; Korisnik čita naglas</div>
+
+            <div class="tekst-faza faza--korisnik">
+              <p class="tekst-faza__label">Snimka korisnika</p>
+              <p class="tekst-faza__sadrzaj">[PLACEHOLDER: Snimka korisnika Korak dalje kako čita tekst naglas. Transkribirati pomoću Live Transcribe.]</p>
+            </div>
+
+            <div class="placeholder" style="margin-top: 1rem;">
+              <p>&#128241; Fotografija / video korisnika kako čita tekst</p>
+              <small>Dodati nakon posjeta udruzi Korak dalje</small>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="primjer">
+          <img class="primjer__slika" src="../assets/slike/20260417_121645.jpg" alt="Drvored i velika stabla u parku dvorca Janković" loading="lazy">
+          <div class="primjer__sadrzaj">
+            <h3 class="primjer__naslov">Tekst 2 — Ginko stablo</h3>
+
+            <div class="tekst-faza faza--kustos">
+              <p class="tekst-faza__label">Kustosov stručni opis (izvor)</p>
+              <p class="tekst-faza__sadrzaj">Ginkgo biloba stabla u daruvarskomparku posađena su u drugoj polovici 19. stoljeća. Vrsta je preživjela pad asteroida koji je uništio dinosaure. U parku je posađen par — muško i žensko stablo — što je rijetko u europskim parkovima.</p>
+            </div>
+
+            <div class="strelica-dolje" aria-hidden="true">&darr; Summarise + Writing Assist (Casual)</div>
+
+            <div class="tekst-faza faza--ai">
+              <p class="tekst-faza__label">Konačni easy-to-read tekst (isprintan korisnicima)</p>
+              <p class="tekst-faza__sadrzaj">
+                Ovo je jako staro stablo. —<br>
+                Zove se ginko. —<br>
+                Ima skoro 250 godina. —<br>
+                Najstarije je takvo stablo u Hrvatskoj. —<br>
+                Postojalo je još dok su živjeli dinosauri. —<br>
+                Zovemo ga Adam.
+              </p>
+            </div>
+
+            <div class="strelica-dolje" aria-hidden="true">&darr; Korisnik čita naglas</div>
+
+            <div class="tekst-faza faza--korisnik">
+              <p class="tekst-faza__label">Snimka korisnika</p>
+              <p class="tekst-faza__sadrzaj">[PLACEHOLDER: Snimka korisnika Korak dalje kako čita tekst naglas. Transkribirati pomoću Live Transcribe.]</p>
+            </div>
+
+            <div class="placeholder" style="margin-top: 1rem;">
+              <p>&#128241; Fotografija / video korisnika kako čita tekst</p>
+              <small>Dodati nakon posjeta udruzi Korak dalje</small>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIRANJE 2: CIRCLE TO SEARCH -->
+    <section class="sekcija sekcija--krem">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Testiranje 2 — Circle to Search</h2>
+        <p class="sekcija__uvod">Korisnik dobiva fotografiju muzejske vitrine s više predmeta na ekranu mobitela. S Pen olovkom zaokružuje predmet koji ga zanima — AI odmah vraća tekstualni opis bez tipkanja.</p>
+
+        <div class="primjer">
+          <div class="primjer__sadrzaj">
+            <h3 class="primjer__naslov">Korisnik zaokružuje predmet na fotografiji</h3>
+
+            <div class="tekst-faza faza--ai">
+              <p class="tekst-faza__label">Kako radi</p>
+              <p class="tekst-faza__sadrzaj">Korisnik gleda fotografiju vitrine na ekranu Samsung Galaxy uređaja. Olovkom zaokruži predmet koji ga zanima. Google pretraživanje se pokreće automatski i vraća opis zaokruženog predmeta — ime, povijest, kontekst. Nije potrebno tipkati niti znati kako se predmet zove.</p>
+            </div>
+
+            <div class="placeholder">
+              <p>&#128241; Fotografija / video korisnika kako koristi Circle to Search</p>
+              <p>Korisnik zaokružuje predmet na ekranu pomoću S Pen olovke</p>
+              <small>Dodati nakon posjeta udruzi Korak dalje</small>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIRANJE 3: SKETCH TO IMAGE -->
+    <section class="sekcija">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Testiranje 3 — Sketch to Image</h2>
+        <p class="sekcija__uvod">Korisnik koji voli crtati pokušava nacrtati predmet iz muzeja pomoću S Pen olovke na ekranu mobitela — AI pretvara skicu u realističnu sliku.</p>
+
+        <div class="primjer">
+          <div class="primjer__sadrzaj">
+            <h3 class="primjer__naslov">Korisnik crta, AI vizualizira</h3>
+
+            <div class="tekst-faza faza--ai">
+              <p class="tekst-faza__label">Kako radi</p>
+              <p class="tekst-faza__sadrzaj">Korisnik na ekranu mobitela olovkom crta kako zamišlja predmet iz muzeja — npr. šalicu iz koje je pio grof Janković, ili drugi predmet po želji. Na drugom mobitelu može vidjeti referentnu sliku. Sketch to Image pretvara grubu skicu u fotorealističnu vizualizaciju.</p>
+            </div>
+
+            <div class="placeholder">
+              <p>&#128241; Fotografija korisnika kako crta na ekranu + AI rezultat</p>
+              <p>Skica korisnika i Sketch to Image rezultat</p>
+              <small>Dodati nakon posjeta udruzi Korak dalje</small>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REZULTAT KO-KREACIJE -->
+    <section class="sekcija sekcija--krem">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Rezultat ko-kreacije</h2>
+        <div class="rezultat-grid">
+          <div class="rezultat-item">
+            <strong>Testirane funkcionalnosti</strong>
+            <span>3 (Writing Assist, Circle to Search, Sketch to Image)</span>
+          </div>
+          <div class="rezultat-item">
+            <strong>Easy-to-read tekstovi</strong>
+            <span>2 teksta (Dvorac Janković, Ginkgo biloba)</span>
+          </div>
+          <div class="rezultat-item">
+            <strong>Uključeni korisnici</strong>
+            <span>[PLACEHOLDER: broj korisnika udruge Korak dalje]</span>
+          </div>
+          <div class="rezultat-item">
+            <strong>Korišten u</strong>
+            <span>Vodič mod aplikacije, gumb "Slušaj"</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p><strong>Samsung Challenge 2025./2026.</strong></p>
+    <p>Tehnička škola Daruvar</p>
+    <p>Tim: Dominik Dušek &middot; Lena Sakar &middot; Darijan Vašatko</p>
+    <p>Mentorica: Ivana Milić, mag.inf.</p>
+  </footer>
+
+</body>
+</html>

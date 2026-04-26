@@ -271,6 +271,33 @@
          osobama s intelektualnim teškoćama.
          WCAG 3.1.5 — razina čitljivosti.
     ───────────────────────────────────────── */
+    .jezik-prekidac {
+      display: flex;
+      gap: 0.5rem;
+      margin: 0.75rem 0;
+    }
+    .jezik-gumb {
+      min-width: 52px;
+      min-height: 44px;
+      padding: 0.4rem 0.75rem;
+      border: 2px solid var(--zelena-mid, #2D5C2D);
+      border-radius: 8px;
+      background: var(--krem, #F4EFE4);
+      color: var(--zelena, #1A3A1A);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .jezik-gumb--aktivan {
+      background: var(--zelena, #1A3A1A);
+      color: var(--krem, #F4EFE4);
+    }
+    .jezik-gumb:focus-visible {
+      outline: 3px solid var(--zlatna, #C8A84B);
+      outline-offset: 2px;
+    }
+
     .gumb-tts {
       display: flex;
       align-items: center;
@@ -506,10 +533,13 @@
        Ista tablica kao u vodic/index.html.
     ──────────────────────────────────────── */
     const KATEGORIJE = {
-      'rimsko-doba':    'Rimsko doba',
-      'dvorac-i-barok': 'Dvorac i barok',
-      'priroda':        'Priroda',
-      'ceska-bastina':  'Češka baština',
+      'rimsko-doba':       'Rimsko doba',
+      'dvorac-i-barok':    'Dvorac i barok',
+      'priroda':           'Priroda',
+      'zidovska-bastina':  'Židovska baština',
+      'galerija':          'Galerija',
+      'ratovi':            'Ratovi',
+      'ceska-bastina':     'Češka baština',
     };
 
     /* Placeholder SVG ilustracije — tematske po kategoriji.
@@ -557,6 +587,47 @@
           <line x1="40" y1="48" x2="20" y2="20" stroke="#1A4A1A" stroke-width="1" opacity="0.25"/>
           <line x1="40" y1="48" x2="60" y2="20" stroke="#1A4A1A" stroke-width="1" opacity="0.25"/>
           <ellipse cx="40" cy="90" rx="4" ry="5" fill="#C8A84B" opacity="0.5"/>
+        </svg>`
+      },
+      'zidovska-bastina': {
+        pozadina: '#E8E0D0',
+        svg: `<svg width="96" height="112" viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <line x1="40" y1="20" x2="40" y2="82" stroke="#8B6A2F" stroke-width="3" opacity="0.5"/>
+          <rect x="26" y="82" width="28" height="6" rx="3" fill="#8B6A2F" opacity="0.5"/>
+          <path d="M40 50 Q28 48 22 28" stroke="#8B6A2F" stroke-width="2.5" fill="none" opacity="0.4"/>
+          <path d="M40 60 Q20 56 14 28" stroke="#8B6A2F" stroke-width="2.5" fill="none" opacity="0.4"/>
+          <path d="M40 70 Q12 64 8 28" stroke="#8B6A2F" stroke-width="2.5" fill="none" opacity="0.4"/>
+          <path d="M40 50 Q52 48 58 28" stroke="#8B6A2F" stroke-width="2.5" fill="none" opacity="0.4"/>
+          <path d="M40 60 Q60 56 66 28" stroke="#8B6A2F" stroke-width="2.5" fill="none" opacity="0.4"/>
+          <path d="M40 70 Q68 64 72 28" stroke="#8B6A2F" stroke-width="2.5" fill="none" opacity="0.4"/>
+          <ellipse cx="8" cy="22" rx="3" ry="5" fill="#C8A84B" opacity="0.6"/>
+          <ellipse cx="14" cy="22" rx="3" ry="5" fill="#C8A84B" opacity="0.6"/>
+          <ellipse cx="22" cy="22" rx="3" ry="5" fill="#C8A84B" opacity="0.6"/>
+          <ellipse cx="40" cy="14" rx="3" ry="6" fill="#C8A84B" opacity="0.7"/>
+          <ellipse cx="58" cy="22" rx="3" ry="5" fill="#C8A84B" opacity="0.6"/>
+          <ellipse cx="66" cy="22" rx="3" ry="5" fill="#C8A84B" opacity="0.6"/>
+          <ellipse cx="72" cy="22" rx="3" ry="5" fill="#C8A84B" opacity="0.6"/>
+        </svg>`
+      },
+      'galerija': {
+        pozadina: '#F0E8E0',
+        svg: `<svg width="96" height="112" viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="10" y="16" width="60" height="48" rx="2" stroke="#6A4A3A" stroke-width="3" fill="none" opacity="0.4"/>
+          <rect x="16" y="22" width="48" height="36" rx="1" fill="#6A4A3A" opacity="0.12"/>
+          <path d="M16 46 L28 32 L38 40 L50 28 L64 42 L64 58 L16 58 Z" fill="#6A4A3A" opacity="0.2"/>
+          <circle cx="54" cy="28" r="4" fill="#C8A84B" opacity="0.4"/>
+          <line x1="40" y1="64" x2="40" y2="82" stroke="#6A4A3A" stroke-width="2.5" opacity="0.4"/>
+          <line x1="28" y1="82" x2="52" y2="82" stroke="#6A4A3A" stroke-width="2.5" opacity="0.4"/>
+          <line x1="40" y1="72" x2="28" y2="82" stroke="#6A4A3A" stroke-width="2" opacity="0.3"/>
+          <line x1="40" y1="72" x2="52" y2="82" stroke="#6A4A3A" stroke-width="2" opacity="0.3"/>
+        </svg>`
+      },
+      'ratovi': {
+        pozadina: '#D8D0C0',
+        svg: `<svg width="96" height="112" viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M40 10 L66 22 L66 52 Q66 76 40 88 Q14 76 14 52 L14 22 Z" fill="#5A4A3A" opacity="0.15" stroke="#5A4A3A" stroke-width="2.5"/>
+          <line x1="40" y1="24" x2="40" y2="72" stroke="#5A4A3A" stroke-width="3" opacity="0.3"/>
+          <line x1="24" y1="44" x2="56" y2="44" stroke="#5A4A3A" stroke-width="3" opacity="0.3"/>
         </svg>`
       },
       'default': {
@@ -627,7 +698,22 @@
         window.speechSynthesis.speak(izgovor);
       },
 
-      /* Zaustavi aktivno čitanje */
+      citajJezik(tekst, lang, gumb) {
+        window.speechSynthesis.cancel();
+        const izgovor = new SpeechSynthesisUtterance(tekst);
+        izgovor.lang  = lang;
+        izgovor.rate  = 0.92;
+        izgovor.pitch = 1.0;
+        this.izgovor  = izgovor;
+        izgovor.onstart = () => { this.govori = true; this._postaviGumb(gumb, true); };
+        izgovor.onend = () => { this.govori = false; this._postaviGumb(gumb, false); };
+        izgovor.onerror = (e) => {
+          if (e.error !== 'interrupted') console.warn('TTS greška:', e.error);
+          this.govori = false; this._postaviGumb(gumb, false);
+        };
+        window.speechSynthesis.speak(izgovor);
+      },
+
       zaustavi() {
         window.speechSynthesis.cancel();
         this.govori = false;
@@ -723,25 +809,60 @@
        KORAK 3 — Prikaži eksponat na stranici.
        Gradi HTML strukturu i ubacuje je u DOM.
     ════════════════════════════════════════ */
+    let trenutniJezik = 'hr';
+    let trenutniEksponat = null;
+
+    function dohvatiTekst(e, polje, jezik) {
+      if (jezik === 'hr') return e[polje] ?? '';
+      const p = e.prijevodi?.[jezik];
+      return p?.[polje] ?? e[polje] ?? '';
+    }
+
+    function azurirajJezik(jezik) {
+      trenutniJezik = jezik;
+      const e = trenutniEksponat;
+      if (!e) return;
+
+      tts.zaustavi();
+
+      const naziv = dohvatiTekst(e, 'naziv', jezik);
+      const opisPrikaz = dohvatiTekst(e, 'easy_to_read_opis', jezik) || dohvatiTekst(e, 'kratki_opis', jezik);
+      const strucni = dohvatiTekst(e, 'dugi_opis', jezik) || dohvatiTekst(e, 'kratki_opis', jezik);
+
+      const elNaziv = document.querySelector('.naziv');
+      const elOpis = document.getElementById('tekst-opisa');
+      const elStrucni = document.getElementById('strucni-tekst');
+      if (elNaziv) elNaziv.textContent = naziv;
+      if (elOpis) elOpis.textContent = opisPrikaz;
+      if (elStrucni) elStrucni.textContent = strucni;
+
+      document.querySelectorAll('.jezik-gumb').forEach(g => {
+        g.classList.toggle('jezik-gumb--aktivan', g.dataset.jezik === jezik);
+        g.setAttribute('aria-pressed', g.dataset.jezik === jezik);
+      });
+
+      const ttsLang = jezik === 'cz' ? 'cs-CZ' : jezik === 'en' ? 'en-US' : 'hr-HR';
+      const gumbTts = document.getElementById('gumb-tts');
+      if (gumbTts) {
+        gumbTts.dataset.ttsText = opisPrikaz;
+        gumbTts.dataset.ttsLang = ttsLang;
+      }
+    }
+
     function prikaziEksponat(kontejner, e) {
-      /* Ažuriraj naslov kartice i title stranice */
+      trenutniEksponat = e;
+
       document.title = `${e.naziv} — Muzej za sve`;
       const zaglavljeKat = document.getElementById('zaglavlje-kategorija');
       zaglavljeKat.textContent = KATEGORIJE[e.kategorija] ?? 'Vodič';
 
-      /* Pripremi podatke za prikaz */
       const ph = PLACEHOLDER_SVG[e.kategorija] ?? PLACEHOLDER_SVG['default'];
       const altTekst = e.slika_alt ?? `Fotografija eksponata: ${e.naziv}`;
       const kategNaziv = KATEGORIJE[e.kategorija] ?? e.kategorija;
 
-      /* Tekst koji TTS čita: easy_to_read_opis (pristupačna verzija).
-         Fallback: kratki_opis ako easy_to_read_opis ne postoji u JSON-u. */
       const ttsText = e.easy_to_read_opis ?? e.kratki_opis ?? e.naziv;
-
-      /* Prikazani opis: easy_to_read_opis (jednostavan, s Korak dalje). */
       const opisPrikaz = e.easy_to_read_opis ?? e.kratki_opis ?? '';
 
-      /* Fotografija — ako postoji */
       const slikaHtml = e.slika_originalna
         ? `<img
              class="foto-slika"
@@ -750,14 +871,14 @@
              onerror="this.classList.add('foto-slika--greska')">`
         : '';
 
-      /* Stručni opis (kratki_opis) — u sklonjenom odjeljku */
-      const strucniHtml = e.kratki_opis && e.kratki_opis !== opisPrikaz
+      const strucniTekst = e.dugi_opis || e.kratki_opis || '';
+      const strucniHtml = strucniTekst && strucniTekst !== opisPrikaz
         ? `<div class="strucni-sekcija">
              <button class="strucni-toggle"
                      aria-expanded="false"
                      aria-controls="strucni-tekst"
                      onclick="preklopi(this)">
-               Stručni opis
+               Stručni opis kustosa
                <svg class="strucni-toggle__ikona" width="20" height="20"
                     viewBox="0 0 20 20" fill="none" aria-hidden="true">
                  <path d="M5 8 L10 13 L15 8"
@@ -765,16 +886,26 @@
                        stroke-linecap="round" stroke-linejoin="round"/>
                </svg>
              </button>
-             <p class="strucni-tekst" id="strucni-tekst">${e.kratki_opis}</p>
+             <p class="strucni-tekst" id="strucni-tekst">${strucniTekst}</p>
            </div>`
         : '';
 
-      /* TTS gumb ili upozorenje ako TTS nije podržan */
+      const imaPreijevode = e.prijevodi && (e.prijevodi.en || e.prijevodi.cz);
+      const jezikHtml = imaPreijevode
+        ? `<div class="jezik-prekidac" role="group" aria-label="Odaberi jezik">
+             <button class="jezik-gumb jezik-gumb--aktivan" data-jezik="hr" aria-pressed="true" onclick="azurirajJezik('hr')">HR</button>
+             ${e.prijevodi.en ? '<button class="jezik-gumb" data-jezik="en" aria-pressed="false" onclick="azurirajJezik(\'en\')">EN</button>' : ''}
+             ${e.prijevodi.cz ? '<button class="jezik-gumb" data-jezik="cz" aria-pressed="false" onclick="azurirajJezik(\'cz\')">CZ</button>' : ''}
+           </div>`
+        : '';
+
       const ttsPodrzano = tts.podrzano();
       const ttsHtml = ttsPodrzano
         ? `<button class="gumb-tts"
                    id="gumb-tts"
-                   aria-label="Slušaj glasovni opis eksponata na hrvatskom jeziku"
+                   data-tts-text="${ttsText.replace(/"/g, '&quot;')}"
+                   data-tts-lang="hr-HR"
+                   aria-label="Slušaj glasovni opis eksponata"
                    aria-pressed="false">
              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
                <path d="M4 10 L4 18 L9 18 L16 24 L16 4 L9 10 Z" fill="currentColor"/>
@@ -790,7 +921,6 @@
              Pokušaj otvoriti stranicu u Chrome ili Safari.
            </p>`;
 
-      /* Upiši kompletni HTML u kontejner */
       kontejner.innerHTML = `
 
         <!-- ── FOTOGRAFIJA ── -->
@@ -810,15 +940,16 @@
           <!-- Kategorija bedž -->
           <span class="badge">${kategNaziv}</span>
 
-          <!-- Naziv eksponata — 28px bold -->
+          <!-- Naziv eksponata -->
           <h1 class="naziv">${e.naziv}</h1>
 
-          <!-- TTS gumb — odmah ispod naziva za brz pristup.
-               Namjerno PRIJE opisa: na Flex Mode Z Fold7
-               korisnik vidi gumb bez scrollanja. -->
+          <!-- Jezik prekidač -->
+          ${jezikHtml}
+
+          <!-- TTS gumb -->
           ${ttsHtml}
 
-          <!-- Opis u jednostavnom jeziku — 22px -->
+          <!-- Opis u jednostavnom jeziku -->
           <div class="opis-sekcija">
             <span class="sekcija__naslov">Opis</span>
             <p class="opis-tekst" id="tekst-opisa">${opisPrikaz}</p>
@@ -829,14 +960,15 @@
         </div>
       `;
 
-      /* Nakon što je HTML u DOM-u — postavi event listener na TTS gumb */
       if (ttsPodrzano) {
         const gumb = document.getElementById('gumb-tts');
         gumb.addEventListener('click', () => {
           if (tts.govori) {
             tts.zaustavi();
           } else {
-            tts.citaj(ttsText, gumb);
+            const tekst = gumb.dataset.ttsText;
+            const lang = gumb.dataset.ttsLang;
+            tts.citajJezik(tekst, lang, gumb);
           }
         });
       }

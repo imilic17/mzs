@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A3A1A">
+  <meta name="description" content="Tema i problem — Portfolio Muzej za sve">
+  <title>Tema — Portfolio · Muzej za sve</title>
+  <link rel="stylesheet" href="css/portfolio.css">
+</head>
+<body>
+
+  <!-- NAVIGACIJA -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__natrag">&larr; Natrag na aplikaciju</a>
+      <span class="nav__brand">Portfolio</span>
+      <button class="nav__hamburger" aria-label="Otvori izbornik" aria-expanded="false" onclick="this.nextElementSibling.classList.toggle('otvorena'); this.setAttribute('aria-expanded', this.nextElementSibling.classList.contains('otvorena'))">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <ul class="nav__lista">
+        <li><a href="tema.html" class="aktivna">Tema</a></li>
+        <li><a href="istrazivanje.html">Istraživanje</a></li>
+        <li><a href="ko-kreacija.html">Korak dalje</a></li>
+        <li><a href="rezultat.html">Rezultat</a></li>
+        <li><a href="tim.html">Tim</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero__sadrzaj">
+      <h1 class="hero__naslov">Tema i problem</h1>
+      <p class="hero__podnaslov">Zašto je ovaj projekt potreban i kako se uklapa u UN ciljeve održivog razvoja.</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- PROBLEM -->
+    <section class="sekcija">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Problem</h2>
+        <p class="sekcija__uvod">Zavičajni muzej Daruvar čuva više od 2000 godina povijesti — od rimskog naselja Aquae Balissae, kroz epohu grofova Janković, do Domovinskog rata. No opisi eksponata pisani su stručnim jezikom koji veliki dio posjetitelja ne može razumjeti.</p>
+        <p class="sekcija__uvod">Posebno je isključena skupina osoba s intelektualnim teškoćama. Prema podacima udruge Korak dalje Daruvar, koja broji 20+ aktivnih korisnika, nije postojao niti jedan prilagođeni materijal za posjet muzeju.</p>
+        <p class="sekcija__uvod">Drugi problem: od 50 ispitanih vršnjaka učenika Tehničke škole Daruvar, samo 3 posjetila su muzej u prošloj godini izvan školske obveze. Muzej postoji — ali za mnoge praktički ne postoji.</p>
+      </div>
+    </section>
+
+    <!-- LOKALNA ZAJEDNICA -->
+    <section class="sekcija sekcija--krem">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Lokalna zajednica</h2>
+        <div class="kartice-grid kartice-grid--3">
+          <div class="kartica">
+            <h3 class="kartica__naslov">Zavičajni muzej Daruvar</h3>
+            <p class="kartica__tekst">Osnovan 2022. u dvorcu Janković (1777.). Čuva rimsku, baroknu i modernu baštinu daruvarskog kraja.</p>
+            <p class="kartica__meta">Partner: kustos Leo Žukina</p>
+          </div>
+          <div class="kartica">
+            <h3 class="kartica__naslov">Udruga "Korak dalje" Daruvar</h3>
+            <p class="kartica__tekst">Organizacija za osobe s intelektualnim teškoćama. Ko-autori sadržaja aplikacije — njihove riječi, njihov glas.</p>
+            <p class="kartica__meta">Ko-autori sadržaja aplikacije</p>
+          </div>
+          <div class="kartica">
+            <h3 class="kartica__naslov">Tehnička škola Daruvar</h3>
+            <p class="kartica__tekst">Programski smjer — učenici izvođači projekta. Tri učenika, jedna mentorica, jedno natjecanje.</p>
+            <p class="kartica__meta">Mentorica: Ivana Milić, mag.inf.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UN CILJEVI -->
+    <section class="sekcija">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">UN ciljevi održivog razvoja</h2>
+        <div class="sdg-lista">
+          <div class="sdg">
+            <div class="sdg__ikona sdg__ikona--4" aria-hidden="true">&#127891;</div>
+            <div>
+              <p class="sdg__naziv">SDG 4 — Kvalitetno obrazovanje</p>
+              <p class="sdg__opis">Prilagođeni easy-to-read opisi eksponata omogućuju učenje kulturne baštine svima, bez obzira na razinu pismenosti.</p>
+            </div>
+          </div>
+          <div class="sdg">
+            <div class="sdg__ikona sdg__ikona--10" aria-hidden="true">&#9878;&#65039;</div>
+            <div>
+              <p class="sdg__naziv">SDG 10 — Smanjenje nejednakosti</p>
+              <p class="sdg__opis">Osobe s intelektualnim teškoćama postaju ko-autori javnog digitalnog sadržaja — vidljivi i uključeni.</p>
+            </div>
+          </div>
+          <div class="sdg">
+            <div class="sdg__ikona sdg__ikona--11" aria-hidden="true">&#127963;&#65039;</div>
+            <div>
+              <p class="sdg__naziv">SDG 11 — Održivi gradovi i zajednice</p>
+              <p class="sdg__opis">Kulturna infrastruktura postaje dostupna bez dodatnih troškova za muzej ili posjetitelje.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p><strong>Samsung Challenge 2025./2026.</strong></p>
+    <p>Tehnička škola Daruvar</p>
+    <p>Tim: Dominik Dušek &middot; Lena Sakar &middot; Darijan Vašatko</p>
+    <p>Mentorica: Ivana Milić, mag.inf.</p>
+  </footer>
+
+</body>
+</html>

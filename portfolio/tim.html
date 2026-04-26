@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A3A1A">
+  <meta name="description" content="Tim — tko stoji iza projekta Muzej za sve">
+  <title>Tim — Portfolio · Muzej za sve</title>
+  <link rel="stylesheet" href="css/portfolio.css">
+</head>
+<body>
+
+  <!-- NAVIGACIJA -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__natrag">&larr; Natrag na aplikaciju</a>
+      <span class="nav__brand">Portfolio</span>
+      <button class="nav__hamburger" aria-label="Otvori izbornik" aria-expanded="false" onclick="this.nextElementSibling.classList.toggle('otvorena'); this.setAttribute('aria-expanded', this.nextElementSibling.classList.contains('otvorena'))">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <ul class="nav__lista">
+        <li><a href="tema.html">Tema</a></li>
+        <li><a href="istrazivanje.html">Istraživanje</a></li>
+        <li><a href="ko-kreacija.html">Korak dalje</a></li>
+        <li><a href="rezultat.html">Rezultat</a></li>
+        <li><a href="tim.html" class="aktivna">Tim</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero__sadrzaj">
+      <h1 class="hero__naslov">Tim</h1>
+      <p class="hero__podnaslov">Projekt je realizirala tri učenika Tehničke škole Daruvar u sklopu Samsung Challenge natjecanja 2025./2026.</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- UČENICI -->
+    <section class="sekcija">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Članovi tima</h2>
+        <div class="kartice-grid kartice-grid--3">
+
+          <div class="ucenik-kartica">
+            <h3 class="ucenik-kartica__ime">Dominik Dušek</h3>
+            <p class="ucenik-kartica__uloga">Istraživač / Fotograf</p>
+            <p class="ucenik-kartica__opis">Posjet muzeju, fotografiranje eksponata, suradnja s korisnicima Korak dalje, uređivanje eksponati.json</p>
+            <p class="ucenik-kartica__citat">[PLACEHOLDER: Refleksija — što sam naučio]</p>
+          </div>
+
+          <div class="ucenik-kartica">
+            <h3 class="ucenik-kartica__ime">Lena Sakar</h3>
+            <p class="ucenik-kartica__uloga">Dokumentarist / PM</p>
+            <p class="ucenik-kartica__opis">Dokumentacija procesa, portfolio, snimanje videomaterijala, koordinacija s partnerima</p>
+            <p class="ucenik-kartica__citat">[PLACEHOLDER: Refleksija — što sam naučila]</p>
+          </div>
+
+          <div class="ucenik-kartica">
+            <h3 class="ucenik-kartica__ime">Darijan Vašatko</h3>
+            <p class="ucenik-kartica__uloga">Programer</p>
+            <p class="ucenik-kartica__opis">Sav kod — HTML, CSS, JavaScript, Service Worker, PWA, QR stranica</p>
+            <p class="ucenik-kartica__citat">[PLACEHOLDER: Refleksija — što sam naučio]</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- MENTORICA -->
+    <section class="sekcija sekcija--krem">
+      <div class="sekcija__sadrzaj">
+        <div class="mentor-kartica">
+          <h3 class="mentor-kartica__ime">Ivana Milić, mag.inf.</h3>
+          <p class="mentor-kartica__uloga">Nastavnica informatičkih predmeta &middot; Tehnička škola Daruvar</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ZAHVALE -->
+    <section class="sekcija">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Zahvale</h2>
+        <ul class="zahvale">
+          <li>Leo Žukina — kustos Zavičajnog muzeja Daruvar</li>
+          <li>Romana [prezime] — voditeljica udruge Korak dalje Daruvar</li>
+          <li>TZ Daruvar-Papuk</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- VIDEO VREMENSKA KAPSULA -->
+    <section class="sekcija sekcija--krem">
+      <div class="sekcija__sadrzaj">
+        <h2 class="sekcija__naslov">Vremenska kapsula</h2>
+        <div class="video-placeholder">
+          [PLACEHOLDER: Video "Vremenska kapsula" — učenici o projektu]
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p><strong>Samsung Challenge 2025./2026.</strong></p>
+    <p>Tehnička škola Daruvar</p>
+    <p>Tim: Dominik Dušek &middot; Lena Sakar &middot; Darijan Vašatko</p>
+    <p>Mentorica: Ivana Milić, mag.inf.</p>
+  </footer>
+
+</body>
+</html>
