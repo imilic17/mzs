@@ -707,8 +707,6 @@
       karta.innerHTML = `
         <div class="karta__foto">
 
-          ${slikaHtml}
-
           <!-- Placeholder: uvijek prisutan, slika ga prekriva ako postoji -->
           <div class="karta__placeholder"
                style="background-color: ${ph.pozadina};"
@@ -716,6 +714,8 @@
             ${ph.svg}
             <span class="karta__placeholder-tekst">Fotografija dolazi uskoro</span>
           </div>
+
+          ${slikaHtml}
 
           <!-- Kategorija bedž u gornjem lijevom uglu -->
           <span class="karta__badge">${kategNaziv}</span>
