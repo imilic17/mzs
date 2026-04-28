@@ -24,7 +24,12 @@
       "Bash($FFPROBE *)",
       "Bash(/c/Users/Korisnik/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1-full_build/bin/ffmpeg.exe -i 'C:\\\\Users\\\\Korisnik\\\\Downloads\\\\Samsung Challenge-20260331T225043Z-3-001\\\\Samsung Challenge\\\\mzs\\\\assets\\\\slike\\\\Korak_dalje_testiranje\\\\Ana_pehar_skraceno.mp4' -c:v libx264 -crf 23 -preset medium -c:a aac -b:a 128k -movflags faststart -y 'C:\\\\Users\\\\Korisnik\\\\Downloads\\\\Samsung Challenge-20260331T225043Z-3-001\\\\Samsung Challenge\\\\mzs\\\\assets\\\\slike\\\\Korak_dalje_testiranje\\\\Ana_pehar_web.mp4')",
       "Bash(start vodic/index.html)",
-      "Bash(start \"vodic/eksponat.html?id=diatretni-pehar\")"
+      "Bash(start \"vodic/eksponat.html?id=diatretni-pehar\")",
+      "Bash(git rm *)",
+      "Bash(git reset *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }
