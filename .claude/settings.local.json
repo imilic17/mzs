@@ -6,7 +6,25 @@
       "Bash(pip install *)",
       "Bash(python3 *)",
       "Bash(python *)",
-      "Bash(echo \"---EXIT:$?\")"
+      "Bash(echo \"---EXIT:$?\")",
+      "Bash(start portfolio/istrazivanje.html)",
+      "Bash(ffmpeg -version)",
+      "Bash(where ffmpeg *)",
+      "Bash(ffprobe -version)",
+      "Bash(where ffprobe *)",
+      "Bash(start portfolio/ko-kreacija.html)",
+      "Bash(xxd -l 64 \"C:\\\\Users\\\\Korisnik\\\\Downloads\\\\Samsung Challenge-20260331T225043Z-3-001\\\\Samsung Challenge\\\\mzs\\\\assets\\\\slike\\\\Korak_dalje_testiranje\\\\Circle_to_serach.mp4\")",
+      "Bash(winget --version)",
+      "Bash(winget install *)",
+      "Bash(export PATH=\"$PATH:/c/Users/Korisnik/AppData/Local/Microsoft/WinGet/Links\")",
+      "PowerShell(ffmpeg *)",
+      "Bash(/c/Users/Korisnik/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1-full_build/bin/ffmpeg.exe -i 'C:\\\\Users\\\\Korisnik\\\\Downloads\\\\Samsung Challenge-20260331T225043Z-3-001\\\\Samsung Challenge\\\\mzs\\\\assets\\\\slike\\\\Korak_dalje_testiranje\\\\Circle_to_serach.mp4' -c copy -movflags faststart 'C:\\\\Users\\\\Korisnik\\\\Downloads\\\\Samsung Challenge-20260331T225043Z-3-001\\\\Samsung Challenge\\\\mzs\\\\assets\\\\slike\\\\Korak_dalje_testiranje\\\\Circle_to_search_fix.mp4')",
+      "Bash($FFPROBE)",
+      "Bash(/c/Users/Korisnik/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1-full_build/bin/ffmpeg.exe -i 'C:\\\\Users\\\\Korisnik\\\\Downloads\\\\Samsung Challenge-20260331T225043Z-3-001\\\\Samsung Challenge\\\\mzs\\\\assets\\\\slike\\\\Korak_dalje_testiranje\\\\Circle_to_serach.mp4' -c:v libx264 -crf 23 -preset medium -vf scale=-2:1080 -c:a aac -b:a 128k -movflags faststart -y 'C:\\\\Users\\\\Korisnik\\\\Downloads\\\\Samsung Challenge-20260331T225043Z-3-001\\\\Samsung Challenge\\\\mzs\\\\assets\\\\slike\\\\Korak_dalje_testiranje\\\\Circle_to_search_web.mp4')",
+      "Bash($FFPROBE *)",
+      "Bash(/c/Users/Korisnik/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1-full_build/bin/ffmpeg.exe -i 'C:\\\\Users\\\\Korisnik\\\\Downloads\\\\Samsung Challenge-20260331T225043Z-3-001\\\\Samsung Challenge\\\\mzs\\\\assets\\\\slike\\\\Korak_dalje_testiranje\\\\Ana_pehar_skraceno.mp4' -c:v libx264 -crf 23 -preset medium -c:a aac -b:a 128k -movflags faststart -y 'C:\\\\Users\\\\Korisnik\\\\Downloads\\\\Samsung Challenge-20260331T225043Z-3-001\\\\Samsung Challenge\\\\mzs\\\\assets\\\\slike\\\\Korak_dalje_testiranje\\\\Ana_pehar_web.mp4')",
+      "Bash(start vodic/index.html)",
+      "Bash(start \"vodic/eksponat.html?id=diatretni-pehar\")"
     ]
   }
 }

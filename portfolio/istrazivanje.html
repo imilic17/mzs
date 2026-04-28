@@ -96,6 +96,75 @@
       background: rgba(26,58,26,0.85);
       color: white;
     }
+
+    /* Zoom demo */
+    .zoom-demo { margin-top: 0.75rem; }
+    .zoom-demo__tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .zoom-demo__tab {
+      flex: 1;
+      padding: 0.6rem 0.5rem;
+      border: 2px solid #e0e0e0;
+      background: white;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--boja-siva, #6B6B68);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .zoom-demo__tab:hover {
+      border-color: var(--boja-naglasak, #1A3A1A);
+      color: var(--boja-naglasak, #1A3A1A);
+    }
+    .zoom-demo__tab--active {
+      border-color: var(--boja-naglasak, #1A3A1A);
+      background: var(--boja-naglasak, #1A3A1A);
+      color: white !important;
+    }
+    .zoom-demo__viewport {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f0f0f0;
+    }
+    .zoom-demo__img {
+      display: none;
+      width: 100%;
+      border-radius: 8px;
+    }
+    .zoom-demo__img--active { display: block; }
+    .zoom-demo__bar {
+      margin-top: 0.5rem;
+    }
+    .zoom-demo__bar-track {
+      height: 4px;
+      background: #e0e0e0;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+    .zoom-demo__bar-fill {
+      position: absolute;
+      left: 0; top: 0;
+      height: 100%;
+      width: 1%;
+      background: var(--boja-naglasak, #1A3A1A);
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+    .zoom-demo__bar-markers {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      color: var(--boja-siva, #6B6B68);
+      margin-top: 0.25rem;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -214,15 +283,11 @@
             <div class="ba-slider" id="remaster-slider">
               <span class="ba-slider__label ba-slider__label--prije">Prije</span>
               <span class="ba-slider__label ba-slider__label--poslije">Poslije</span>
-              <img src="../assets/slike/after.jpg" alt="AI Remaster — restaurirana fotografija s plakata muzeja" loading="lazy">
+              <img src="../assets/slike/before.jpg" alt="AI Remaster — restaurirana fotografija s plakata muzeja" loading="lazy">
               <div class="ba-slider__overlay">
-                <img src="../assets/slike/before.jpg" alt="Originalna mutna fotografija s plakata muzeja">
+                <img src="../assets/slike/after.jpg" alt="Originalna mutna fotografija s plakata muzeja">
               </div>
               <div class="ba-slider__handle"></div>
-            </div>
-            <div class="placeholder" style="margin-top: 0.5rem;">
-              <p>&#128241; Slike za slider: <code>remaster-prije.jpg</code> i <code>remaster-poslije.jpg</code></p>
-              <small>Staviti u assets/slike/ — slider će automatski raditi</small>
             </div>
           </div>
 
@@ -230,27 +295,59 @@
           <div class="ai-kartica">
             <span class="ai-kartica__uredaj">S26 Ultra</span>
             <h3 class="ai-kartica__naziv">6. ProVisual Engine / AI Zoom</h3>
-            <p class="ai-kartica__sto">AI zoom do 100x koji zadržava oštrinu detalja.</p>
-            <p class="ai-kartica__zasto">Sitni detalji eksponata iza stakla nisu vidljivi golim okom ni standardnom kamerom. 100x zoom otkrio je gravure.</p>
-            <img class="ai-kartica__slika" src="../assets/slike/ai-zoom.jpg" alt="ProVisual Engine — usporedba zumiranja eksponata na različitim razinama" loading="lazy" style="display:none;" onload="this.style.display='block'">
-            <div class="placeholder" id="zoom-placeholder">
-              <p>&#128241; Samsung ProVisual Engine / AI Zoom</p>
-              <p>Slika dolazi sutra</p>
-              <small>Usporedba 1x / 30x / 100x istog eksponata</small>
+            <p class="ai-kartica__sto">AI zoom do 100× koji zadržava oštrinu detalja.</p>
+            <p class="ai-kartica__zasto">U hodniku muzeja testirali smo AI Zoom na informativnoj ploči o Evi Fischer, udaljenoj 15 metara. Golim okom tekst je potpuno nečitljiv. Na 30× zoomu naslov postaje jasan i struktura ploče vidljiva. Na 100× zoomu — čak i sitni tekst postaje čitljiv. ProVisual Engine koristi AI za rekonstrukciju detalja koje optički zoom ne može uhvatiti, što omogućuje dokumentiranje eksponata i s velikih udaljenosti bez gubitka informacija.</p>
+            <div class="zoom-demo">
+              <div class="zoom-demo__tabs">
+                <button class="zoom-demo__tab zoom-demo__tab--active" data-zoom="1">15m udaljenost</button>
+                <button class="zoom-demo__tab" data-zoom="30">30× zoom</button>
+                <button class="zoom-demo__tab" data-zoom="100">100× zoom</button>
+              </div>
+              <div class="zoom-demo__viewport">
+                <img class="zoom-demo__img zoom-demo__img--active" src="../assets/slike/proVision/udaljenost_15_metara.jpg" alt="Hodnik muzeja — info ploča o Eva Fischer udaljena 15 metara, tekst nečitljiv" loading="lazy" data-zoom="1">
+                <img class="zoom-demo__img" src="../assets/slike/proVision/30x_uvecano.jpg" alt="30× zoom — naslov Eva Fischer jasno čitljiv, struktura teksta vidljiva" loading="lazy" data-zoom="30">
+                <img class="zoom-demo__img" src="../assets/slike/proVision/100x_uvecano.jpg" alt="100× zoom — cijeli tekst o Eva Fischer potpuno čitljiv zahvaljujući AI obradi" loading="lazy" data-zoom="100">
+              </div>
+              <div class="zoom-demo__bar">
+                <div class="zoom-demo__bar-track">
+                  <div class="zoom-demo__bar-fill" id="zoom-bar-fill" style="width: 1%"></div>
+                </div>
+                <div class="zoom-demo__bar-markers">
+                  <span>1×</span>
+                  <span>30×</span>
+                  <span>100×</span>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- 7. Sketch to Image -->
           <div class="ai-kartica">
-            <span class="ai-kartica__uredaj">Z Fold7</span>
+            <span class="ai-kartica__uredaj">S26 Ultra</span>
             <h3 class="ai-kartica__naziv">7. Sketch to Image</h3>
             <p class="ai-kartica__sto">Pretvara ručni crtež u realističnu sliku.</p>
-            <p class="ai-kartica__zasto">Korisnik udruge Korak dalje crta eksponat prema sjećanju ili fotografiji — AI pretvara skicu u realističnu vizualizaciju koja se može koristiti u aplikaciji.</p>
-            <img class="ai-kartica__slika" src="../assets/slike/sketch-to-image.jpg" alt="Sketch to Image — korisnik Korak dalje crta, AI generira realističnu sliku" loading="lazy" style="display:none;" onload="this.style.display='block'">
-            <div class="placeholder" id="sketch-placeholder">
-              <p>&#128241; Samsung Sketch to Image</p>
-              <p>Fotografija korisnika Korak dalje kako crta</p>
-              <small>Slika će biti dodana nakon radionice u udruzi</small>
+            <p class="ai-kartica__zasto">Korisnica udruge Korak dalje pokušala je nacrtati diatretni pehar —  najpoznatiji arheološki nalaz iz Daruvara - zvonoliki mrežasti diatretni pehar, danas izložen u muzeju u Beču. Koristeći S Pen olovku, skicirala je obrise pehara prema fotografiji s interneta. Samsung AI je potom iz te jednostavne skice generirao vizualizaciju eksponata, u ovom slučaju bez upisivanja dodatnog prompta. Rezultat nije niti nalik navedenom peharu, ali zabava i smijeha nije nedostajalo.</p>
+            <div class="zoom-demo">
+              <div class="zoom-demo__tabs">
+                <button class="zoom-demo__tab zoom-demo__tab--active" data-zoom="1">Početak crtanja</button>
+                <button class="zoom-demo__tab" data-zoom="30">Skica pehara</button>
+                <button class="zoom-demo__tab" data-zoom="100">AI rezultat</button>
+              </div>
+              <div class="zoom-demo__viewport">
+                <img class="zoom-demo__img zoom-demo__img--active" src="../assets/slike/SkretchToImage/korak_1_crtanje.png" alt="Korisnica udruge Korak dalje drži S Pen olovku iznad praznog canvasa na Samsung uređaju" loading="lazy" data-zoom="1">
+                <img class="zoom-demo__img" src="../assets/slike/SkretchToImage/korak_2_skica.png" alt="Ručna skica diatretnog pehara nacrtana S Pen olovkom na Samsung uređaju" loading="lazy" data-zoom="30">
+                <img class="zoom-demo__img" src="../assets/slike/SkretchToImage/korak_3_rezultat.png" alt="AI-generirana realistična vizualizacija diatretnog pehara iz ručne skice" loading="lazy" data-zoom="100">
+              </div>
+              <div class="zoom-demo__bar">
+                <div class="zoom-demo__bar-track">
+                  <div class="zoom-demo__bar-fill" style="width: 1%"></div>
+                </div>
+                <div class="zoom-demo__bar-markers">
+                  <span>Canvas</span>
+                  <span>Skica</span>
+                  <span>AI slika</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -261,62 +358,6 @@
             <p class="ai-kartica__sto">AI prilagođava ton i složenost teksta.</p>
             <p class="ai-kartica__zasto">Proces u dva koraka: najprije smo kustosov stručni tekst proveli kroz Summarise da dobijemo sažetak, a zatim taj sažetak proveli kroz Writing Assist s opcijom Casual — tako smo dobili jednostavan, razumljiv tekst prilagođen osobama s intelektualnim teškoćama. Na slici se vidi usporedba Standard sažetka (lijevo) i Casual verzije (desno).</p>
             <img class="ai-kartica__slika" src="../assets/slike/sumerize-i_writing-assist.jpg" alt="Usporedba Summarise Standard sažetka i Writing Assist Casual verzije teksta o ginko stablu" loading="lazy">
-          </div>
-
-          <!-- 9. Audio Eraser -->
-          <div class="ai-kartica">
-            <span class="ai-kartica__uredaj">S26 Ultra</span>
-            <h3 class="ai-kartica__naziv">9. Audio Eraser</h3>
-            <p class="ai-kartica__sto">AI uklanja pozadinsku buku iz video snimki.</p>
-            <p class="ai-kartica__zasto">Muzejska dvorana odjekuje. Audio Eraser uklonio je eho i šum iz svih intervju snimki.</p>
-            <img class="ai-kartica__slika" src="../assets/slike/audio-eraser.jpg" alt="Audio Eraser — vizualizacija uklanjanja pozadinske buke iz intervju snimke" loading="lazy" style="display:none;" onload="this.style.display='block'">
-            <div class="placeholder">
-              <p>&#128241; Samsung Audio Eraser</p>
-              <p>Screenshot će biti dodan nakon snimanja</p>
-              <small>Vizualizacija zvučnog vala prije/poslije</small>
-            </div>
-          </div>
-
-          <!-- 10. Flex Mode kiosk -->
-          <div class="ai-kartica">
-            <span class="ai-kartica__uredaj">Z Fold7</span>
-            <h3 class="ai-kartica__naziv">10. Flex Mode kiosk</h3>
-            <p class="ai-kartica__sto">Presavijeni Z Fold7 stoji kao kiosk terminal.</p>
-            <p class="ai-kartica__zasto">Korisnici Korak dalje testirali su aplikaciju na presavijenom Z Fold7 postavljenom na stolu — bez držanja.</p>
-            <img class="ai-kartica__slika" src="../assets/slike/flex-mode-kiosk.jpg" alt="Z Fold7 u Flex Mode kiosk postavu na stolu — korisnik koristi aplikaciju bez držanja" loading="lazy" style="display:none;" onload="this.style.display='block'">
-            <div class="placeholder">
-              <p>&#128241; Samsung Flex Mode kiosk</p>
-              <p>Screenshot će biti dodan nakon snimanja</p>
-              <small>Fotografija postava Flex Mode kiosk</small>
-            </div>
-          </div>
-
-          <!-- 11. Flex Mode Interpreter -->
-          <div class="ai-kartica">
-            <span class="ai-kartica__uredaj">Z Fold7</span>
-            <h3 class="ai-kartica__naziv">11. Flex Mode Interpreter</h3>
-            <p class="ai-kartica__sto">Gornja polovica ekrana jedan jezik, donja drugi.</p>
-            <p class="ai-kartica__zasto">Daruvar ima 20,92% češke manjine. Muzej nema opis na češkom. Interpreter omogućio je HR↔CZ komunikaciju.</p>
-            <img class="ai-kartica__slika" src="../assets/slike/interpreter.jpg" alt="Flex Mode Interpreter — gornji ekran hrvatski, donji ekran češki prijevod" loading="lazy" style="display:none;" onload="this.style.display='block'">
-            <div class="placeholder">
-              <p>&#128241; Samsung Interpreter</p>
-              <p>Screenshot će biti dodan nakon snimanja</p>
-              <small>Screenshot Flex Mode Interpreter HR/CZ</small>
-            </div>
-          </div>
-
-          <!-- 12. Dual Recording / Director's View -->
-          <div class="ai-kartica">
-            <span class="ai-kartica__uredaj">Z Flip7</span>
-            <h3 class="ai-kartica__naziv">12. Dual Recording / Director's View</h3>
-            <p class="ai-kartica__sto">Prednja i stražnja kamera snimaju istovremeno.</p>
-            <p class="ai-kartica__zasto">Intervju s korisnicima Korak dalje sniman je profesionalnim split-screen formatom bez montaže.</p>
-            <img class="ai-kartica__slika" src="../assets/slike/dual-recording.jpg" alt="Dual Recording — split-screen snimanje s prednjom i stražnjom kamerom istovremeno" loading="lazy" style="display:none;" onload="this.style.display='block'">
-            <div class="placeholder">
-              <p>&#128241; Samsung Dual Recording</p>
-              <p>Screenshot će biti dodan nakon snimanja</p>
-              <small>Split-screen screenshot</small>
-            </div>
           </div>
 
         </div>
@@ -447,6 +488,24 @@
       window.addEventListener('touchmove', function(e) { if (dragging) updatePosition(e.touches[0].clientX); }, {passive: true});
       window.addEventListener('mouseup', function() { dragging = false; });
       window.addEventListener('touchend', function() { dragging = false; });
+    });
+
+    // Zoom demo
+    var zoomLevels = { '1': 1, '30': 50, '100': 100 };
+    document.querySelectorAll('.zoom-demo__tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var zoom = this.getAttribute('data-zoom');
+        var demo = this.closest('.zoom-demo');
+        demo.querySelectorAll('.zoom-demo__tab').forEach(function(t) {
+          t.classList.remove('zoom-demo__tab--active');
+        });
+        this.classList.add('zoom-demo__tab--active');
+        demo.querySelectorAll('.zoom-demo__img').forEach(function(img) {
+          img.classList.toggle('zoom-demo__img--active', img.getAttribute('data-zoom') === zoom);
+        });
+        var fill = demo.querySelector('.zoom-demo__bar-fill');
+        if (fill) fill.style.width = zoomLevels[zoom] + '%';
+      });
     });
   </script>
 

@@ -160,10 +160,17 @@
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
 
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       padding: var(--razmak);
       gap: var(--razmak);
+      align-content: start;
+    }
+
+    @media (max-width: 480px) {
+      .lista {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* ─────────────────────────────────────────
@@ -187,13 +194,17 @@
       background: white;
       border-radius: 20px;
       overflow: hidden;
-      flex-shrink: 0; /* sprječava kompresiju flex djece */
 
-      /* Matematika visine — komentirana gore */
-      height: calc(50dvh - 64px);
+      height: calc(44dvh - 32px);
+      min-height: 220px;
 
-      /* Sjenka daje osjećaj dubine i odvaja kartice od pozadine */
       box-shadow: 0 2px 12px rgba(26, 58, 26, 0.10);
+    }
+
+    @media (max-width: 480px) {
+      .karta {
+        height: calc(50dvh - 64px);
+      }
     }
 
     /* ── Foto/placeholder dio kartice ── */
