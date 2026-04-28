@@ -659,100 +659,98 @@
          verzija teksta koja je pristupačna
          osobama s intelektualnim teškoćama.
     ════════════════════════════════════════ */
+    const LANG_SUFIKS = { 'hr-HR': 'hr', 'en-US': 'en', 'cs-CZ': 'cz' };
+
     const tts = {
       govori: false,
-      izgovor: null,   /* SpeechSynthesisUtterance objekt */
+      _audio: null,
 
-      /* Je li TTS uopće podržan u browseru? */
-      podrzano() {
-        return 'speechSynthesis' in window;
+      podrzano() { return true; },
+
+      _audioSrc(eksponatId, lang, dugi) {
+        const sufiks = LANG_SUFIKS[lang] || 'hr';
+        const tip = dugi ? '-dugi' : '';
+        return `../assets/audio/${eksponatId}-${sufiks}${tip}.mp3`;
       },
 
-      /* Pokreni čitanje teksta */
-      citaj(tekst, gumb) {
-        /* Zaustavi sve što se trenutno čita */
-        window.speechSynthesis.cancel();
+      citajJezik(tekst, lang, gumb, dugi) {
+        this.zaustavi();
+        this._resetDrugiGumb(gumb);
+        const eksponatId = gumb.dataset.eksponatId;
+        const src = this._audioSrc(eksponatId, lang, dugi);
 
-        const izgovor = new SpeechSynthesisUtterance(tekst);
-        izgovor.lang  = 'hr-HR';  /* Hrvatski jezik — obavezan zahtjev */
-        izgovor.rate  = 0.92;     /* Malo sporije — lakše za razumjeti */
-        izgovor.pitch = 1.0;
-        this.izgovor  = izgovor;
+        const audio = new Audio(src);
+        this._audio = audio;
 
-        /* Kad čitanje počne — promijeni gumb u "Zaustavi" */
-        izgovor.onstart = () => {
+        audio.onplay = () => {
           this.govori = true;
           this._postaviGumb(gumb, true);
         };
-
-        /* Kad čitanje završi (prirodno ili greškom) — resetiraj */
-        izgovor.onend = () => {
+        audio.onended = () => {
           this.govori = false;
           this._postaviGumb(gumb, false);
         };
-
-        izgovor.onerror = (e) => {
-          /* 'interrupted' nije prava greška — dogodi se pri cancel() */
-          if (e.error !== 'interrupted') {
-            console.warn('TTS greška:', e.error);
+        audio.onerror = () => {
+          if ('speechSynthesis' in window) {
+            this._fallbackSpeech(tekst, lang, gumb);
+          } else {
+            this.govori = false;
+            this._postaviGumb(gumb, false);
           }
-          this.govori = false;
-          this._postaviGumb(gumb, false);
         };
 
-        window.speechSynthesis.speak(izgovor);
+        audio.play().catch(() => {
+          if ('speechSynthesis' in window) {
+            this._fallbackSpeech(tekst, lang, gumb);
+          }
+        });
       },
 
-      citajJezik(tekst, lang, gumb) {
+      _fallbackSpeech(tekst, lang, gumb) {
         window.speechSynthesis.cancel();
         const izgovor = new SpeechSynthesisUtterance(tekst);
-        izgovor.lang  = lang;
-        izgovor.rate  = 0.92;
+        izgovor.lang = lang;
+        izgovor.rate = 0.92;
         izgovor.pitch = 1.0;
-        this.izgovor  = izgovor;
         izgovor.onstart = () => { this.govori = true; this._postaviGumb(gumb, true); };
         izgovor.onend = () => { this.govori = false; this._postaviGumb(gumb, false); };
         izgovor.onerror = (e) => {
-          if (e.error !== 'interrupted') console.warn('TTS greška:', e.error);
+          if (e.error !== 'interrupted') console.warn('TTS fallback greška:', e.error);
           this.govori = false; this._postaviGumb(gumb, false);
         };
         window.speechSynthesis.speak(izgovor);
       },
 
       zaustavi() {
-        window.speechSynthesis.cancel();
+        if (this._audio) {
+          this._audio.pause();
+          this._audio.currentTime = 0;
+          this._audio = null;
+        }
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
         this.govori = false;
       },
 
-      /* Promijeni vizualni izgled gumba */
+      _resetDrugiGumb(aktivniGumb) {
+        const sviGumbi = document.querySelectorAll('.gumb-tts');
+        sviGumbi.forEach(g => {
+          if (g !== aktivniGumb && g.classList.contains('gumb-tts--govori')) {
+            this._postaviGumb(g, false);
+          }
+        });
+      },
+
       _postaviGumb(gumb, aktivno) {
+        const jeDugi = gumb.dataset.ttsDugi === 'true';
         if (aktivno) {
-          gumb.innerHTML = `
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-              <rect x="6"  y="6"  width="6" height="16" rx="2" fill="currentColor"/>
-              <rect x="16" y="6"  width="6" height="16" rx="2" fill="currentColor"/>
-            </svg>
-            Zaustavi čitanje
-          `;
+          gumb.innerHTML = `⏸️ Zaustavi čitanje`;
           gumb.classList.add('gumb-tts--govori');
           gumb.setAttribute('aria-label', 'Zaustavi glasovni opis');
           gumb.setAttribute('aria-pressed', 'true');
         } else {
-          gumb.innerHTML = `
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-              <!-- Zvučnik -->
-              <path d="M4 10 L4 18 L9 18 L16 24 L16 4 L9 10 Z"
-                    fill="currentColor"/>
-              <!-- Zvučni valovi -->
-              <path d="M19 9 C21.5 11 21.5 17 19 19"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
-              <path d="M22 6 C26 9 26 19 22 22"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
-            </svg>
-            🔊 Slušaj opis
-          `;
+          gumb.innerHTML = jeDugi ? `🎓 Slušaj stručni opis` : `🔊 Slušaj opis`;
           gumb.classList.remove('gumb-tts--govori');
-          gumb.setAttribute('aria-label', 'Slušaj glasovni opis eksponata na hrvatskom jeziku');
+          gumb.setAttribute('aria-label', jeDugi ? 'Slušaj stručni opis kustosa' : 'Slušaj glasovni opis eksponata');
           gumb.setAttribute('aria-pressed', 'false');
         }
       }
@@ -829,6 +827,10 @@
       if (!e) return;
 
       tts.zaustavi();
+      const gumbTtsReset = document.getElementById('gumb-tts');
+      if (gumbTtsReset) tts._postaviGumb(gumbTtsReset, false);
+      const gumbDugiReset = document.getElementById('gumb-tts-dugi');
+      if (gumbDugiReset) tts._postaviGumb(gumbDugiReset, false);
 
       const naziv = dohvatiTekst(e, 'naziv', jezik);
       const opisPrikaz = dohvatiTekst(e, 'easy_to_read_opis', jezik) || dohvatiTekst(e, 'kratki_opis', jezik);
@@ -851,6 +853,11 @@
       if (gumbTts) {
         gumbTts.dataset.ttsText = opisPrikaz;
         gumbTts.dataset.ttsLang = ttsLang;
+      }
+      const gumbDugi = document.getElementById('gumb-tts-dugi');
+      if (gumbDugi) {
+        gumbDugi.dataset.ttsText = strucni;
+        gumbDugi.dataset.ttsLang = ttsLang;
       }
     }
 
@@ -877,6 +884,7 @@
         : '';
 
       const strucniTekst = e.dugi_opis || e.kratki_opis || '';
+      const strucniTtsText = strucniTekst.replace(/"/g, '&quot;');
       const strucniHtml = strucniTekst && strucniTekst !== opisPrikaz
         ? `<div class="strucni-sekcija">
              <button class="strucni-toggle"
@@ -892,6 +900,16 @@
                </svg>
              </button>
              <p class="strucni-tekst" id="strucni-tekst">${strucniTekst}</p>
+             <button class="gumb-tts gumb-tts--strucni"
+                     id="gumb-tts-dugi"
+                     data-tts-text="${strucniTtsText}"
+                     data-tts-lang="hr-HR"
+                     data-eksponat-id="${e.id}"
+                     data-tts-dugi="true"
+                     aria-label="Slušaj stručni opis kustosa"
+                     aria-pressed="false">
+               🎓 Slušaj stručni opis
+             </button>
            </div>`
         : '';
 
@@ -904,27 +922,15 @@
            </div>`
         : '';
 
-      const ttsPodrzano = tts.podrzano();
-      const ttsHtml = ttsPodrzano
-        ? `<button class="gumb-tts"
+      const ttsHtml = `<button class="gumb-tts"
                    id="gumb-tts"
                    data-tts-text="${ttsText.replace(/"/g, '&quot;')}"
                    data-tts-lang="hr-HR"
+                   data-eksponat-id="${e.id}"
                    aria-label="Slušaj glasovni opis eksponata"
                    aria-pressed="false">
-             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-               <path d="M4 10 L4 18 L9 18 L16 24 L16 4 L9 10 Z" fill="currentColor"/>
-               <path d="M19 9 C21.5 11 21.5 17 19 19"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
-               <path d="M22 6 C26 9 26 19 22 22"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
-             </svg>
              🔊 Slušaj opis
-           </button>`
-        : `<p class="tts-upozorenje" role="status">
-             Glasovni opis nije podržan u ovom browseru.
-             Pokušaj otvoriti stranicu u Chrome ili Safari.
-           </p>`;
+           </button>`;
 
       kontejner.innerHTML = `
 
@@ -965,15 +971,30 @@
         </div>
       `;
 
-      if (ttsPodrzano) {
-        const gumb = document.getElementById('gumb-tts');
+      const gumb = document.getElementById('gumb-tts');
+      if (gumb) {
         gumb.addEventListener('click', () => {
           if (tts.govori) {
             tts.zaustavi();
+            tts._postaviGumb(gumb, false);
           } else {
             const tekst = gumb.dataset.ttsText;
             const lang = gumb.dataset.ttsLang;
-            tts.citajJezik(tekst, lang, gumb);
+            tts.citajJezik(tekst, lang, gumb, false);
+          }
+        });
+      }
+
+      const gumbDugi = document.getElementById('gumb-tts-dugi');
+      if (gumbDugi) {
+        gumbDugi.addEventListener('click', () => {
+          if (tts.govori) {
+            tts.zaustavi();
+            tts._postaviGumb(gumbDugi, false);
+          } else {
+            const tekst = gumbDugi.dataset.ttsText;
+            const lang = gumbDugi.dataset.ttsLang;
+            tts.citajJezik(tekst, lang, gumbDugi, true);
           }
         });
       }
